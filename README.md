@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Repo](#repo)
     - [Readme](#readme)
@@ -70,7 +71,7 @@ QT6 CXX20 console app to add photos to PostgreSQL
 
 ### Repo
 
-![Status](https://img.shields.io/badge/Status-works-green)
+![Status](https://img.shields.io/badge/Status-under_construction-red)
 ![GitHub Release Date](https://img.shields.io/github/release-date/Zheng-Bote/qt_files_photo-gallery)
 
 ![GitHub Issues](https://img.shields.io/github/issues/Zheng-Bote/qt_files_photo-gallery)
@@ -107,6 +108,7 @@ bla bla ... with a little help from my friends
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -131,6 +133,7 @@ bla bla ... with a little help from my friends
 
 5 directories, 14 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
