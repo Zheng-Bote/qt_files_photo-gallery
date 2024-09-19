@@ -139,8 +139,6 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 │       ├── repo-create_doctoc_md.yml
 │       └── repo-create_tree_readme.yml
 ├── .gitignore
-├── Dist
-│   └── qt_files_photo-gallery.ini
 ├── Includes
 │   ├── cxxopts.hpp
 │   ├── inicpp.h
@@ -152,6 +150,8 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 │   └── rz_readdir.h
 ├── LICENSE
 ├── README.md
+├── dist
+│   └── qt_files_photo-gallery.ini
 ├── main.cpp
 ├── qt_files_photo-gallery.pro
 └── tree.bak
