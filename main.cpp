@@ -30,6 +30,9 @@ int main(int argc, char *argv[])
     QString inifile = prog.c_str();
     inifile.append(".ini");
 
+    /**
+     * @brief options for program
+     */
     cxxopts::Options options(prog, "photos to db");
     options.set_width(100).add_options()("a,auto",
                                          "run with default Inifile: " + prog
@@ -47,6 +50,10 @@ int main(int argc, char *argv[])
                 ->default_value(prog + ".ini"))("v,version",
                                                 "Print program and version")("h, help",
                                                                              "Print help");
+
+    /**
+     * @brief parse prog parameters
+     */
 
     auto result = options.parse(argc, argv);
 
@@ -129,6 +136,9 @@ int main(int argc, char *argv[])
      */
     PgDb pgDb(iniConfig);
 
+    /**
+     * @brief read dirs
+     */
     QString path = "/home/zb_bamboo/Dokumente/2021";
     ReadDir readDir(path);
     readDir.searchFilesRekursive();

@@ -53,8 +53,8 @@
 
 # Description
 
-![GHA](https://img.shields.io/badge/Github-Action-black?logo=githubactions)
-![Node](https://img.shields.io/badge/Node-20-blue?logo=tsnode)
+![QT](https://img.shields.io/badge/Community-6-41CD52?logo=qt)
+![CXX](https://img.shields.io/badge/C++-20-blue?logo=cplusplus)
 
 QT6 CXX20 console app to add photos to PostgreSQL
 
@@ -80,7 +80,6 @@ QT6 CXX20 console app to add photos to PostgreSQL
 ### Readme
 
 [![Repo - create Repo-Tree in README.md](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-create_tree_readme.yml/badge.svg)](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-create_tree_readme.yml)
-[![Repo - add Actions In/Out to README](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-actions_docu.yml/badge.svg)](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-actions_docu.yml)
 
 [![Repo - update Readme](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-call_Readme.yml/badge.svg)](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-call_Readme.yml)
 
@@ -103,7 +102,21 @@ bla bla ... everything easy and green with No Code/Low code and without any cost
 
 ## Dependencies
 
-bla bla ... with a little help from my friends
+#### cxxopts
+
+a lightweight C++ option parser library, supporting the standard GNU style syntax for options.
+
+[![jarro2783](https://img.shields.io/badge/Github-jarro2783-black?logo=github)](https://github.com/jarro2783/cxxopts)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+#### inifile-cpp
+
+inifile-cpp is a simple and easy to use single header-only ini file en- and decoder for C++.
+
+[![Fabian Meyer](https://img.shields.io/badge/Github-Fabian_Meyer-black?logo=github)](https://github.com/Rookfighter/inifile-cpp)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## folder structure
 
@@ -150,23 +163,9 @@ bla bla ... usage is intuitive and runs mostly automatically with no needs of an
 
 # API Reference
 
-<hr>
-
-![GHA](https://img.shields.io/badge/Github-Action-black?logo=githubactions)
-
-_Inputs/Outputs will be filled automatically by `.github/workflows/repo-actions_docu.yml`_
-
 ## Inputs
 
-## Outputs
-
-<hr>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Parameters
-
-**Workflow or program**
+_under consruction_
 
 | Parameter    | Type     | Description                          |
 | :----------- | :------- | :----------------------------------- |
@@ -175,6 +174,10 @@ _Inputs/Outputs will be filled automatically by `.github/workflows/repo-actions_
 | `version`    | `string` | _Optional_ \<v0.0.0>                 |
 | `link_left`  | `string` | _Optional_ link-to-contact-page      |
 | `link_right` | `string` | _Optional_ link-to-legal-notice-page |
+
+## Outputs
+
+_under consruction_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
