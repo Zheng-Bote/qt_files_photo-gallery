@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Repo](#repo)
     - [Readme](#readme)
@@ -121,7 +120,6 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -140,13 +138,26 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 │       ├── repo-create_doctoc.yml_
 │       ├── repo-create_doctoc_md.yml
 │       └── repo-create_tree_readme.yml
+├── .gitignore
+├── Dist
+│   └── qt_files_photo-gallery.ini
+├── Includes
+│   ├── cxxopts.hpp
+│   ├── inicpp.h
+│   ├── rz_inifile.cpp
+│   ├── rz_inifile.h
+│   ├── rz_pg_db.cpp
+│   ├── rz_pg_db.h
+│   ├── rz_readdir.cpp
+│   └── rz_readdir.h
 ├── LICENSE
 ├── README.md
+├── main.cpp
+├── qt_files_photo-gallery.pro
 └── tree.bak
 
-5 directories, 14 files
+7 directories, 26 files
 ```
-
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
