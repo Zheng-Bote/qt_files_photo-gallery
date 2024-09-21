@@ -14,24 +14,25 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
-    - [Repo](#repo)
-    - [Readme](#readme)
-    - [Markdown files](#markdown-files)
+    - [Application / Tool](#application--tool)
+    - [Documentation](#documentation)
+      - [README](#readme)
+      - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
   - [folder structure](#folder-structure)
-  - [Usage/Examples](#usageexamples)
+  - [Usage/Examples/Tests](#usageexamplestests)
 - [API Reference](#api-reference)
   - [Inputs](#inputs)
   - [Outputs](#outputs)
-- [Documentation](#documentation)
+  - [Parameters](#parameters)
+- [Documentation](#documentation-1)
   - [Architecture](#architecture)
     - [Github](#github)
       - [Github Repo](#github-repo)
@@ -44,6 +45,8 @@
   - [Screenshots](#screenshots)
 - [Authors and License](#authors-and-license)
   - [License](#license)
+    - [MIT License](#mit-license)
+    - [Apache License](#apache-license)
   - [Authors](#authors)
     - [Code Contributors](#code-contributors)
 
@@ -60,30 +63,52 @@ QT6 CXX20 console app to add photos to PostgreSQL
 
 ### Features
 
-- \[x] MIT license
+- \[ ] advanced-super-extra-special feature xyz
+
+  <br>
+
+- \[x] OSS and license
 - \[x] works as designed
 - \[ ] no bugs
-- \[x] some more or less usefull Github Actions
+
+<br>
+
+- \[x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines
+- \[x] CMake
+- \[ ] Installation routine
+- \[ ] portable application
+
+<br>
+
+- \[ ] runs on DOS/Windows
+- \[ ] runs on MacOS
+- \[x] runs on Linux
+- \[ ] runs on iOS
+- \[ ] runs on Android
+- \[ ] runs on HarmonyOS
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Status
 
-### Repo
+### Application / Tool
 
 ![Status](https://img.shields.io/badge/Status-under_construction-red)
-![GitHub Release Date](https://img.shields.io/github/release-date/Zheng-Bote/qt_files_photo-gallery)
 
 ![GitHub Issues](https://img.shields.io/github/issues/Zheng-Bote/qt_files_photo-gallery)
 ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Zheng-Bote/qt_files_photo-gallery)
 
-### Readme
+### Documentation
+
+_see also:_ [Application Documentation](#documentation)
+
+#### README
 
 [![Repo - create Repo-Tree in README.md](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-create_tree_readme.yml/badge.svg)](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-create_tree_readme.yml)
 
 [![Repo - update Readme](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-call_Readme.yml/badge.svg)](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-call_Readme.yml)
 
-### Markdown files
+#### other Markdown files
 
 [![Repo - create TOC of Markdown files](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-create_doctoc_md.yml/badge.svg)](https://github.com/Zheng-Bote/qt_files_photo-gallery/actions/workflows/repo-create_doctoc_md.yml)
 
@@ -121,6 +146,7 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -139,31 +165,22 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 │       ├── repo-create_doctoc.yml_
 │       ├── repo-create_doctoc_md.yml
 │       └── repo-create_tree_readme.yml
-├── .gitignore
-├── Includes
-│   ├── cxxopts.hpp
-│   ├── inicpp.h
-│   ├── rz_inifile.cpp
-│   ├── rz_inifile.h
-│   ├── rz_pg_db.cpp
-│   ├── rz_pg_db.h
-│   ├── rz_readdir.cpp
-│   └── rz_readdir.h
 ├── LICENSE
+├── LICENSE_Apache-2
+├── LICENSE_GPL-2
+├── LICENSE_GPL-3
+├── LICENSE_MIT
 ├── README.md
-├── dist
-│   └── qt_files_photo-gallery.ini
-├── main.cpp
-├── qt_files_photo-gallery.pro
 └── tree.bak
 
-7 directories, 26 files
+5 directories, 18 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Usage/Examples
+## Usage/Examples/Tests
 
 bla bla ... usage is intuitive and runs mostly automatically with no needs of any knowledge
 
@@ -175,9 +192,15 @@ bla bla ... usage is intuitive and runs mostly automatically with no needs of an
 
 # API Reference
 
-## Inputs
+<hr>
 
-_under consruction_
+![GHA](https://img.shields.io/badge/Github-Action-black?logo=githubactions)
+
+_Inputs/Outputs will be filled automatically by `.github/workflows/repo-actions_docu.yml`_
+
+## Inputs / Parameters
+
+_under construction_
 
 | Parameter    | Type     | Description                          |
 | :----------- | :------- | :----------------------------------- |
@@ -188,8 +211,6 @@ _under consruction_
 | `link_right` | `string` | _Optional_ link-to-legal-notice-page |
 
 ## Outputs
-
-_under consruction_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -340,7 +361,7 @@ SOFTWARE.
 
 ### Code Contributors
 
-![Contributors](https://img.shields.io/github/contributors/Zheng-Bote/repo-template?color=dark-green)
+![Contributors](https://img.shields.io/github/contributors/Zheng-Bote/qt_files_photo-gallery?color=dark-green)
 
 [![Zheng Robert](https://img.shields.io/badge/Github-Zheng_Robert-black?logo=github)](https://www.github.com/Zheng-Bote)
 
