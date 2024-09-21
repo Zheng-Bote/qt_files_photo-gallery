@@ -184,6 +184,7 @@ Plog - portable, simple and extensible C++ logging library
 ├── LICENSE
 ├── README.md
 ├── dist
+│   ├── README.md
 │   └── qt_files_photo-gallery.ini
 ├── src
 │   ├── CMakeLists.txt
@@ -199,7 +200,7 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-8 directories, 26 files
+8 directories, 27 files
 ```
 
 <!-- readme-tree end -->
