@@ -132,7 +132,7 @@ The Qt framework contains a comprehensive set of highly intuitive and modularize
 
 [Qt for Open Source Development](https://www.qt.io/download-open-source)
 
-[![LGPL](https://img.shields.io/badge/License-LGPL_v3-green.svg)](https://choosealicense.com/licenses/lgpl-3.0/) [_see also_](https://www.qt.io/licensing/open-source-lgpl-obligations)
+[![LGPL](https://img.shields.io/badge/License-LGPL_v3-green.svg)](https://choosealicense.com/licenses/lgpl-3.0/) _see also:_[Obligations of the GPL and LGPL](https://www.qt.io/licensing/open-source-lgpl-obligations)
 
 #### cxxopts
 
