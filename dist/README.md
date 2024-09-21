@@ -24,13 +24,48 @@ The `dist` folder provides tools, apps and example config-files
 
 # example ini-file
 
-Example Ini-file for `qt_files_photo-gallery`
+Example Ini-file _qt_files_photo-gallery.ini_ for `qt_files_photo-gallery`
 
 ```Ini
-[SQL]
-dbname=     # <my database>
-hostname=   # <database server>
-password=   # <database user-password>
-port=       # <database server-port>
-username=   # <database user>
+[SQL_dev]
+rdbms=postgresql          # only pg is supported yet
+dbname=photo_gallery      # <my database>
+hostname=rdbms_srv        # <database server> // IP-Address or FQDN
+password=Top_Secret!      # <database user password>
+port=8154                 # <database server port>
+username=photo_rw_user    # <database user>
+
+[SQL_int]
+rdbms=
+dbname=
+hostname=
+password=
+port=
+username=
+
+[SQL_prod]
+rdbms=
+dbname=
+hostname=
+password=
+port=
+username=
+
+[APP_dev]
+Debug_level=                                # not implemented yet
+Logifle=./qt_files_photo.log                # path/to/logfile // no logrotate by app qt_files_photo-gallery
+write_to_db=false                           # true | false // true: insert vals into DB | false: write sql inserts into file
+write_inserts_to_file=./qt_files_photo.sql  # path/to/file.sql
+
+[APP_int]
+Debug_level=
+Logifle=
+write_to_db=
+write_inserts_to_file=
+
+[APP_prod]
+Debug_level=
+Logifle=
+write_to_db=
+write_inserts_to_file=
 ```
