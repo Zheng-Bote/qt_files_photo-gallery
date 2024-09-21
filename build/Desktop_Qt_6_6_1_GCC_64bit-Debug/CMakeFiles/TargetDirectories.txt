@@ -1,9 +1,0 @@
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/qt_files_photo-gallery.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/list_install_components.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install/local.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install/strip.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/qt_files_photo-gallery_autogen_timestamp_deps.dir
-/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/qt_files_photo-gallery_autogen.dir
