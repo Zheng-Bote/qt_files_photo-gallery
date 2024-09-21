@@ -9,6 +9,7 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
@@ -52,9 +53,9 @@ port=
 username=
 
 [APP_dev]
-Logifle=./qt_files_photo.log                # path/to/logfile // no logrotate by app qt_files_photo-gallery
+Logifle=./qt_files_photo.log                # <path/to/logfile> qt_files_photo-gallery
 write_to_db=false                           # true | false // true: insert vals into DB | false: write sql inserts into file
-write_sql_to_file=./qt_files_photo.sql      # path/to/file.sql
+write_sql_to_file=./qt_files_photo.sql      # <path/to/file.sql>
 
 [APP_int]
 Logifle=
