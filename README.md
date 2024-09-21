@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -26,12 +25,13 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
+      - [cxxopts](#cxxopts)
+      - [inifile-cpp](#inifile-cpp)
   - [folder structure](#folder-structure)
   - [Usage/Examples/Tests](#usageexamplestests)
 - [API Reference](#api-reference)
-  - [Inputs](#inputs)
+  - [Inputs / Parameters](#inputs--parameters)
   - [Outputs](#outputs)
-  - [Parameters](#parameters)
 - [Documentation](#documentation-1)
   - [Architecture](#architecture)
     - [Github](#github)
@@ -45,8 +45,6 @@
   - [Screenshots](#screenshots)
 - [Authors and License](#authors-and-license)
   - [License](#license)
-    - [MIT License](#mit-license)
-    - [Apache License](#apache-license)
   - [Authors](#authors)
     - [Code Contributors](#code-contributors)
 
