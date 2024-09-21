@@ -13,6 +13,13 @@
 #include <QCoreApplication>
 #include <QDebug>
 
+#include <plog/Appenders/ColorConsoleAppender.h>
+#include <plog/Appenders/RollingFileAppender.h>
+#include <plog/Formatters/TxtFormatter.h>
+#include <plog/Init.h>
+#include <plog/Initializers/RollingFileInitializer.h>
+#include <plog/Log.h>
+
 #include "includes/cxxopts.hpp"
 #include "includes/rz_inifile.h"
 #include "includes/rz_pg_db.h"
@@ -29,6 +36,17 @@ int main(int argc, char *argv[])
     // default inifile
     QString inifile = prog.c_str();
     inifile.append(".ini");
+
+    // default logging
+    QString logfile = prog.c_str();
+    logfile.append(".log");
+    static plog::RollingFileAppender<plog::TxtFormatter> fileAppender(logfile.toStdString().c_str(),
+                                                                      5000,
+                                                                      3);
+    plog::init(plog::debug, &fileAppender);
+    // fileAppender.setFileName("SetFileNameBBB.log");
+    plog::ColorConsoleAppender<plog::TxtFormatter> consoleAppender;
+    plog::get()->addAppender(&consoleAppender); // Also add logging to the console.
 
     /**
      * @brief options for program
@@ -119,6 +137,17 @@ int main(int argc, char *argv[])
         iniConfig.listIniEntries();
         exit(EXIT_SUCCESS);
     }
+
+    // ##################
+    // ok-la, let's do it
+
+    PLOG_VERBOSE << "This is a VERBOSE message";
+    PLOG_DEBUG << "This is a DEBUG message";
+    PLOG_INFO << "This is an INFO message";
+    PLOG_WARNING << "This is a WARNING message";
+    PLOG_ERROR << "This is an ERROR message";
+    PLOG_FATAL << "This is a FATAL message";
+    PLOG_NONE << "This is a NONE message";
 
     /**
      * @brief inifile load

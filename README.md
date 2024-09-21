@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,8 +26,8 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
   - [folder structure](#folder-structure)
   - [Usage/Examples/Tests](#usageexamplestests)
 - [API Reference](#api-reference)
@@ -125,6 +126,14 @@ bla bla ... everything easy and green with No Code/Low code and without any cost
 
 ## Dependencies
 
+#### QT6 - Community Edition
+
+The Qt framework contains a comprehensive set of highly intuitive and modularized C++ library classes and is loaded with APIs to simplify your application development. Qt produces highly readable, easily maintainable and reusable code with high runtime performance and small footprint – and it's cross-platform.
+
+[Qt for Open Source Development](https://www.qt.io/download-open-source)
+
+[![LGPL](https://img.shields.io/badge/License-LGPL_v3-green.svg)](https://choosealicense.com/licenses/lgpl-3.0/) [_see also_](https://www.qt.io/licensing/open-source-lgpl-obligations)
+
 #### cxxopts
 
 a lightweight C++ option parser library, supporting the standard GNU style syntax for options.
@@ -141,9 +150,18 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
+#### plog
+
+Plog - portable, simple and extensible C++ logging library
+
+[![Sergey Podobry](https://img.shields.io/badge/Github-Sergey_Podobry-black?logo=github)](https://github.com/SergiusTheBest/plog)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -183,6 +201,7 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 
 8 directories, 26 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>

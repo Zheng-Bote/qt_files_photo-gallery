@@ -15,6 +15,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Sql)
 add_executable(
   qt_files_photo-gallery
   main.cpp
+  /usr/local/include/plog/Appenders/ColorConsoleAppender.h
+  /usr/local/include/plog/Appenders/RollingFileAppender.h
+  /usr/local/include/plog/Formatters/TxtFormatter.h
+  /usr/local/include/plog/Init.h
+  /usr/local/include/plog/Initializers/RollingFileInitializer.h
+  /usr/local/include/plog/Log.h
   includes/cxxopts.hpp
   includes/inicpp.h
   includes/rz_inifile.cpp
