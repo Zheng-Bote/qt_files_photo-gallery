@@ -1,0 +1,22 @@
+# ninja log v6
+0	12	1726911183256458386	qt_files_photo-gallery_autogen/timestamp	bae7e60694ccb6bc
+0	12	1726911183256458386	qt_files_photo-gallery_autogen/mocs_compilation.cpp	bae7e60694ccb6bc
+0	12	1726911183256458386	/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/qt_files_photo-gallery_autogen/timestamp	bae7e60694ccb6bc
+0	12	1726911183256458386	/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/qt_files_photo-gallery_autogen/mocs_compilation.cpp	bae7e60694ccb6bc
+12	22	1726911183260458404	CMakeFiles/qt_files_photo-gallery.dir/qt_files_photo-gallery_autogen/mocs_compilation.cpp.o	89f428e66be04d56
+13	1297	1726911183260458404	CMakeFiles/qt_files_photo-gallery.dir/includes/rz_readdir.cpp.o	66121d16b4a79928
+12	1554	1726911183260458404	CMakeFiles/qt_files_photo-gallery.dir/includes/rz_inifile.cpp.o	f7a8c2326ad32064
+3	12	1726911334085005110	qt_files_photo-gallery_autogen/timestamp	bae7e60694ccb6bc
+3	12	1726911334085005110	qt_files_photo-gallery_autogen/mocs_compilation.cpp	bae7e60694ccb6bc
+3	12	1726911334085005110	/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/qt_files_photo-gallery_autogen/timestamp	bae7e60694ccb6bc
+3	12	1726911334085005110	/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/qt_files_photo-gallery_autogen/mocs_compilation.cpp	bae7e60694ccb6bc
+13	2314	1726911334093005131	CMakeFiles/qt_files_photo-gallery.dir/includes/rz_pg_db.cpp.o	6ad3f3ba80e90868
+13	5117	1726911334093005131	CMakeFiles/qt_files_photo-gallery.dir/main.cpp.o	f3ee02153abb3684
+5117	5372	1726911339197017022	qt_files_photo-gallery	4ba939e9b668bacf
+1	7	1726911410301143967	qt_files_photo-gallery_autogen/timestamp	bae7e60694ccb6bc
+1	7	1726911410301143967	qt_files_photo-gallery_autogen/mocs_compilation.cpp	bae7e60694ccb6bc
+1	7	1726911410301143967	/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/qt_files_photo-gallery_autogen/timestamp	bae7e60694ccb6bc
+1	7	1726911410301143967	/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/build/Desktop_Qt_6_6_1_GCC_64bit-Debug/qt_files_photo-gallery_autogen/mocs_compilation.cpp	bae7e60694ccb6bc
+8	2778	1726911410309143978	CMakeFiles/qt_files_photo-gallery.dir/includes/rz_pg_db.cpp.o	6ad3f3ba80e90868
+8	5748	1726911410309143978	CMakeFiles/qt_files_photo-gallery.dir/main.cpp.o	f3ee02153abb3684
+5748	5982	1726911416049151237	qt_files_photo-gallery	4ba939e9b668bacf
