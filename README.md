@@ -166,6 +166,7 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 ├── LICENSE
 ├── README.md
 ├── dist
+│   ├── README.md
 │   └── qt_files_photo-gallery.ini
 ├── src
 │   ├── CMakeLists.txt
@@ -181,7 +182,7 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 │   └── main.cpp
 └── tree.bak
 
-8 directories, 26 files
+8 directories, 27 files
 ```
 <!-- readme-tree end -->
 
