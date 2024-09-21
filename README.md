@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -26,8 +25,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-    - [cxxopts](#cxxopts)
-    - [inifile-cpp](#inifile-cpp)
+      - [QT6 - Community Edition](#qt6---community-edition)
+      - [cxxopts](#cxxopts)
+      - [inifile-cpp](#inifile-cpp)
+      - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Usage/Examples/Tests](#usageexamplestests)
 - [API Reference](#api-reference)
