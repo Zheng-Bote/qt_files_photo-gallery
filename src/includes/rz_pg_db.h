@@ -1,7 +1,8 @@
 #pragma once
 
-#include <QDebug>
 #include <QtSql>
+
+#include <plog/Log.h>
 
 #include "rz_inifile.h"
 

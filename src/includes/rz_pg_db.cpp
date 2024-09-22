@@ -10,10 +10,10 @@ PgDb::PgDb(Inifile &iniConfig)
     PgDb::db.setPort(iniConfig.getSqlPort());
 
     if (!PgDb::db.open()) {
-        qCritical() << "Connection to DB failed!";
+        PLOG_ERROR << "Connection to DB failed!";
         exit(EXIT_FAILURE);
     } else {
-        qInfo() << "Connected to DB";
+        PLOG_INFO << "Connected to DB";
     }
 }
 
@@ -25,5 +25,5 @@ PgDb::~PgDb()
 void PgDb::closeDb()
 {
     PgDb::db.close();
-    qInfo() << "Disconnected from DB";
+    PLOG_INFO << "Disconnected from DB";
 }

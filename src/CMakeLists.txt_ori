@@ -1,10 +1,6 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.16)
 
-project(
-  qt_files_photo-gallery
-  VERSION 0.1.0
-  DESCRIPTION "QT6 CXX20 console app to add photos to PostgreSQL"
-  LANGUAGES CXX)
+project(qt_files_photo-gallery LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)

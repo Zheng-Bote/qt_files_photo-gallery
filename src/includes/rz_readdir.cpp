@@ -25,6 +25,7 @@ void ReadDir::searchFiles()
 
 void ReadDir::searchFilesRekursive()
 {
+    // PLOG_FATAL << "This is a FATAL message from readdir";
     QDirIterator picsFileIt(ReadDir::path,
                             {"*.jpg", "*.jpeg", "*.png", "*.bmp"},
                             QDir::Files,

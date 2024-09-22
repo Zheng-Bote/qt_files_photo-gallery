@@ -4,7 +4,8 @@
 #include <iostream>
 #include <QDir>
 #include <QFile>
-#include <QDebug>
+
+#include <plog/Log.h>
 
 /* https://github.com/Rookfighter/inifile-cpp */
 #include "inicpp.h"

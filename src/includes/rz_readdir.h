@@ -1,9 +1,9 @@
 #pragma once
 
-#include <QDebug>
 #include <QDirIterator>
 
 #include <iostream>
+#include <plog/Log.h>
 
 class ReadDir
 {

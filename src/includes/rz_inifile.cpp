@@ -53,7 +53,7 @@ bool Inifile::saveIniToFile(QString &pathFile)
     try {
         myIni.save(pathFile.toStdString());
     } catch (...) {
-        qWarning() << "Write Ini failed: " << pathFile;
+        PLOG_WARNING << "Write Ini failed: " << pathFile;
         return false;
     }
 
@@ -67,7 +67,7 @@ bool Inifile::saveIniToFile(QString &path, QString &file)
     try {
         myIni.save(pathFile.toStdString());
     } catch (...) {
-        qWarning() << "Write Ini failed: " << pathFile;
+        PLOG_WARNING << "Write Ini failed: " << pathFile;
         return false;
     }
 
@@ -80,14 +80,15 @@ bool Inifile::loadIni(QString &pathFile)
     QFileInfo fi(pathFile);
 
     if(fi.exists() == false || fi.isReadable() == false) {
-        qFatal() << "File doesn't exist or is not readable: " << pathFile;
+        PLOG_ERROR << "File doesn't exist or is not readable: " << pathFile;
         return false;
     }
 
     myIni.load(pathFile.toStdString());
 
     if(myIni.size() < 1) {
-        qFatal() << "wrong INI size, should be at least 1 section (maybe not readable?): " << myIni.size();
+        PLOG_FATAL << "wrong INI size, should be at least 1 section (maybe not readable?): "
+                   << myIni.size();
         return false;
     }
     return true;
@@ -148,23 +149,23 @@ bool Inifile::checkSqlMeta()
     std::string password = myIni["SQL"]["password"].as<std::string>();
 
     if(hostname.empty() == true) {
-        qCritical() << "No SQL hostname defined";
+        PLOG_WARNING << "No SQL hostname defined";
         return false;
     }
     if(port < 80) {
-        qCritical() << "No SQL port defined";
+        PLOG_WARNING << "No SQL port defined";
         return false;
     }
     if(dbname.empty() == true) {
-        qCritical() << "No SQL database defined";
+        PLOG_WARNING << "No SQL database defined";
         return false;
     }
     if(username.empty() == true) {
-        qCritical() << "No SQL username defined";
+        PLOG_WARNING << "No SQL username defined";
         return false;
     }
     if(password.empty() == true) {
-        qCritical() << "No SQL password defined";
+        PLOG_WARNING << "No SQL password defined";
         return false;
     }
 
