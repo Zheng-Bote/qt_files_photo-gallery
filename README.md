@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -26,10 +25,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-    - [QT6 - Community Edition](#qt6---community-edition)
-    - [cxxopts](#cxxopts)
-    - [inifile-cpp](#inifile-cpp)
-    - [plog](#plog)
+      - [QT6 - Community Edition](#qt6---community-edition)
+      - [cxxopts](#cxxopts)
+      - [inifile-cpp](#inifile-cpp)
+      - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Usage/Examples/Tests](#usageexamplestests)
 - [API Reference](#api-reference)
@@ -163,7 +162,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -181,7 +179,8 @@ Plog - portable, simple and extensible C++ logging library
 │       ├── repo-call_Readme.yml
 │       ├── repo-create_doctoc.yml_
 │       ├── repo-create_doctoc_md.yml
-│       └── repo-create_tree_readme.yml
+│       ├── repo-create_tree_readme.yml
+│       └── repo-test_sbom.yml
 ├── .gitignore
 ├── LICENSE
 ├── README.md
@@ -202,9 +201,8 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-8 directories, 27 files
+8 directories, 28 files
 ```
-
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>

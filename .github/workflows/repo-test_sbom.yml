@@ -1,0 +1,69 @@
+name: repo - test sbom action
+
+# author: ZHENG Robert
+# description: 
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  delivery-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check-out
+        uses: actions/checkout@v4
+        with:
+          # ref: "web/release" # todo
+          fetch-depth: 0
+          fetch-tags: true
+    
+      - name: add Summary item
+        run: |
+          echo "***Artifacts and Attestations***" >> $GITHUB_STEP_SUMMARY
+
+      - name: add Summary item
+        run: |
+          echo "- Generate SBOM JSON of src" >> $GITHUB_STEP_SUMMARY
+
+      - name: Generate SBOM JSON of Docker image
+        uses: anchore/sbom-action@v0
+        with:
+          path: ./src/
+          format: "cyclonedx-json"
+          output-file: "sbom.cyclonedx.json"
+          upload-artifact: true # 2024-08-26 Error: @actions/artifact v2.0.0+, upload-artifact@v4+ and download-artifact@v4+ are not currently supported on GHES.
+
+      #- name: add Summary item
+      #  run: |
+      #    echo "- Docker image SBOM attestation" >> $GITHUB_STEP_SUMMARY
+
+      #- name: Generate Docker image SBOM attestation
+      #  uses: actions/attest-sbom@v1
+      #  id: attest
+      #  with:
+      #    subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}
+      #    subject-digest: ${{ steps.push.outputs.digest }}
+      #    sbom-path: "sbom.cyclonedx.json"
+      #    push-to-registry: true
+
+      - name: add Summary item
+        run: |
+          echo "- Generate SBOM SPDX of src" >> $GITHUB_STEP_SUMMARY
+
+      - name: Generate SBOM SPDX of src
+        uses: anchore/sbom-action@v0
+        with:
+          path: ./src/
+          format: "spdx"
+          output-file: "sbom.spdx"
+          upload-artifact: true # 2024-08-26 Error: @actions/artifact v2.0.0+, upload-artifact@v4+ and download-artifact@v4+ are not currently supported on GHES.
+
+      - name: publish SPDX
+        uses: anchore/sbom-action/publish-sbom@v0
+        with:
+          sbom-artifact-match: ".*\\.spdx$"
+
