@@ -179,7 +179,8 @@ Plog - portable, simple and extensible C++ logging library
 │       ├── repo-call_Readme.yml
 │       ├── repo-create_doctoc.yml_
 │       ├── repo-create_doctoc_md.yml
-│       └── repo-create_tree_readme.yml
+│       ├── repo-create_tree_readme.yml
+│       └── repo-test_sbom.yml
 ├── .gitignore
 ├── LICENSE
 ├── README.md
@@ -200,7 +201,7 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-8 directories, 27 files
+8 directories, 28 files
 ```
 <!-- readme-tree end -->
 
