@@ -40,6 +40,7 @@ Thumbs.db
 CMakeLists.txt.user*
 build/**
 src/build/**
+*_ORI
 
 # xemacs temporary files
 *.flc
