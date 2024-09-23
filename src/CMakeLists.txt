@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22)
 project(
   qt_files_photo-gallery
   VERSION 0.1.0
-  DESCRIPTION "QT6 CXX20 console app to add photos to PostgreSQL"
+  DESCRIPTION "QT6 CXX20 console app to add photos to DB"
   LANGUAGES CXX)
 
 message("Building with CMake version: ${CMAKE_VERSION}")
@@ -31,10 +31,7 @@ add_executable(
   includes/rz_readdir.cpp
   includes/rz_readdir.h)
 target_link_libraries(qt_files_photo-gallery Qt${QT_VERSION_MAJOR}::Core
-                      Qt${QT_VERSION_MAJOR}::Sql
-                      cxxopts::cxxopts
-                      plog::plog
-                      )
+                      Qt${QT_VERSION_MAJOR}::Sql cxxopts::cxxopts plog::plog)
 
 include(GNUInstallDirs)
 install(
