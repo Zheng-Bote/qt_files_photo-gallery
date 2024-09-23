@@ -2,7 +2,7 @@
 
 #include <QtSql>
 
-#include <plog/Log.h>
+#include "plog/Log.h"
 
 #include "rz_inifile.h"
 

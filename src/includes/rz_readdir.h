@@ -2,8 +2,8 @@
 
 #include <QDirIterator>
 
+#include "plog/Log.h"
 #include <iostream>
-#include <plog/Log.h>
 
 class ReadDir
 {

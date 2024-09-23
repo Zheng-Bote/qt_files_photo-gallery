@@ -64,30 +64,30 @@ QT6 CXX20 console app to add photos to PostgreSQL
 
 ### Features
 
-- \[ ] advanced-super-extra-special feature xyz
-
-  <br>
-
-- \[x] OSS and license
-- \[x] works as designed
-- \[ ] no bugs
+- [ ] advanced-super-extra-special feature xyz
 
 <br>
 
-- \[x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines
-- \[x] CMake
+- [x] OSS and license
+- [x] works as designed
+- [ ] no bugs
+
+<br>
+
+- [x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines
+- [x] Buildsystem: CMake
 - [x] SBOM included
-- \[ ] Installation routine
-- \[ ] portable application
+- [ ] Packaging: Conan
+- [ ] portable application
 
 <br>
 
-- \[ ] runs on DOS/Windows
-- \[ ] runs on MacOS
-- \[x] runs on Linux
-- \[ ] runs on iOS
-- \[ ] runs on Android
-- \[ ] runs on HarmonyOS
+- [ ] runs on DOS/Windows
+- [ ] runs on MacOS
+- [x] runs on Linux
+- [ ] runs on iOS
+- [ ] runs on Android
+- [ ] runs on HarmonyOS
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -212,6 +212,22 @@ Plog - portable, simple and extensible C++ logging library
 
 <!-- readme-tree end -->
 
+## manually
+
+### Linux, macOS
+
+```Bash
+cd src
+
+conan install . --output-folder=../build --build=missing
+
+cd ../build
+
+cmake -S ../src -B . -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake  -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
+
+cmake --build .
+```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage/Examples/Tests
@@ -226,15 +242,29 @@ bla bla ... usage is intuitive and runs mostly automatically with no needs of an
 
 # API Reference
 
-<hr>
+_under construction_
 
-![GHA](https://img.shields.io/badge/Github-Action-black?logo=githubactions)
+```Bash
+./qt_files_photo-gallery -h
+photos to db
+Usage:
+  ./qt_files_photo-gallery [OPTION...]
 
-_Inputs/Outputs will be filled automatically by `.github/workflows/repo-actions_docu.yml`_
+  -a, --auto                    run with default Inifile: ./qt_files_photo-gallery.ini
+  -c, --create [=arg(=<pathTo/inifile>)]
+                                create Inifile (default: ./qt_files_photo-gallery.ini)
+  -i, --ini [=arg(=<pathTo/inifile>)]
+                                use Inifile
+  -l, --listini [=arg(=<pathTo/inifile>)]
+                                list Inifile (default: ./qt_files_photo-gallery.ini)
+  -v, --version                 Print program and version
+  -h, --help                    Print help
+```
 
 ## Inputs / Parameters
 
-_under construction_
+> [!CAUTION]
+> under construction
 
 | Parameter    | Type     | Description                          |
 | :----------- | :------- | :----------------------------------- |
@@ -324,6 +354,16 @@ pie title me
          "ideas" : 90
          "time for realizations" : 7
          "money for realizations" : 3
+```
+
+### Software Bill of Materials (SBoM)
+
+```Bash
+nvm use --lts
+
+atom -J-Xmx16g usages -o app.atom --slice-outfile ./dist/atom_usages_v0.1.0.json -l cpp ./src
+
+cdxgen -o ./dist/sbom_v0.1.0.json -t cpp --usages-slices-file ./dist/atom_usages_v0.1.0.json --author "ZHENG Robert" --deep -r ./src
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>

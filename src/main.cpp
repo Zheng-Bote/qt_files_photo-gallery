@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @author ZHENG Robert (www.robert.hase-zheng.net)
- * @brief QT6 CXX20 console app to add photos to PostgreSQL
+ * @brief QT6 CXX20 console app to add photos to DB
  * @details simple console app
  * @version 0.1.0
  * @date 2024-09-19
@@ -13,14 +13,14 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-#include <plog/Appenders/ColorConsoleAppender.h>
-#include <plog/Appenders/RollingFileAppender.h>
-#include <plog/Formatters/TxtFormatter.h>
-#include <plog/Init.h>
-#include <plog/Initializers/RollingFileInitializer.h>
-#include <plog/Log.h>
+#include "plog/Appenders/ColorConsoleAppender.h"
+#include "plog/Appenders/RollingFileAppender.h"
+#include "plog/Formatters/TxtFormatter.h"
+#include "plog/Init.h"
+#include "plog/Initializers/RollingFileInitializer.h"
+#include "plog/Log.h"
 
-#include "includes/cxxopts.hpp"
+#include "cxxopts.hpp"
 #include "includes/rz_inifile.h"
 #include "includes/rz_pg_db.h"
 #include "includes/rz_readdir.h"
@@ -53,12 +53,11 @@ int main(int argc, char *argv[])
      */
     cxxopts::Options options(prog, "photos to db");
     options.set_width(100).add_options()("a,auto",
-                                         "run with default Inifile: " + prog
-                                             + ".ini")("c,create",
-                                                       "create Inifile",
-                                                       cxxopts::value<std::string>()
-                                                           ->implicit_value("<pathTo/inifile>")
-                                                           ->default_value(prog + ".ini"))
+                                         "run with default Inifile: " + prog + ".ini")("c,create",
+                                                                                       "create Inifile",
+                                                                                       cxxopts::value<std::string>()
+                                                                                           ->implicit_value("<pathTo/inifile>")
+                                                                                           ->default_value(prog + ".ini"))
 
         ("i,ini", "use Inifile", cxxopts::value<std::string>()->implicit_value("<pathTo/inifile>"))(
             "l,listini",
@@ -77,61 +76,80 @@ int main(int argc, char *argv[])
 
     // for Dev
     //    if (argc <= 1 || result.count("help")) {
-    if (result.count("help")) {
+    if (result.count("help"))
+    {
         std::cout << options.help() << std::endl;
         exit(EXIT_SUCCESS);
     }
-    if (result.count("version")) {
+    if (result.count("version"))
+    {
         std::cout << prog << "-" << VERSION << std::endl;
         exit(0);
     }
 
-    if (result.count("auto")) {
+    if (result.count("auto"))
+    {
         inifile = prog.c_str();
         inifile.append(".ini");
     }
 
-    if (result.count("create")) {
+    if (result.count("create"))
+    {
         std::string input = result["create"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0) {
+        if (input.compare("<pathTo/inifile>") == 0)
+        {
             inifile = prog.c_str();
             inifile.append(".ini");
-        } else {
+        }
+        else
+        {
             inifile = input.c_str();
         }
         Inifile iniConfig;
         iniConfig.createIni();
-        if (!iniConfig.saveIniToFile(inifile)) {
+        if (!iniConfig.saveIniToFile(inifile))
+        {
             exit(EXIT_FAILURE);
         }
-        if (!iniConfig.loadIni(inifile)) {
+        if (!iniConfig.loadIni(inifile))
+        {
             exit(EXIT_FAILURE);
         }
         iniConfig.listIniEntries();
         exit(EXIT_SUCCESS);
     }
 
-    if (result.count("ini")) {
+    if (result.count("ini"))
+    {
         std::string input = result["ini"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0) {
-            std::cout << "\t=> missing argument <=\n" << std::endl;
+        if (input.compare("<pathTo/inifile>") == 0)
+        {
+            std::cout << "\t=> missing argument <=\n"
+                      << std::endl;
             std::cout << options.help() << std::endl;
             exit(EXIT_SUCCESS);
-        } else {
+        }
+        else
+        {
             inifile = input.c_str();
         }
     }
 
-    if (result.count("listini")) {
+    if (result.count("listini"))
+    {
         std::string input = result["listini"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0) {
+        if (input.compare("<pathTo/inifile>") == 0)
+        {
             inifile = prog.c_str();
             inifile.append(".ini");
-        } else {
+        }
+        else
+        {
             inifile = input.c_str();
         }
         Inifile iniConfig;
-        if (!iniConfig.loadIni(inifile)) {
+        if (!iniConfig.loadIni(inifile))
+        {
             exit(EXIT_FAILURE);
         }
         iniConfig.listIniEntries();
@@ -141,6 +159,7 @@ int main(int argc, char *argv[])
     // ##################
     // ok-la, let's do it
 
+    /*
     PLOG_VERBOSE << "This is a VERBOSE message";
     PLOG_DEBUG << "This is a DEBUG message";
     PLOG_INFO << "This is an INFO message";
@@ -148,17 +167,23 @@ int main(int argc, char *argv[])
     PLOG_ERROR << "This is an ERROR message";
     PLOG_FATAL << "This is a FATAL message";
     PLOG_NONE << "This is a NONE message";
+    */
 
+    PLOG_DEBUG << "before iniload";
     /**
      * @brief inifile load
      */
     Inifile iniConfig;
-    if (!iniConfig.loadIni(inifile)) {
+    if (!iniConfig.loadIni(inifile))
+    {
         exit(EXIT_FAILURE);
     }
-    if (!iniConfig.checkSqlMeta()) {
+    if (!iniConfig.checkSqlMeta())
+    {
         exit(EXIT_FAILURE);
     }
+
+    PLOG_DEBUG << "after iniload";
 
     /**
      * @brief db connect

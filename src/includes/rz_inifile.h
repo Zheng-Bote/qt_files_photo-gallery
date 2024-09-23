@@ -5,7 +5,7 @@
 #include <QDir>
 #include <QFile>
 
-#include <plog/Log.h>
+#include "plog/Log.h"
 
 /* https://github.com/Rookfighter/inifile-cpp */
 #include "inicpp.h"

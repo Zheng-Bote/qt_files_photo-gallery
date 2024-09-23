@@ -41,11 +41,11 @@ void Inifile::Test()
 
 void Inifile::createIni()
 {
-    myIni["SQL"]["hostname"] = "   # <database server>";
-    myIni["SQL"]["port"] = "       # <database server port>";
-    myIni["SQL"]["dbname"] = "     # <my database>";
-    myIni["SQL"]["username"] = "   # <database user>";
-    myIni["SQL"]["password"] = "   # <database user password>";
+    myIni["SQL"]["hostname"] = "";
+    myIni["SQL"]["port"] = "";
+    myIni["SQL"]["dbname"] = "";
+    myIni["SQL"]["username"] = "";
+    myIni["SQL"]["password"] = "";
 }
 
 bool Inifile::saveIniToFile(QString &pathFile)
