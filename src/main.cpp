@@ -25,11 +25,14 @@
 #include "includes/rz_pg_db.h"
 #include "includes/rz_readdir.h"
 
-const std::string VERSION = "0.1.0";
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+
+    QCoreApplication::setApplicationName("files_to_photo-gallery");
+    QCoreApplication::setApplicationVersion("0.1.0");
+    QCoreApplication::setOrganizationDomain("https://github.com/Zheng-Bote/qt_files_photo-gallery");
 
     std::string prog = argv[0];
 
@@ -51,7 +54,7 @@ int main(int argc, char *argv[])
     /**
      * @brief options for program
      */
-    cxxopts::Options options(prog, "photos to db");
+    cxxopts::Options options(prog, QCoreApplication::applicationName().toStdString());
     options.set_width(100).add_options()("a,auto",
                                          "run with default Inifile: " + prog + ".ini")("c,create",
                                                                                        "create Inifile",
@@ -79,11 +82,15 @@ int main(int argc, char *argv[])
     if (result.count("help"))
     {
         std::cout << options.help() << std::endl;
+        std::cout << QCoreApplication::applicationName().toStdString() << " v"
+                  << QCoreApplication::applicationVersion().toStdString() << " "
+                  << QCoreApplication::organizationDomain().toStdString() << std::endl;
         exit(EXIT_SUCCESS);
     }
     if (result.count("version"))
     {
-        std::cout << prog << "-" << VERSION << std::endl;
+        std::cout << QCoreApplication::applicationName().toStdString() << "-"
+                  << QCoreApplication::applicationVersion().toStdString() << std::endl;
         exit(0);
     }
 
