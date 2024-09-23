@@ -75,9 +75,9 @@ QT6 CXX20 console app to add photos to PostgreSQL
 <br>
 
 - [x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines
+- [x] Packaging: Conan
 - [x] Buildsystem: CMake
 - [x] SBOM included
-- [ ] Packaging: Conan
 - [ ] portable application
 
 <br>
