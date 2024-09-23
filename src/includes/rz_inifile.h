@@ -24,13 +24,16 @@ public:
     bool saveIniToFile(QString &path, QString &file);
     bool loadIni(QString &pathFile);
 
-    // Sql
-    QString getSqlHostname();
-    int getSqlPort();
-    QString getSqlDbName();
-    QString getSqlUsername();
-    QString getSqlPassword();
-    bool checkSqlMeta();
+    // DB
+    bool getDbEnabled(QString &env);
+    QString getDbRdbms(QString &env);
+    QString getDbName(QString &env);
+    QString getDbFile(QString &env);
+    QString getDbHostname(QString &env);
+    QString getDbPassword(QString &env);
+    int getDbPort(QString &env);
+    QString getDbUsername(QString &env);
+    QString getDbSqlFile(QString &env);
 
     void listIniEntries();
     QString getInifile();

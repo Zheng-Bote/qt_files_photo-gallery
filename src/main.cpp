@@ -10,6 +10,8 @@
  *
  */
 
+// ToDo: options for env
+
 #include <QCoreApplication>
 #include <QDebug>
 
