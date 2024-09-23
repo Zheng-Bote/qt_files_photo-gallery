@@ -164,7 +164,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -193,10 +192,13 @@ Plog - portable, simple and extensible C++ logging library
 │   ├── qt_files_photo-gallery.ini
 │   └── sbom_v0.1.0.json
 ├── src
+│   ├── CMakeCache.txt
+│   ├── CMakeFiles
+│   │   └── cmake.check_cache
 │   ├── CMakeLists.txt
-│   ├── CMakeLists.txt_ori
+│   ├── conanfile.py
+│   ├── conanfile.txt
 │   ├── includes
-│   │   ├── cxxopts.hpp
 │   │   ├── inicpp.h
 │   │   ├── rz_inifile.cpp
 │   │   ├── rz_inifile.h
@@ -207,9 +209,8 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-8 directories, 31 files
+9 directories, 33 files
 ```
-
 <!-- readme-tree end -->
 
 ## manually
