@@ -1,15 +1,11 @@
-#include "rz_pg_db.h"
+#include "rz_sqlite3_db.h"
 
-PgDb::PgDb(Inifile &iniConfig)
+SqliteDb::SqliteDb(Inifile &iniConfig, QString &env)
 {
-    PgDb::db = QSqlDatabase::addDatabase("QPSQL", "source");
-    PgDb::db.setHostName(iniConfig.getSqlHostname());
-    PgDb::db.setDatabaseName(iniConfig.getSqlDbName());
-    PgDb::db.setUserName(iniConfig.getSqlUsername());
-    PgDb::db.setPassword(iniConfig.getSqlPassword());
-    PgDb::db.setPort(iniConfig.getSqlPort());
+    SqliteDb::db = QSqlDatabase::addDatabase("QSQLITE", "source");
+    SqliteDb::db.setDatabaseName(iniConfig.getDbFile(env));
 
-    if (!PgDb::db.open()) {
+    if (!SqliteDb::db.open()) {
         PLOG_ERROR << "Connection to DB failed!";
         exit(EXIT_FAILURE);
     } else {
@@ -17,13 +13,13 @@ PgDb::PgDb(Inifile &iniConfig)
     }
 }
 
-PgDb::~PgDb()
+SqliteDb::~SqliteDb()
 {
-    PgDb::db.close();
+    SqliteDb::db.close();
 }
 
-void PgDb::closeDb()
+void SqliteDb::closeDb()
 {
-    PgDb::db.close();
+    SqliteDb::db.close();
     PLOG_INFO << "Disconnected from DB";
 }

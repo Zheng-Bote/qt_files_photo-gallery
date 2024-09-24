@@ -28,6 +28,8 @@ add_executable(
   includes/rz_inifile.h
   includes/rz_pg_db.cpp
   includes/rz_pg_db.h
+  includes/rz_sqlite3_db.cpp
+  includes/rz_sqlite3_db.h
   includes/rz_readdir.cpp
   includes/rz_readdir.h)
 target_link_libraries(qt_files_photo-gallery Qt${QT_VERSION_MAJOR}::Core

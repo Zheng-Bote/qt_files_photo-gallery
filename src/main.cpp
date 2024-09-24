@@ -26,7 +26,7 @@
 #include "includes/rz_inifile.h"
 #include "includes/rz_pg_db.h"
 #include "includes/rz_readdir.h"
-
+#include "includes/rz_sqlite3_db.h"
 
 int main(int argc, char *argv[])
 {
@@ -178,7 +178,6 @@ int main(int argc, char *argv[])
     PLOG_NONE << "This is a NONE message";
     */
 
-    PLOG_DEBUG << "before iniload";
     /**
      * @brief inifile load
      */
@@ -187,17 +186,20 @@ int main(int argc, char *argv[])
     {
         exit(EXIT_FAILURE);
     }
+    /*
     if (!iniConfig.checkSqlMeta())
     {
         exit(EXIT_FAILURE);
-    }
-
-    PLOG_DEBUG << "after iniload";
+    }*/
 
     /**
      * @brief db connect
      */
-    PgDb pgDb(iniConfig);
+    QString env = "int"; // sqlite3
+    SqliteDb sqliteDb(iniConfig, env);
+
+    //QString env = "prod"; // pg
+    //PgDb pgDb(iniConfig, env);
 
     /**
      * @brief read dirs
@@ -209,6 +211,7 @@ int main(int argc, char *argv[])
     /**
      * @brief the end
      */
-    pgDb.closeDb();
+    //pgDb.closeDb();
+    sqliteDb.closeDb();
     exit(EXIT_SUCCESS);
 }

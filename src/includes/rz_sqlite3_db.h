@@ -6,11 +6,11 @@
 
 #include "rz_inifile.h"
 
-class PgDb
+class SqliteDb
 {
 public:
-    PgDb(Inifile &iniConfig, QString &env);
-    ~PgDb();
+    SqliteDb(Inifile &iniConfig, QString &env);
+    ~SqliteDb();
 
     void closeDb();
 
