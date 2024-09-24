@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -26,11 +25,13 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-    - [QT6 - Community Edition](#qt6---community-edition)
-    - [cxxopts](#cxxopts)
-    - [inifile-cpp](#inifile-cpp)
-    - [plog](#plog)
+      - [QT6 - Community Edition](#qt6---community-edition)
+      - [cxxopts](#cxxopts)
+      - [inifile-cpp](#inifile-cpp)
+      - [plog](#plog)
   - [folder structure](#folder-structure)
+  - [manually](#manually)
+    - [Linux, macOS](#linux-macos)
   - [Usage/Examples/Tests](#usageexamplestests)
 - [API Reference](#api-reference)
   - [Inputs / Parameters](#inputs--parameters)
@@ -41,7 +42,9 @@
       - [Github Repo](#github-repo)
       - [Github Actions / Workflows](#github-actions--workflows)
   - [Application](#application)
+  - [Inifile](#inifile)
   - [DevOps](#devops)
+    - [Software Bill of Materials (SBoM)](#software-bill-of-materials-sbom)
   - [Github Page](#github-page)
   - [Github Wiki](#github-wiki)
   - [Comments](#comments)
@@ -164,7 +167,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -193,10 +195,13 @@ Plog - portable, simple and extensible C++ logging library
 │   ├── qt_files_photo-gallery.ini
 │   └── sbom_v0.1.0.json
 ├── src
+│   ├── CMakeCache.txt
+│   ├── CMakeFiles
+│   │   └── cmake.check_cache
 │   ├── CMakeLists.txt
-│   ├── CMakeLists.txt_ori
+│   ├── conanfile.py
+│   ├── conanfile.txt
 │   ├── includes
-│   │   ├── cxxopts.hpp
 │   │   ├── inicpp.h
 │   │   ├── rz_inifile.cpp
 │   │   ├── rz_inifile.h
@@ -207,9 +212,8 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-8 directories, 31 files
+9 directories, 33 files
 ```
-
 <!-- readme-tree end -->
 
 ## manually
