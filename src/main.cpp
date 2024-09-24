@@ -10,7 +10,7 @@
  *
  */
 
-// ToDo: options for env
+// ToDo: options logfile
 
 #include <QCoreApplication>
 #include <QDebug>
@@ -45,6 +45,10 @@ int main(int argc, char *argv[])
     // default logging
     QString logfile = prog.c_str();
     logfile.append(".log");
+
+    // default env
+    QString env = "dev";
+
     static plog::RollingFileAppender<plog::TxtFormatter> fileAppender(logfile.toStdString().c_str(),
                                                                       5000,
                                                                       3);
@@ -57,12 +61,14 @@ int main(int argc, char *argv[])
      * @brief options for program
      */
     cxxopts::Options options(prog, QCoreApplication::applicationName().toStdString());
-    options.set_width(100).add_options()("a,auto",
-                                         "run with default Inifile: " + prog + ".ini")("c,create",
-                                                                                       "create Inifile",
-                                                                                       cxxopts::value<std::string>()
-                                                                                           ->implicit_value("<pathTo/inifile>")
-                                                                                           ->default_value(prog + ".ini"))
+    options.set_width(100).add_options()("a,auto", "run with default Inifile: " + prog + ".ini")(
+        "c,create",
+        "create Inifile",
+        cxxopts::value<std::string>()
+            ->implicit_value("<pathTo/inifile>")
+            ->default_value(prog + ".ini"))("e,env",
+                                            "Environment <dev> <int> <prod>",
+                                            cxxopts::value<std::string>()->default_value("dev"))
 
         ("i,ini", "use Inifile", cxxopts::value<std::string>()->implicit_value("<pathTo/inifile>"))(
             "l,listini",
@@ -102,63 +108,62 @@ int main(int argc, char *argv[])
         inifile.append(".ini");
     }
 
-    if (result.count("create"))
-    {
+    if (result.count("env")) {
+        std::string input = result["env"].as<std::string>();
+
+        if (input.compare("dev") == 0) {
+            env = "dev";
+        } else if (input.compare("int") == 0) {
+            env = "int";
+        } else if (input.compare("prod") == 0) {
+            env = "prod";
+        } else {
+            PLOG_ERROR << "Wrong Environment defined: " << input;
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    if (result.count("create")) {
         std::string input = result["create"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0)
-        {
+        if (input.compare("<pathTo/inifile>") == 0) {
             inifile = prog.c_str();
             inifile.append(".ini");
-        }
-        else
-        {
+        } else {
             inifile = input.c_str();
         }
         Inifile iniConfig;
         iniConfig.createIni();
-        if (!iniConfig.saveIniToFile(inifile))
-        {
+        if (!iniConfig.saveIniToFile(inifile)) {
             exit(EXIT_FAILURE);
         }
-        if (!iniConfig.loadIni(inifile))
-        {
+        if (!iniConfig.loadIni(inifile)) {
             exit(EXIT_FAILURE);
         }
         iniConfig.listIniEntries();
         exit(EXIT_SUCCESS);
     }
 
-    if (result.count("ini"))
-    {
+    if (result.count("ini")) {
         std::string input = result["ini"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0)
-        {
-            std::cout << "\t=> missing argument <=\n"
-                      << std::endl;
+        if (input.compare("<pathTo/inifile>") == 0) {
+            std::cout << "\t=> missing argument <=\n" << std::endl;
             std::cout << options.help() << std::endl;
             exit(EXIT_SUCCESS);
-        }
-        else
-        {
+        } else {
             inifile = input.c_str();
         }
     }
 
-    if (result.count("listini"))
-    {
+    if (result.count("listini")) {
         std::string input = result["listini"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0)
-        {
+        if (input.compare("<pathTo/inifile>") == 0) {
             inifile = prog.c_str();
             inifile.append(".ini");
-        }
-        else
-        {
+        } else {
             inifile = input.c_str();
         }
         Inifile iniConfig;
-        if (!iniConfig.loadIni(inifile))
-        {
+        if (!iniConfig.loadIni(inifile)) {
             exit(EXIT_FAILURE);
         }
         iniConfig.listIniEntries();
@@ -182,8 +187,7 @@ int main(int argc, char *argv[])
      * @brief inifile load
      */
     Inifile iniConfig;
-    if (!iniConfig.loadIni(inifile))
-    {
+    if (!iniConfig.loadIni(inifile)) {
         exit(EXIT_FAILURE);
     }
     /*
@@ -193,13 +197,34 @@ int main(int argc, char *argv[])
     }*/
 
     /**
-     * @brief db connect
+     * @brief check environment for db or sqlfile
      */
-    QString env = "int"; // sqlite3
-    SqliteDb sqliteDb(iniConfig, env);
+    SqliteDb sqliteDb;
+    PgDb pgDb;
 
-    //QString env = "prod"; // pg
-    //PgDb pgDb(iniConfig, env);
+    // dev: sql-file
+    if (env.compare("dev") == 0) {
+    }
+    // int: sqlite3
+    if (env.compare("int") == 0) {
+        if (sqliteDb.connectDb(iniConfig, env)) {
+            if (sqliteDb.createTables() == true) {
+                PLOG_INFO << "SQLite3 db created";
+
+            } else {
+                exit(EXIT_FAILURE);
+            }
+        } else {
+            exit(EXIT_FAILURE);
+        }
+    }
+    // prod: PostgreSQL
+    if (env.compare("prod") == 0) {
+        if (pgDb.connectDb(iniConfig, env)) {
+        } else {
+            exit(EXIT_FAILURE);
+        }
+    }
 
     /**
      * @brief read dirs

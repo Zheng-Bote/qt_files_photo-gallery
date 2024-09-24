@@ -1,25 +1,39 @@
-#include "rz_sqlite3_db.h"
+#include "rz_pg_db.h"
 
-SqliteDb::SqliteDb(Inifile &iniConfig, QString &env)
+PgDb::PgDb() {}
+
+PgDb::PgDb(Inifile &iniConfig, QString &env)
 {
-    SqliteDb::db = QSqlDatabase::addDatabase("QSQLITE", "source");
-    SqliteDb::db.setDatabaseName(iniConfig.getDbFile(env));
+    PgDb::connectDb(iniConfig, env);
+}
 
-    if (!SqliteDb::db.open()) {
+PgDb::~PgDb()
+{
+    PgDb::db.close();
+}
+
+bool PgDb::connectDb(Inifile &iniConfig, QString &env)
+{
+    bool connectStatus = false;
+    PgDb::db = QSqlDatabase::addDatabase("QPSQL", "source");
+    PgDb::db.setHostName(iniConfig.getDbHostname(env));
+    PgDb::db.setDatabaseName(iniConfig.getDbName(env));
+    PgDb::db.setUserName(iniConfig.getDbUsername(env));
+    PgDb::db.setPassword(iniConfig.getDbPassword(env));
+    PgDb::db.setPort(iniConfig.getDbPort(env));
+
+    if (!PgDb::db.open()) {
         PLOG_ERROR << "Connection to DB failed!";
-        exit(EXIT_FAILURE);
+        connectStatus = false;
     } else {
         PLOG_INFO << "Connected to DB";
+        connectStatus = true;
     }
+    return connectStatus;
 }
 
-SqliteDb::~SqliteDb()
+void PgDb::closeDb()
 {
-    SqliteDb::db.close();
-}
-
-void SqliteDb::closeDb()
-{
-    SqliteDb::db.close();
+    PgDb::db.close();
     PLOG_INFO << "Disconnected from DB";
 }

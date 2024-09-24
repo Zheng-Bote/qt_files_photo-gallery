@@ -1,29 +1,90 @@
-#include "rz_pg_db.h"
+#include "rz_sqlite3_db.h"
 
-PgDb::PgDb(Inifile &iniConfig, QString &env)
+SqliteDb::SqliteDb() {}
+
+SqliteDb::SqliteDb(Inifile &iniConfig, QString &env)
 {
-    PgDb::db = QSqlDatabase::addDatabase("QPSQL", "source");
-    PgDb::db.setHostName(iniConfig.getDbHostname(env));
-    PgDb::db.setDatabaseName(iniConfig.getDbName(env));
-    PgDb::db.setUserName(iniConfig.getDbUsername(env));
-    PgDb::db.setPassword(iniConfig.getDbPassword(env));
-    PgDb::db.setPort(iniConfig.getDbPort(env));
+    SqliteDb::connectDb(iniConfig, env);
+}
 
-    if (!PgDb::db.open()) {
+SqliteDb::~SqliteDb()
+{
+    SqliteDb::db.close();
+}
+
+bool SqliteDb::connectDb(Inifile &iniConfig, QString &env)
+{
+    bool connectStatus = false;
+    SqliteDb::db = QSqlDatabase::addDatabase("QSQLITE");
+    SqliteDb::db.setDatabaseName(iniConfig.getDbFile(env));
+
+    if (!SqliteDb::db.open()) {
         PLOG_ERROR << "Connection to DB failed!";
-        exit(EXIT_FAILURE);
+        connectStatus = false;
     } else {
         PLOG_INFO << "Connected to DB";
+        connectStatus = true;
     }
+    return connectStatus;
 }
 
-PgDb::~PgDb()
+bool SqliteDb::createTables()
 {
-    PgDb::db.close();
+    bool connectStatus = false;
+    QSqlQuery query;
+
+    query.prepare("CREATE TABLE IF NOT EXISTS photos("
+                  "ID              integer primary key  NOT NULL, "
+                  "path            TEXT                 NOT NULL, "
+                  "file_name       TEXT                 NOT NULL );");
+
+    if (query.exec()) {
+        connectStatus = true;
+    } else {
+        PLOG_ERROR << "Create table Photo failed: " << query.lastError().text();
+    }
+
+    query.prepare("CREATE TABLE IF NOT EXISTS iptc("
+                  "ID              integer UNIQUE  NOT NULL, "
+                  "DateCreated     CHARACTER(8)    DEFAULT NULL, "
+                  "TimeCreated     CHARACTER(11)   DEFAULT NULL, "
+                  "City            VARCHAR(32)     DEFAULT NULL, "
+                  "Sublocation     VARCHAR(32)     DEFAULT NULL, "
+                  "StateProvince   VARCHAR(32)     DEFAULT NULL, "
+                  "CountryCode     CHARACTER(2)    DEFAULT NULL, "
+                  "Country         VARCHAR(64)     DEFAULT NULL, "
+                  "Headline        VARCHAR(256)    DEFAULT NULL, "
+                  "CopyrightNotice VARCHAR(128)    DEFAULT NULL, "
+                  "Contact         VARCHAR(128)    DEFAULT NULL, "
+                  "Capytion        TEXT          DEFAULT 0 );");
+
+    if (query.exec()) {
+        connectStatus = true;
+    } else {
+        PLOG_ERROR << "Create table IPTC failed: " << query.lastError().text();
+    }
+
+    query.prepare("CREATE INDEX IF NOT EXISTS index_id ON iptc (ID ASC);");
+    if (query.exec()) {
+        connectStatus = true;
+    } else {
+        PLOG_WARNING << "Create index failed: " << query.lastError().text();
+    }
+
+    query.prepare("CREATE TRIGGER IF NOT EXISTS trigger_photo_delete after delete on photos begin "
+                  "delete from "
+                  "iptc where id = OLD.id; END");
+    if (query.exec()) {
+        connectStatus = true;
+    } else {
+        PLOG_WARNING << "Create trigger failed: " << query.lastError().text();
+    }
+
+    return connectStatus;
 }
 
-void PgDb::closeDb()
+void SqliteDb::closeDb()
 {
-    PgDb::db.close();
+    SqliteDb::db.close();
     PLOG_INFO << "Disconnected from DB";
 }

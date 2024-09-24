@@ -9,9 +9,11 @@
 class PgDb
 {
 public:
+    PgDb();
     PgDb(Inifile &iniConfig, QString &env);
     ~PgDb();
 
+    bool connectDb(Inifile &iniConfig, QString &env);
     void closeDb();
 
 private:
