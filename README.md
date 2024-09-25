@@ -317,9 +317,9 @@ S ---->|error| G(EXIT_FAILURE)
 ```
 
 ```mermaid
-flowchart LR;
+flowchart TD;
   A[local storage] --> P[[files to photo-db]]
-  B --> S([local storage])
+  P --> S([local storage])
   S --> E[[Exif]] & I[[IPTC]] --> W[["`./WebP/..
   size a
   size b
@@ -438,7 +438,9 @@ flowchart LR;
   A[local storage] --> B[[files to photo-db]]
   B --> C[Database]
   B --> D[SQL-File]
-  B --> S[[local storage]]
+  B --> S[["`local storage
+  _enriched_
+  _converted_`"]]
 ```
 
 ## Inifile
