@@ -87,7 +87,7 @@ QT6 CXX20 console app to add photos to Database
 - [x] Packaging: Conan
 - [x] Buildsystem: CMake
 - [ ] Installer:
-- [ ] portable application / runtime binary
+- [ ] portable application / runtime binaries (see Release)
 - [x] SBOM included (static; also Linux shell commands; GH-Action in work)
 - [ ] separation of documentation (general Readme - detailed `/docs/*`)
 
@@ -145,31 +145,36 @@ bla bla ... everything easy and green with No Code/Low code and without any cost
 The Qt framework contains a comprehensive set of highly intuitive and modularized C++ library classes and is loaded with APIs to simplify your application development. Qt produces highly readable, easily maintainable and reusable code with high runtime performance and small footprint – and it's cross-platform.
 
 [![QT](https://img.shields.io/badge/Community-for_Open_Source_Development-black?logo=qt)](https://www.qt.io/download-open-source)
-
 [![LGPL](https://img.shields.io/badge/License-LGPL_v3-green.svg)](https://choosealicense.com/licenses/lgpl-3.0/) _see also:_[Obligations of the GPL and LGPL](https://www.qt.io/licensing/open-source-lgpl-obligations)
 
 #### cxxopts
 
 a lightweight C++ option parser library, supporting the standard GNU style syntax for options.
 
-[![jarro2783](https://img.shields.io/badge/Github-jarro2783-black?logo=github)](https://github.com/jarro2783/cxxopts)
+> \[!NOTE]
+> managed via the package manager
 
+[![jarro2783](https://img.shields.io/badge/Github-jarro2783-black?logo=github)](https://github.com/jarro2783/cxxopts)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 #### inifile-cpp
 
 inifile-cpp is a simple and easy to use single header-only ini file en- and decoder for C++.
 
-[![Fabian Meyer](https://img.shields.io/badge/Github-Fabian_Meyer-black?logo=github)](https://github.com/Rookfighter/inifile-cpp)
+> \[!NOTE]
+> included in `src/includes`
 
+[![Fabian Meyer](https://img.shields.io/badge/Github-Fabian_Meyer-black?logo=github)](https://github.com/Rookfighter/inifile-cpp)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 #### plog
 
 Plog - portable, simple and extensible C++ logging library
 
-[![Sergey Podobry](https://img.shields.io/badge/Github-Sergey_Podobry-black?logo=github)](https://github.com/SergiusTheBest/plog)
+> \[!NOTE]
+> managed via the package manager
 
+[![Sergey Podobry](https://img.shields.io/badge/Github-Sergey_Podobry-black?logo=github)](https://github.com/SergiusTheBest/plog)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## folder structure
@@ -226,9 +231,15 @@ Plog - portable, simple and extensible C++ logging library
 
 <!-- readme-tree end -->
 
-## manually
+## Build
 
-### Linux, macOS
+### QT6
+
+just load the project in QT Creator and run build <debug> or <release...>
+
+### manually
+
+#### Linux, macOS
 
 ```Bash
 cd src
@@ -244,51 +255,65 @@ cmake --build .
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Usage/Examples/Tests
+# API Reference
 
-bla bla ... usage is intuitive and runs mostly automatically with no needs of any knowledge
+> \[!IMPORTANT]
+> still under construction.
 
-```HTML
-<mark> under construction </mark>
+## Inputs / Parameters
+
+> [!NOTE]
+> at least 1 parameter is required:
+> `-a` or `-i <path to>/<ini file>`
+
+> [!TIP]
+> use `-a` for shortcut
+> use `-a -e <env>` for shortcut
+> use `-i <path to>/<ini file>`
+> use `-i <path to>/<ini file> -e <env>`
+
+> \[!IMPORTANT]
+> still under construction.
+
+| Parameter      | Type     | Description                                                                          |
+| :------------- | :------- | :----------------------------------------------------------------------------------- |
+| `-a --auto`    | `none`   | _Optional_ load Ini <program path>/<program>.ini>                                    |
+| `-c --create`  | `string` | _Optional_ create Ini <path to>/<file.ini> or default: <program path>/<program>.ini> |
+| `-e --env`     | `string` | _Optional_ <dev> , <init> ,<prod> or default: dev                                    |
+| `-i --ini`     | `string` | _Optional_ <pathTo/inifile>                                                          |
+| `-l --listini` | `string` | _Optional_ <pathTo/inifile> or default: <program path>/<program>.ini>                |
+| `-v --version` | `none`   | _Optional_ <prog>-<Major>.<Minor>.<Patch>                                            |
+| `-h --help`    | `none`   | _Optional_ list help menu                                                            |
+
+## Outputs
+
+- `exit(EXIT_SUCCESS)` or `exit(EXIT_FAILURE)`
+
+- PostgreSQL: inserted rows
+- SQLite3: created tables, indexes, triggers; inserted rows
+- SQL-File: created file with sql inserts
+
+```mermaid
+flowchart TD;
+A[[<program>]] --> B{OK?}
+B --> D[Database]
+B --> C[SQL File]
+B ---->|error| E[EXIT_FAILURE]
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-# API Reference
+## Usage/Examples/Tests
 
-_under construction_
+> [!NOTE]
+> at least 1 parameter is required:
+> `-a` or `-i <path to>/<ini file>`
 
-```Bash
-./qt_files_photo-gallery -h
-photos to db
-Usage:
-  ./qt_files_photo-gallery [OPTION...]
-
-  -a, --auto                    run with default Inifile: ./qt_files_photo-gallery.ini
-  -c, --create [=arg(=<pathTo/inifile>)]
-                                create Inifile (default: ./qt_files_photo-gallery.ini)
-  -i, --ini [=arg(=<pathTo/inifile>)]
-                                use Inifile
-  -l, --listini [=arg(=<pathTo/inifile>)]
-                                list Inifile (default: ./qt_files_photo-gallery.ini)
-  -v, --version                 Print program and version
-  -h, --help                    Print help
-```
-
-## Inputs / Parameters
-
-> [!CAUTION]
-> under construction
-
-| Parameter    | Type     | Description                          |
-| :----------- | :------- | :----------------------------------- |
-| `name`       | `string` | _Optional_ name-of-copyright-holder  |
-| `created`    | `string` | _Optional_ <YYYY>                    |
-| `version`    | `string` | _Optional_ \<v0.0.0>                 |
-| `link_left`  | `string` | _Optional_ link-to-contact-page      |
-| `link_right` | `string` | _Optional_ link-to-legal-notice-page |
-
-## Outputs
+> [!TIP]
+> use `-a` for shortcut
+> use `-a -e <env>` for shortcut
+> use `-i <path to>/<ini file>`
+> use `-i <path to>/<ini file> -e <env>`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
