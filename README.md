@@ -76,6 +76,17 @@ Photos are converted into different sizes in WebP format and the metadata is wri
 
 Any existing Exif and IPTC metadata is also taken into account.
 
+```mermaid
+flowchart LR;
+  A["`local storage
+  **Photos**`"] --> B[[files to photo-db]]
+  B-- Metadata ---C[(**Database**)]
+  B-- "sql" ---D["`**SQL-File**
+  _insert into ..._`"]
+  B-- "convert & enrich" ---S[["`local storage
+  **./WebP-Photos**`"]]
+```
+
 ### Features
 
 - [x] supports PostgreSQL (insert)
@@ -333,8 +344,6 @@ flowchart TD;
 
 # Documentation
 
-see also: <https://linktodocumentation>
-
 ## Architecture
 
 ### Github
@@ -444,7 +453,7 @@ flowchart LR;
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Example Inifile
+#### Example Inifile
 
 see also: `<prog> -c` : create Inifile
 
