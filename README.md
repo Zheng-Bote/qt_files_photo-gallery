@@ -1,7 +1,7 @@
 <div id="top" align="center">
 <h1>qt_files_photo-gallery</h1>
 
-<p>QT6 CXX20 console app to add photos to PostgreSQL</p>
+<p>QT6 CXX20 console app to add photos to Database</p>
 
 [Report Issue](https://github.com/Zheng-Bote/qt_files_photo-gallery/issues) [Request Feature](https://github.com/Zheng-Bote/qt_files_photo-gallery/pulls)
 
@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT6 - Community Edition](#qt6---community-edition)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT6 - Community Edition](#qt6---community-edition)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [manually](#manually)
     - [Linux, macOS](#linux-macos)
@@ -63,11 +64,16 @@
 ![QT](https://img.shields.io/badge/Community-6-41CD52?logo=qt)
 ![CXX](https://img.shields.io/badge/C++-20-blue?logo=cplusplus)
 
-QT6 CXX20 console app to add photos to PostgreSQL
+QT6 CXX20 console app to add photos to Database
 
 ### Features
 
-- [ ] advanced-super-extra-special feature xyz
+- [x] supports PostgreSQL (insert)
+- [x] supports SQLite3 (incl. create tables, indexes, triggers; insert)
+- [x] supports exports to SQL-file ("native", system-independent SQL; insert)
+- [x] Exchangeable Image File Format (Exif; read, write; sql insert)
+- [x] IPTC-IIM (IPTC; read, write; sql insert)
+- [ ] advanced-extra-super-ultra-special feature xyz
 
 <br>
 
@@ -77,11 +83,13 @@ QT6 CXX20 console app to add photos to PostgreSQL
 
 <br>
 
-- [x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines
+- [x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines, Release-Mgmt.
 - [x] Packaging: Conan
 - [x] Buildsystem: CMake
-- [x] SBOM included
-- [ ] portable application
+- [ ] Installer:
+- [ ] portable application / runtime binary
+- [x] SBOM included (static; also Linux shell commands; GH-Action in work)
+- [ ] separation of documentation (general Readme - detailed `/docs/*`)
 
 <br>
 
@@ -167,6 +175,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -214,6 +223,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 33 files
 ```
+
 <!-- readme-tree end -->
 
 ## manually
@@ -337,18 +347,43 @@ flowchart TD;
 
 ## Application
 
+### bounded context
+
+- Webserver NGinx
+- Appserver (Applicationserver) Rust Rocket
+- Database PostgreSQL
+- Storage (for Webserver static content as well as for Appserver Photo-Gallery management)
+
 ```mermaid
 architecture-beta
     group api(cloud)[API]
 
+    service server1(server)[Webserver] in api
+    service server2(server)[Appserver] in api
     service db(database)[Database] in api
-    service server0(server)[Webserver] in api
+    service disk1(disk)[Storage] in api
     service disk2(disk)[Storage] in api
-    service server(server)[Appserver] in api
 
-    db:L -- R:server
-    server0:T -- B:server
-    disk2:T -- B:server
+
+    server1:L -- R:disk1
+    server1:T -- B:server2
+    server2:L -- R:disk2
+    server2:T -- B:db
+```
+
+### data import
+
+- collecting local files
+- read attributes (size, geometry)
+- read Exif/IPTC (if present)
+- write Metadata to DB|SQL-File
+- convert files to WebP
+
+```mermaid
+flowchart LR;
+  A[local storage] --> B[[files to photo-db]]
+  B --> C[Database]
+  B --> D[[filesystem]]
 ```
 
 ## Inifile
