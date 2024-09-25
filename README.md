@@ -413,8 +413,8 @@ architecture-beta
 
     disk1:L -- R:server1
     server1:T -- B:server2
-    server2:T -- B:db
     disk2:L -- R:server2
+    server2:T -- B:db
 ```
 
 ### data import
