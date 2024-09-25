@@ -311,28 +311,13 @@ cmake --build .
 flowchart TD;
   A["`local storage
   **Photos**`"] --> P[[files to photo-db]]
-  P --> S([local storage])
-  S --> E[[Exif]] & I[[IPTC]] --> W[["`./WebP/..
-  size a
-  size b
-  ...`"]]
-  P --> D[(Database)]
-  D --> C{OK?}
-  W --> C{OK?}
-  C ---->|No| F[EXIT_FAILURE]
-  C ---->|Yes| O[EXIT_SUCCESS]
-```
-
-```mermaid
-flowchart TD;
-  A["`local storage
-  **Photos**`"] --> P[[files to photo-db]]
   P --> E[[Exif]] & I[[IPTC]] --> M(Photos)
-  M --> D[(Database)] & N[["`local storage
+  M --> D[("`Database
+  _Metadata_`")] & N[["`local storage
   **converted Photos**
-  ./WebP/size a
-  ./WebO/size b
-  ./WebP/...`"]] --> C{OK?}
+  _./WebP/size a
+  ./WebP/size b
+  ./WebP/..._`"]] --> C{OK?}
   C ---->|No| F[EXIT_FAILURE]
   C ---->|Yes| O[EXIT_SUCCESS]
 ```
