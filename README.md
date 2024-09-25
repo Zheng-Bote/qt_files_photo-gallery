@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT](#qt)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT](#qt)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT](#qt-1)
@@ -201,6 +202,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -250,6 +252,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
@@ -338,6 +341,13 @@ flowchart TD;
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 # Documentation
+
+> \[!IMPORTANT]
+> documentation is still under construction.
+
+_under constrcution:_
+
+[![GH-Page](https://img.shields.io/badge/Github-Pages-black?logo=github)](https://www.github.com/Zheng-Bote)
 
 ## Architecture
 
@@ -432,9 +442,9 @@ flowchart LR;
   **./WebP-Photos**`"]]
 ```
 
-### Usage/Examples/Tests
+## Usage/Examples/Tests
 
-#### Usage
+### Usage
 
 > [!NOTE]
 > at least 1 parameter is required:
@@ -448,7 +458,7 @@ flowchart LR;
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-#### Example Inifile
+### Example Inifile
 
 see also: `<prog> -c` : create Inifile
 
@@ -513,15 +523,6 @@ atom -J-Xmx16g usages -o app.atom --slice-outfile ./dist/atom_usages_v0.1.0.json
 
 cdxgen -o ./dist/sbom_v0.1.0.json -t cpp --usages-slices-file ./dist/atom_usages_v0.1.0.json --author "ZHENG Robert" --deep -r ./src
 ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Github Page
-
-> \[!IMPORTANT]
-> STill under construction.
-
-[![GH-Page](https://img.shields.io/badge/Github-Pages-black?logo=github)](https://www.github.com/Zheng-Bote)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
