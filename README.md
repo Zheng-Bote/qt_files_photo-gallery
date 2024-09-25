@@ -375,6 +375,26 @@ block-beta
   end
 ```
 
+```mermaid
+block-beta
+  columns 3
+  Repo:3
+  block:group1:1
+    columns 1
+    id0[".github"]
+    block:group2:1
+      columns 1
+      id1[["workflows"]]
+      id2[["actions"]]
+    end
+  end
+  dist src
+  block:group3:4
+    %% columns auto (default)
+    A["docs"] B["gh-pages"]
+  end
+```
+
 #### Github Actions / Workflows
 
 ```mermaid
