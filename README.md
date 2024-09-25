@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -26,23 +25,27 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-    - [QT6 - Community Edition](#qt6---community-edition)
-    - [cxxopts](#cxxopts)
-    - [inifile-cpp](#inifile-cpp)
-    - [plog](#plog)
+      - [QT6 - Community Edition](#qt6---community-edition)
+      - [cxxopts](#cxxopts)
+      - [inifile-cpp](#inifile-cpp)
+      - [plog](#plog)
   - [folder structure](#folder-structure)
-  - [manually](#manually)
-    - [Linux, macOS](#linux-macos)
-  - [Usage/Examples/Tests](#usageexamplestests)
+  - [Build](#build)
+    - [QT6](#qt6)
+    - [manually](#manually)
+      - [Linux, macOS](#linux-macos)
 - [API Reference](#api-reference)
   - [Inputs / Parameters](#inputs--parameters)
   - [Outputs](#outputs)
+  - [Usage/Examples/Tests](#usageexamplestests)
 - [Documentation](#documentation-1)
   - [Architecture](#architecture)
     - [Github](#github)
       - [Github Repo](#github-repo)
       - [Github Actions / Workflows](#github-actions--workflows)
   - [Application](#application)
+    - [bounded context](#bounded-context)
+    - [data import](#data-import)
   - [Inifile](#inifile)
   - [DevOps](#devops)
     - [Software Bill of Materials (SBoM)](#software-bill-of-materials-sbom)
@@ -182,7 +185,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -224,13 +226,14 @@ Plog - portable, simple and extensible C++ logging library
 │   │   ├── rz_pg_db.cpp
 │   │   ├── rz_pg_db.h
 │   │   ├── rz_readdir.cpp
-│   │   └── rz_readdir.h
+│   │   ├── rz_readdir.h
+│   │   ├── rz_sqlite3_db.cpp
+│   │   └── rz_sqlite3_db.h
 │   └── main.cpp
 └── tree.bak
 
-9 directories, 33 files
+9 directories, 35 files
 ```
-
 <!-- readme-tree end -->
 
 ## Build
