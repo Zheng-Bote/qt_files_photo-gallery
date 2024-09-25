@@ -306,10 +306,11 @@ cmake --build .
 
 ```mermaid
 flowchart TD;
-A[[program]] --> B{OK?}
-B --> C[Storage] & D[Database] --> F(EXIT_SUCCESS)
-B --> C[Storage] & E[SQL File] --> F(EXIT_SUCCESS)
-B ---->|error| G(EXIT_FAILURE)
+A[[program]] --> S[["`**Storage**
+./Webp/..`"]]
+S[Storage] & D[Database] --> F(EXIT_SUCCESS)
+S[Storage] & & E[SQL File] --> F(EXIT_SUCCESS)
+S ---->|error| G(EXIT_FAILURE)
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -392,19 +393,18 @@ flowchart TD;
 
 ```mermaid
 architecture-beta
-    group api(cloud)[API]
+    group bounded_context(cloud)[Photo Gallery]
 
-    service server1(server)[Webserver] in api
-    service server2(server)[Appserver] in api
-    service db(database)[Database] in api
-    service disk1(disk)[Storage] in api
-    service disk2(disk)[Storage] in api
+    service server1(server)[Webserver] in bounded_context
+    service server2(server)[Appserver] in bounded_context
+    service db(database)[Database] in bounded_context
+    service disk1(disk)[Storage] in bounded_context
+    service disk2(disk)[Storage] in bounded_context
 
-
-    server1:L -- R:disk1
     server1:T -- B:server2
-    server2:L -- R:disk2
     server2:T -- B:db
+    disk2:L -- R:server2
+    disk1:L -- R:server1
 ```
 
 ### data import
@@ -419,7 +419,8 @@ architecture-beta
 flowchart LR;
   A[local storage] --> B[[files to photo-db]]
   B --> C[Database]
-  B --> D[filesystem]
+  B --> D["`**local storage**
+  ./Webp/..`"]
 ```
 
 ## Inifile
