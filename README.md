@@ -313,14 +313,14 @@ flowchart TD;
   **Photos**`"] --> P[[files to photo-db]]
   P --> E[[Exif]] & I[[IPTC]] --> M(Photos)
   M --> D[("`Database
-  **Metadata**`")] & Q["`SQL-File
+  **Metadata**`")] & Q["`**SQL-File**
   _insert into ..._`"] & N[["`local storage
   **converted Photos**
   _./WebP/size a
   ./WebP/size b
   ./WebP/size..._`"]] --> C{OK?}
-  C ---->|No| F[EXIT_FAILURE]
-  C ---->|Yes| O[EXIT_SUCCESS]
+  C ---->|No| F["**EXIT_FAILURE**"]
+  C ---->|Yes| O["**EXIT_SUCCESS**"]
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
