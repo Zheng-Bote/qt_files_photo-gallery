@@ -25,7 +25,7 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT6 - Community Edition](#qt6---community-edition)
+      - [QT](#qt)
       - [cxxopts](#cxxopts)
       - [inifile-cpp](#inifile-cpp)
       - [plog](#plog)
