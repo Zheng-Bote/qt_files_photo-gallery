@@ -140,7 +140,9 @@ bla bla ... everything easy and green with No Code/Low code and without any cost
 
 ## Dependencies
 
-#### QT6 - Community Edition
+#### QT
+
+**QT6 - Community Edition**
 
 The Qt framework contains a comprehensive set of highly intuitive and modularized C++ library classes and is loaded with APIs to simplify your application development. Qt produces highly readable, easily maintainable and reusable code with high runtime performance and small footprint – and it's cross-platform.
 
@@ -263,14 +265,17 @@ cmake --build .
 ## Inputs / Parameters
 
 > [!NOTE]
-> at least 1 parameter is required:
-> `-a` or `-i <path to>/<ini file>`
+> at least 1 parameter is required
+
+- `-a` or `-i <path to>/<ini file>`
 
 > [!TIP]
-> use `-a` for shortcut
-> use `-a -e <env>` for shortcut
-> use `-i <path to>/<ini file>`
-> use `-i <path to>/<ini file> -e <env>`
+> use shortcuts
+
+- use `-a` for shortcut
+- use `-a -e <env>` for shortcut
+- use `-i <path to>/<ini file>`
+- use `-i <path to>/<ini file> -e <env>`
 
 > \[!IMPORTANT]
 > still under construction.
@@ -295,10 +300,10 @@ cmake --build .
 
 ```mermaid
 flowchart TD;
-A[[<program>]] --> B{OK?}
-B --> D[Database]
-B --> C[SQL File]
-B ---->|error| E[EXIT_FAILURE]
+A[[program]] --> B{OK?}
+B --> D[Storage] & D[Database] --> F(EXIT_SUCCESS)
+B --> D[Storage] & C[SQL File] --> F(EXIT_SUCCESS)
+B ---->|error| E(EXIT_FAILURE)
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -408,7 +413,7 @@ architecture-beta
 flowchart LR;
   A[local storage] --> B[[files to photo-db]]
   B --> C[Database]
-  B --> D[[filesystem]]
+  B --> D[filesystem]
 ```
 
 ## Inifile
