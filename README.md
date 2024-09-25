@@ -310,11 +310,7 @@ cmake --build .
 ```mermaid
 flowchart TD;
   A["`local storage
-  **Photos**
-  *.jpg
-  *.jpeg
-  *.png
-  ...`"] --> P[[files to photo-db]]
+  **Photos**`"] --> P[[files to photo-db]]
   P --> S([local storage])
   S --> E[[Exif]] & I[[IPTC]] --> W[["`./WebP/..
   size a
@@ -323,6 +319,17 @@ flowchart TD;
   P --> D[(Database)]
   D --> C{OK?}
   W --> C{OK?}
+  C ---->|No| F[EXIT_FAILURE]
+  C ---->|Yes| O[EXIT_SUCCESS]
+```
+
+```mermaid
+flowchart TD;
+  A["`local storage
+  **Photos**`"] --> P[[files to photo-db]]
+  P --> E[[Exif]] & I[[IPTC]] --> M(Photos)
+  M --> D[(Database)] & N["`local storage
+  **Photos**`"] --> C{OK?}
   C ---->|No| F[EXIT_FAILURE]
   C ---->|Yes| O[EXIT_SUCCESS]
 ```
@@ -432,7 +439,7 @@ architecture-beta
 ```mermaid
 flowchart LR;
   A[local storage] --> B[[files to photo-db]]
-  B --> C[Database]
+  B --> C[(Database)]
   B --> D[SQL-File]
   B --> S[["`local storage
   _enriched_
