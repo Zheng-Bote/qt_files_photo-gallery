@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT](#qt)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT](#qt)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT6](#qt6)
@@ -76,6 +77,7 @@ QT6 CXX20 console app to add photos to Database
 - [x] supports exports to SQL-file ("native", system-independent SQL; insert)
 - [x] Exchangeable Image File Format (Exif; read, write; sql insert)
 - [x] IPTC-IIM (IPTC; read, write; sql insert)
+- [ ] converts images to several WebP sizes
 - [ ] advanced-extra-super-ultra-special feature xyz
 
 <br>
@@ -185,6 +187,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -234,11 +237,14 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
 
-### QT6
+### QT
+
+_QT6_
 
 just load the project in QT Creator and run build <debug> or <release...>
 
@@ -283,15 +289,15 @@ cmake --build .
 > \[!IMPORTANT]
 > still under construction.
 
-| Parameter      | Type     | Description                                                                          |
-| :------------- | :------- | :----------------------------------------------------------------------------------- |
-| `-a --auto`    | `none`   | _Optional_ load Ini <program path>/<program>.ini>                                    |
-| `-c --create`  | `string` | _Optional_ create Ini <path to>/<file.ini> or default: <program path>/<program>.ini> |
-| `-e --env`     | `string` | _Optional_ <dev> , <init> ,<prod> or default: dev                                    |
-| `-i --ini`     | `string` | _Optional_ <pathTo/inifile>                                                          |
-| `-l --listini` | `string` | _Optional_ <pathTo/inifile> or default: <program path>/<program>.ini>                |
-| `-v --version` | `none`   | _Optional_ <prog>-<Major>.<Minor>.<Patch>                                            |
-| `-h --help`    | `none`   | _Optional_ list help menu                                                            |
+| Parameter      | Type     | Description                                                                               |
+| :------------- | :------- | :---------------------------------------------------------------------------------------- |
+| `-a --auto`    | `none`   | _Optional:_ load Ini `<program path>/<program>.ini>`                                      |
+| `-c --create`  | `string` | _Optional:_ create Ini `<path to>/<file.ini>` or default: `<program path>/<program>.ini>` |
+| `-e --env`     | `string` | _Optional:_ `<dev> , <ini> , <prod>`or default:`dev`                                      |
+| `-i --ini`     | `string` | _Optional:_ `<pathTo/inifile>`                                                            |
+| `-l --listini` | `string` | _Optional:_ `<pathTo/inifile>` or default: `<program path>/<program>.ini>`                |
+| `-v --version` | `none`   | _Optional:_ `<program>-<major>.<minor>.<patch>`                                           |
+| `-h --help`    | `none`   | _Optional:_ list help menu                                                                |
 
 ## Outputs
 
@@ -306,7 +312,7 @@ flowchart TD;
 A[[program]] --> S[["`**Storage**
 ./Webp/..`"]]
 S[Storage] & D[Database] --> F(EXIT_SUCCESS)
-S[Storage] & & E[SQL File] --> F(EXIT_SUCCESS)
+S[Storage] & E[SQL File] --> F(EXIT_SUCCESS)
 S ---->|error| G(EXIT_FAILURE)
 ```
 
