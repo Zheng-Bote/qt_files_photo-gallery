@@ -317,7 +317,7 @@ flowchart TD;
   **converted Photos**
   _./WebP/size a
   ./WebP/size b
-  ./WebP/..._`"]] --> C{OK?}
+  ./WebP/size..._`"]] --> C{OK?}
   C ---->|No| F[EXIT_FAILURE]
   C ---->|Yes| O[EXIT_SUCCESS]
 ```
@@ -426,12 +426,12 @@ architecture-beta
 
 ```mermaid
 flowchart LR;
-  A[local storage] --> B[[files to photo-db]]
-  B --> C[(Database)]
-  B --> D[SQL-File]
-  B --> S[["`local storage
-  _enriched_
-  _converted_`"]]
+  A["`local storage
+  Photos`"] --> B[[files to photo-db]]
+  B-- Metadata ---C[(Database)]
+  B-- "insert into" ---D[SQL-File]
+  B-- "converted & enriched" ---S[["`local storage
+  ./WebP-Photos`"]]
 ```
 
 ## Inifile
