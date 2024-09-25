@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT](#qt)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT](#qt)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT](#qt-1)
@@ -186,6 +187,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -235,6 +237,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
@@ -310,7 +313,8 @@ flowchart TD;
   **Photos**`"] --> P[[files to photo-db]]
   P --> E[[Exif]] & I[[IPTC]] --> M(Photos)
   M --> D[("`Database
-  **Metadata**`")] & Q[SQL-File] & N[["`local storage
+  **Metadata**`")] & Q["`SQL-File
+  _insert into ..._`"] & N[["`local storage
   **converted Photos**
   _./WebP/size a
   ./WebP/size b
@@ -399,7 +403,7 @@ flowchart TD;
 
 ```mermaid
 architecture-beta
-    group bounded_context(cloud)[Photo Gallery]
+    group bounded_context(cloud)[Web Photo Gallery]
 
     service server1(server)[Webserver] in bounded_context
     service server2(server)[Appserver] in bounded_context
@@ -408,9 +412,9 @@ architecture-beta
     service disk2(disk)[Storage] in bounded_context
 
     server1:T -- B:server2
+    disk1:L -- R:server1
     server2:T -- B:db
     disk2:L -- R:server2
-    disk1:L -- R:server1
 ```
 
 ### data import
@@ -424,11 +428,12 @@ architecture-beta
 ```mermaid
 flowchart LR;
   A["`local storage
-  Photos`"] --> B[[files to photo-db]]
-  B-- Metadata ---C[(Database)]
-  B-- "insert into" ---D[SQL-File]
-  B-- "converted & enriched" ---S[["`local storage
-  ./WebP-Photos`"]]
+  **Photos**`"] --> B[[files to photo-db]]
+  B-- Metadata ---C[(**Database**)]
+  B-- "sql" ---D["`**SQL-File**
+  _insert into ..._`"]
+  B-- "convert & enrich" ---S[["`local storage
+  **./WebP-Photos**`"]]
 ```
 
 ## Inifile
