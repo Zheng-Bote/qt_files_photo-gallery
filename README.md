@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT6 - Community Edition](#qt6---community-edition)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT6 - Community Edition](#qt6---community-edition)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT6](#qt6)
@@ -145,7 +146,7 @@ bla bla ... everything easy and green with No Code/Low code and without any cost
 
 #### QT
 
-**QT6 - Community Edition**
+_QT6 - Community Edition_
 
 The Qt framework contains a comprehensive set of highly intuitive and modularized C++ library classes and is loaded with APIs to simplify your application development. Qt produces highly readable, easily maintainable and reusable code with high runtime performance and small footprint – and it's cross-platform.
 
@@ -156,35 +157,36 @@ The Qt framework contains a comprehensive set of highly intuitive and modularize
 
 a lightweight C++ option parser library, supporting the standard GNU style syntax for options.
 
-> \[!NOTE]
-> managed via the package manager
-
 [![jarro2783](https://img.shields.io/badge/Github-jarro2783-black?logo=github)](https://github.com/jarro2783/cxxopts)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+> \[!NOTE]
+> managed via the package manager
 
 #### inifile-cpp
 
 inifile-cpp is a simple and easy to use single header-only ini file en- and decoder for C++.
 
-> \[!NOTE]
-> included in `src/includes`
-
 [![Fabian Meyer](https://img.shields.io/badge/Github-Fabian_Meyer-black?logo=github)](https://github.com/Rookfighter/inifile-cpp)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+> \[!NOTE]
+> included in `src/includes`
 
 #### plog
 
 Plog - portable, simple and extensible C++ logging library
 
-> \[!NOTE]
-> managed via the package manager
-
 [![Sergey Podobry](https://img.shields.io/badge/Github-Sergey_Podobry-black?logo=github)](https://github.com/SergiusTheBest/plog)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+> \[!NOTE]
+> managed via the package manager
 
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -234,6 +236,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
@@ -304,9 +307,9 @@ cmake --build .
 ```mermaid
 flowchart TD;
 A[[program]] --> B{OK?}
-B --> D[Storage] & D[Database] --> F(EXIT_SUCCESS)
-B --> D[Storage] & C[SQL File] --> F(EXIT_SUCCESS)
-B ---->|error| E(EXIT_FAILURE)
+B --> C[Storage] & D[Database] --> F(EXIT_SUCCESS)
+B --> C[Storage] & E[SQL File] --> F(EXIT_SUCCESS)
+B ---->|error| G(EXIT_FAILURE)
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
