@@ -47,7 +47,7 @@
       - [data import](#data-import)
     - [Usage/Examples/Tests](#usageexamplestests)
       - [Usage](#usage)
-    - [Example Inifile](#example-inifile)
+      - [Example Inifile](#example-inifile)
   - [DevOps](#devops)
     - [Software Bill of Materials (SBoM)](#software-bill-of-materials-sbom)
   - [Github Page](#github-page)
