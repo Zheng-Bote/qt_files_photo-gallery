@@ -417,27 +417,6 @@ architecture-beta
     db:B -- T:server2
 ```
 
-```mermaid
-architecture-beta
-    group bounded_context(cloud)[Web Photo Gallery]
-
-    service server1(server)[Webserver] in bounded_context
-    service server2(server)[Appserver] in bounded_context
-    service db(database)[Database] in bounded_context
-    service disk1(disk)[Storage] in bounded_context
-    service disk2(disk)[Storage] in bounded_context
-
-    junction junctionCenter
-    junction junctionRight
-
-    server1:B -- L:junctionCenter
-    server2:T -- B:junctionCenter
-    junctionCenter:R -- L:junctionRight
-    disk1:R -- L:junctionRight
-    disk2:B -- T:junctionRight
-    db:B -- B:junctionRight
-```
-
 ### data import
 
 - collecting local files
