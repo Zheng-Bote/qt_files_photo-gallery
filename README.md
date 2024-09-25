@@ -1,7 +1,7 @@
 <div id="top" align="center">
 <h1>qt_files_photo-gallery</h1>
 
-<p>QT6 CXX20 console app to add photos to Database</p>
+<p>QT6 CXX20 console app to convert photos and add Metadata to Database</p>
 
 [Report Issue](https://github.com/Zheng-Bote/qt_files_photo-gallery/issues) [Request Feature](https://github.com/Zheng-Bote/qt_files_photo-gallery/pulls)
 
@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT](#qt)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT](#qt)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT](#qt-1)
@@ -67,7 +68,13 @@
 ![QT](https://img.shields.io/badge/Community-6-41CD52?logo=qt)
 ![CXX](https://img.shields.io/badge/C++-20-blue?logo=cplusplus)
 
-QT6 CXX20 console app to add photos to Database
+QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB.
+
+> The purpose of this tool is to run as a microservice to prepare photos for a web-based photo-gallery.
+
+Photos are converted into different sizes in WebP format and the metadata is written into a database.
+
+Any existing Exif and IPTC metadata is also taken into account.
 
 ### Features
 
@@ -186,6 +193,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -235,6 +243,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
@@ -322,20 +331,6 @@ flowchart TD;
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Usage/Examples/Tests
-
-> [!NOTE]
-> at least 1 parameter is required:
-> `-a` or `-i <path to>/<ini file>`
-
-> [!TIP]
-> use `-a` for shortcut
-> use `-a -e <env>` for shortcut
-> use `-i <path to>/<ini file>`
-> use `-i <path to>/<ini file> -e <env>`
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 # Documentation
 
 see also: <https://linktodocumentation>
@@ -389,9 +384,9 @@ flowchart TD;
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Application
+### Application
 
-### bounded context
+#### bounded context
 
 - Webserver NGinx
 - Appserver (Applicationserver) Rust Rocket
@@ -414,7 +409,7 @@ architecture-beta
     db:B -- T:server2
 ```
 
-### data import
+#### data import
 
 - collecting local files
 - read attributes (size, geometry)
@@ -433,9 +428,23 @@ flowchart LR;
   **./WebP-Photos**`"]]
 ```
 
-## Inifile
+### Usage/Examples/Tests
 
-_example Inifile_
+#### Usage
+
+> [!NOTE]
+> at least 1 parameter is required:
+> `-a` or `-i <path to>/<ini file>`
+
+> [!TIP]
+> use `-a` for shortcut
+> use `-a -e <env>` for shortcut
+> use `-i <path to>/<ini file>`
+> use `-i <path to>/<ini file> -e <env>`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Example Inifile
 
 see also: `<prog> -c` : create Inifile
 
@@ -484,16 +493,14 @@ Logifle=./qt_files_photo.log      # <path/to/logfile.log>
 Logifle=./qt_files_photo.log      # <path/to/logfile.log>
 ```
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## DevOps
 
-```mermaid
-pie title me
-         "ideas" : 90
-         "time for realizations" : 7
-         "money for realizations" : 3
-```
-
 ### Software Bill of Materials (SBoM)
+
+> [!NOTE]
+> A Github Action/Workflow to produce a SPDX/CycloneDX JSON SBoM during Release, is still under construction.
 
 ```Bash
 nvm use --lts
@@ -507,34 +514,10 @@ cdxgen -o ./dist/sbom_v0.1.0.json -t cpp --usages-slices-file ./dist/atom_usages
 
 ## Github Page
 
-[![GH-Page](https://img.shields.io/badge/Github-Pages-black?logo=github)](https://www.github.com/Zheng-Bote)
-
-## Github Wiki
-
-[![GH-Wiki](https://img.shields.io/badge/Github-Wiki-black?logo=github)](https://www.github.com/Zheng-Bote)
-
-## Comments
-
-> \[!NOTE]
-> Useful information that users should know, even when skimming content.
-
-> \[!TIP]
-> Helpful advice for doing things better or more easily.
-
 > \[!IMPORTANT]
-> Key information users need to know to achieve their goal.
+> STill under construction.
 
-> \[!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
-
-> \[!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+[![GH-Page](https://img.shields.io/badge/Github-Pages-black?logo=github)](https://www.github.com/Zheng-Bote)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
