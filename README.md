@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -26,10 +25,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-    - [QT](#qt)
-    - [cxxopts](#cxxopts)
-    - [inifile-cpp](#inifile-cpp)
-    - [plog](#plog)
+      - [QT](#qt)
+      - [cxxopts](#cxxopts)
+      - [inifile-cpp](#inifile-cpp)
+      - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT](#qt-1)
@@ -46,12 +45,11 @@
     - [Application](#application)
       - [bounded context](#bounded-context)
       - [data import](#data-import)
-    - [Usage/Examples/Tests](#usageexamplestests)
-      - [Usage](#usage)
-      - [Example Inifile](#example-inifile)
+  - [Usage/Examples/Tests](#usageexamplestests)
+    - [Usage](#usage)
+    - [Example Inifile](#example-inifile)
   - [DevOps](#devops)
     - [Software Bill of Materials (SBoM)](#software-bill-of-materials-sbom)
-  - [Github Page](#github-page)
 - [Authors and License](#authors-and-license)
   - [License](#license)
   - [Authors](#authors)
@@ -202,7 +200,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -252,7 +249,6 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
-
 <!-- readme-tree end -->
 
 ## Build
