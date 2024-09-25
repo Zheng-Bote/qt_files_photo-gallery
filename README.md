@@ -422,8 +422,9 @@ architecture-beta
 flowchart LR;
   A[local storage] --> B[[files to photo-db]]
   B --> C[Database]
-  B --> D["`**local storage**
-  ./Webp/..`"]
+  B --> E[["`**local storage**
+  _Exif / IPTC_
+  ./Webp/..`"]]
 ```
 
 ## Inifile
