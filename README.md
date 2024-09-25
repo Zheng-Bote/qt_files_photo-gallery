@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT](#qt)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT](#qt)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT](#qt-1)
@@ -186,6 +187,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -235,6 +237,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
@@ -311,6 +314,21 @@ A[[program]] --> S[["`**Storage**
 S[Storage] & D[Database] --> F(EXIT_SUCCESS)
 S[Storage] & E[SQL File] --> F(EXIT_SUCCESS)
 S ---->|error| G(EXIT_FAILURE)
+```
+
+```mermaid
+flowchart LR;
+  A[local storage] --> P[[files to photo-db]]
+  B --> S([local storage])
+  S --> E[[Exif]] & I[[IPTC]] --> W[["`./WebP/..
+  size a
+  size b
+  ...`"]]
+  B --> D[(Database)]
+  D --> C{OK?}
+  W --> C{OK?}
+  C ---->|No| F[EXIT_FAILURE]
+  C ---->|Yes| O[EXIT_SUCCESS]
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -419,9 +437,8 @@ architecture-beta
 flowchart LR;
   A[local storage] --> B[[files to photo-db]]
   B --> C[Database]
-  B --> E[["`**local storage**
-  _Exif / IPTC_
-  ./Webp/..`"]]
+  B --> D[SQL-File]
+  B --> S[[local storage]]
 ```
 
 ## Inifile
