@@ -187,7 +187,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -237,7 +236,6 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 35 files
 ```
-
 <!-- readme-tree end -->
 
 ## Build
