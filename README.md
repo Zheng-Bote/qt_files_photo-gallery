@@ -356,26 +356,6 @@ _under constrcution:_
 
 ```mermaid
 block-beta
-  columns 4
-  Repo:4
-  block:group1:1
-    columns 1
-    id0[".github"]
-    block:group2:1
-      columns 1
-      id1[["workflows"]]
-      id2[["actions"]]
-    end
-  end
-  docs dist src
-  block:group3:4
-    %% columns auto (default)
-    A["gh-pages"] B["gh-wiki"]
-  end
-```
-
-```mermaid
-block-beta
   columns 3
   Repo:3
   block:group1:1
@@ -409,10 +389,6 @@ flowchart TD;
     A[Workflow]-->K[[Workflow]]
     K-->L[Action]
     L-->M("GH-Pages")
-
-    A[Workflow]-->N[[Workflow]]
-    N-->O[Action]
-    O-->P("GH-Wiki")
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
