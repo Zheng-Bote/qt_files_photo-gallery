@@ -3,7 +3,6 @@
  * @author ZHENG Robert (www.robert.hase-zheng.net)
  * @brief QT6 CXX20 console app to add photos to DB
  * @details simple console app
- * @version 0.1.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024 ZHENG Robert
@@ -22,6 +21,7 @@
 #include "plog/Initializers/RollingFileInitializer.h"
 #include "plog/Log.h"
 
+#include "configured/rz_config.h"
 #include "cxxopts.hpp"
 #include "includes/rz_inifile.h"
 #include "includes/rz_pg_db.h"
@@ -31,11 +31,11 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-
+    /*
     QCoreApplication::setApplicationName("files_to_photo-gallery");
     QCoreApplication::setApplicationVersion("0.1.0");
     QCoreApplication::setOrganizationDomain("https://github.com/Zheng-Bote/qt_files_photo-gallery");
-
+*/
     std::string prog = argv[0];
 
     // default inifile
@@ -90,9 +90,7 @@ int main(int argc, char *argv[])
     if (result.count("help"))
     {
         std::cout << options.help() << std::endl;
-        std::cout << QCoreApplication::applicationName().toStdString() << " v"
-                  << QCoreApplication::applicationVersion().toStdString() << " "
-                  << QCoreApplication::organizationDomain().toStdString() << std::endl;
+        std::cout << PROG_NAME << " v" << PROG_VERSION << " " << PROG_HOMEPAGE << std::endl;
         exit(EXIT_SUCCESS);
     }
     if (result.count("version"))
