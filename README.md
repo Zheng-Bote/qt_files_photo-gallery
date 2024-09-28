@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -26,10 +25,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-    - [QT](#qt)
-    - [cxxopts](#cxxopts)
-    - [inifile-cpp](#inifile-cpp)
-    - [plog](#plog)
+      - [QT](#qt)
+      - [cxxopts](#cxxopts)
+      - [inifile-cpp](#inifile-cpp)
+      - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT](#qt-1)
@@ -50,6 +49,7 @@
     - [Usage](#usage)
     - [Example Inifile](#example-inifile)
   - [DevOps](#devops)
+    - [Graphviz](#graphviz)
     - [Software Bill of Materials (SBoM)](#software-bill-of-materials-sbom)
 - [Authors and License](#authors-and-license)
   - [License](#license)
