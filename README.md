@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -242,6 +243,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -297,6 +299,7 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 40 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
@@ -557,6 +560,41 @@ Logifle=./qt_files_photo.log      # <path/to/logfile.log>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## DevOps
+
+### SHA256 Checksum
+
+during build a SHA2-256 checksum is generated and stored
+
+> [!NOTE]
+> see `build/qt_files_photo-gallery.sha256sum`
+
+#### Linux
+
+**generate**
+
+```Bash
+sha256sum qt_files_photo-gallery > qt_files_photo-gallery.sha256sum
+```
+
+**check**
+
+```Bash
+sha256sum --check qt_files_photo-gallery.sha256sum
+```
+
+#### MacOS
+
+**generate**
+
+```Bash
+shasum -a 256 qt_files_photo-gallery > qt_files_photo-gallery.sha256sum
+```
+
+**check**
+
+```Bash
+shasum --check qt_files_photo-gallery.sha256sum
+```
 
 ### Graphviz
 
