@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -25,10 +26,10 @@
       - [other Markdown files](#other-markdown-files)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-      - [QT](#qt)
-      - [cxxopts](#cxxopts)
-      - [inifile-cpp](#inifile-cpp)
-      - [plog](#plog)
+    - [QT](#qt)
+    - [cxxopts](#cxxopts)
+    - [inifile-cpp](#inifile-cpp)
+    - [plog](#plog)
   - [folder structure](#folder-structure)
   - [Build](#build)
     - [QT](#qt-1)
@@ -89,9 +90,10 @@ flowchart LR;
 - [x] supports PostgreSQL (insert)
 - [x] supports SQLite3 (incl. create tables, indexes, triggers; insert)
 - [x] supports exports to SQL-file ("native", system-independent SQL; insert)
-- [x] Exchangeable Image File Format (Exif; read, write; sql insert)
-- [x] IPTC-IIM (IPTC; read, write; sql insert)
+- [ ] Exchangeable Image File Format (Exif; read, write; sql insert)
+- [ ] IPTC-IIM (IPTC; read, write; sql insert)
 - [ ] converts images to several WebP sizes
+- [ ] Argon2 for (db) password encryption
 - [ ] advanced-extra-super-ultra-special feature xyz
 
 <br>
@@ -105,15 +107,19 @@ flowchart LR;
 - [x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines, Release-Mgmt.
 - [x] Packaging: Conan
 - [x] Buildsystem: CMake
-- [ ] Installer:
+- [x] Clang-Tidy (cppcoreguidelines-\*)
+- [x] Documentation: Doxygen (modern style)
+- [ ] Installer: CMake
 - [ ] portable application / runtime binaries (see Release)
 - [x] SBOM included (static; also Linux shell commands; GH-Action in work)
 - [ ] separation of documentation (general Readme - detailed `/docs/*`)
+- [ ] configuration via YAML
+- [x] configuration via INI file
 
 <br>
 
 - [ ] runs on DOS/Windows
-- [ ] runs on MacOS
+- [x] runs on MacOS
 - [x] runs on Linux
 - [ ] runs on iOS
 - [ ] runs on Android
@@ -159,7 +165,39 @@ bla bla ... everything easy and green with No Code/Low code and without any cost
 
 ## Dependencies
 
-#### QT
+_All licenses are therefore GPL-compatible._
+
+### Conan
+
+Conan, software package manager for C and C++ developers
+
+[![Conan](https://img.shields.io/badge/Conan-v2+-6699CB?logo=conan)](https://github.com/conan-io/conan)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+### CMake
+
+CMake: A Powerful Software Build System
+
+[![CMake](https://img.shields.io/badge/CMake-v3.22+-064F8C?logo=cmake)](https://github.com/conan-io/conan)
+[![BSD-3 License](https://img.shields.io/badge/License-BSD_3-green.svg)](https://choosealicense.com/licenses/bsd-3-clause/)
+
+### Doxygen
+
+Code Documentation. Automated.
+
+[![Doxygen](https://img.shields.io/badge/Doxygen-v1.12+-2C4AA8?logo=doxygen)](https://github.com/doxygen/doxygen)
+[![GPL-2 License](https://img.shields.io/badge/License-GPL_2-green.svg)](https://choosealicense.com/licenses/gpl-2.0/)
+
+#### Doxygen Awesome
+
+Doxygen Awesome is a custom CSS theme for Doxygen HTML documentation.
+
+This theme is an attempt to update the visuals of Doxygen without changing its overall layout too much.
+
+[![Doxygen Awesome](https://img.shields.io/badge/Doxygen_Awesome-v2.3.3-2C4AA8?logo=doxygen)](https://github.com/jothepro/doxygen-awesome-css)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+### QT
 
 _QT6 - Community Edition_
 
@@ -168,7 +206,7 @@ The Qt framework contains a comprehensive set of highly intuitive and modularize
 [![QT](https://img.shields.io/badge/Community-for_Open_Source_Development-black?logo=qt)](https://www.qt.io/download-open-source)
 [![LGPL](https://img.shields.io/badge/License-LGPL_v3-green.svg)](https://choosealicense.com/licenses/lgpl-3.0/) _see also:_[Obligations of the GPL and LGPL](https://www.qt.io/licensing/open-source-lgpl-obligations)
 
-#### cxxopts
+### cxxopts
 
 a lightweight C++ option parser library, supporting the standard GNU style syntax for options.
 
@@ -176,9 +214,9 @@ a lightweight C++ option parser library, supporting the standard GNU style synta
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 > \[!NOTE]
-> managed via the package manager
+> managed via the package manager [![Conan Center](https://img.shields.io/conan/v/cxxopts)](https://conan.io/center/recipes/cxxopts)
 
-#### inifile-cpp
+### inifile-cpp
 
 inifile-cpp is a simple and easy to use single header-only ini file en- and decoder for C++.
 
@@ -188,7 +226,7 @@ inifile-cpp is a simple and easy to use single header-only ini file en- and deco
 > \[!NOTE]
 > included in `src/includes`
 
-#### plog
+### plog
 
 Plog - portable, simple and extensible C++ logging library
 
@@ -196,11 +234,12 @@ Plog - portable, simple and extensible C++ logging library
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 > \[!NOTE]
-> managed via the package manager
+> managed via the package manager [![Conan Center](https://img.shields.io/conan/v/plog)](https://conan.io/center/recipes/plog)
 
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -253,6 +292,7 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 37 files
 ```
+
 <!-- readme-tree end -->
 
 ## Build
@@ -276,8 +316,12 @@ cd ../build
 
 cmake -S ../src -B . -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake  -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
 
+# cmake --build . --parallel <number of CPU cores>
 cmake --build .
 ```
+
+> [!NOTE]
+> generate Doxygen documentation with `cd build && cmake --build . --target doxygen`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -344,6 +388,9 @@ flowchart TD;
 
 > \[!IMPORTANT]
 > documentation is still under construction.
+
+> [!NOTE]
+> generate Doxygen documentation with `cd build && cmake --build . --target doxygen`
 
 _under constrcution:_
 

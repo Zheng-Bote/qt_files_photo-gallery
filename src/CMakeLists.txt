@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(
   qt_files_photo-gallery
-  VERSION 0.1.1
+  VERSION 0.1.2
   DESCRIPTION "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
   LANGUAGES CXX)
@@ -96,6 +96,10 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     COMMAND Get-Filehash ARGS "$<TARGET_FILE_NAME:qt_files_photo-gallery.exe>"
             > "qt_files_photo-gallery.sha256sum")
 endif()
+
+include(Doxygen)
+Doxygen(. docs)
+
 
 include(GNUInstallDirs)
 install(

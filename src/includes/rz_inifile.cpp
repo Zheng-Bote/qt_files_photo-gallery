@@ -1,5 +1,5 @@
 /**
- * @file rz_initfile.cpp
+ * @file rz_inifile.cpp
  * @author ZHENG Robert (www.robert.hase-zheng.net)
  * @brief lib to CRUD inifile
  * @details simple class for reading and writing the inifile
@@ -13,7 +13,8 @@
 #include "rz_inifile.h"
 
 Inifile::Inifile()
-{}
+{
+}
 
 Inifile::Inifile(QString &progname)
 {
@@ -27,7 +28,7 @@ Inifile::Inifile(QString &path, QString &file)
     Inifile::loadIni(pathFile);
 }
 
-Inifile::~Inifile(){}
+Inifile::~Inifile() {}
 
 QString Inifile::getInifile()
 {
@@ -36,7 +37,6 @@ QString Inifile::getInifile()
 
 void Inifile::Test()
 {
-
 }
 
 void Inifile::createIni()
@@ -78,9 +78,12 @@ void Inifile::createIni()
 
 bool Inifile::saveIniToFile(QString &pathFile)
 {
-    try {
+    try
+    {
         myIni.save(pathFile.toStdString());
-    } catch (...) {
+    }
+    catch (...)
+    {
         PLOG_WARNING << "Write Ini failed: " << pathFile;
         return false;
     }
@@ -92,9 +95,12 @@ bool Inifile::saveIniToFile(QString &path, QString &file)
 {
     QString pathFile = path + "/" + file;
 
-    try {
+    try
+    {
         myIni.save(pathFile.toStdString());
-    } catch (...) {
+    }
+    catch (...)
+    {
         PLOG_WARNING << "Write Ini failed: " << pathFile;
         return false;
     }
@@ -107,14 +113,16 @@ bool Inifile::loadIni(QString &pathFile)
     Inifile::pathToInifile = pathFile;
     QFileInfo fi(pathFile);
 
-    if(fi.exists() == false || fi.isReadable() == false) {
+    if (fi.exists() == false || fi.isReadable() == false)
+    {
         PLOG_WARNING << "File doesn't exist or is not readable: " << pathFile;
         return false;
     }
 
     myIni.load(pathFile.toStdString());
 
-    if(myIni.size() < 1) {
+    if (myIni.size() < 1)
+    {
         PLOG_WARNING << "wrong INI size, should be at least 1 section (maybe not readable?): "
                      << myIni.size();
         return false;
@@ -180,13 +188,13 @@ void Inifile::listIniEntries()
 {
     std::cout << "Parsed ini contents" << std::endl;
     std::cout << "Has " << myIni.size() << " sections" << std::endl;
-    for(const auto &sectionPair : myIni)
+    for (const auto &sectionPair : myIni)
     {
         const std::string &sectionName = sectionPair.first;
         const ini::IniSection &section = sectionPair.second;
         std::cout << "Section '" << sectionName << "' has " << section.size() << " fields" << std::endl;
 
-        for(const auto &fieldPair : sectionPair.second)
+        for (const auto &fieldPair : sectionPair.second)
         {
             const std::string &fieldName = fieldPair.first;
             const ini::IniField &field = fieldPair.second;
@@ -194,8 +202,3 @@ void Inifile::listIniEntries()
         }
     }
 }
-
-
-
-
-
