@@ -35,12 +35,13 @@ qrc_*.cpp
 Thumbs.db
 *.res
 *.rc
-/.qmake.cache
-/.qmake.stash
 
 # qtcreator generated files
+/.qmake.cache
+/.qmake.stash
 *.pro.user*
-CMakeLists.txt.user*
+src/CMakeCache.txt
+src/CMakeLists.txt.user*
 build/**
 src/build/**
 *_ORI
