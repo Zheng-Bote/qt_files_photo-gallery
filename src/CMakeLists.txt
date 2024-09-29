@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(
   qt_files_photo-gallery
-  VERSION 0.1.0
+  VERSION 0.1.1
   DESCRIPTION "QT6 CXX20 console app to add photos to DB"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
   LANGUAGES CXX)
