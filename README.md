@@ -243,7 +243,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -273,7 +272,6 @@ Plog - portable, simple and extensible C++ logging library
 │   └── sbom_v0.1.0.json
 ├── src
 │   ├── CMAKEGraphVizOptions.cmake
-│   ├── CMakeCache.txt
 │   ├── CMakeFiles
 │   │   ├── ClangTidy.cmake
 │   │   ├── Doxygen.cmake
@@ -297,9 +295,8 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-10 directories, 40 files
+10 directories, 39 files
 ```
-
 <!-- readme-tree end -->
 
 ## Build
