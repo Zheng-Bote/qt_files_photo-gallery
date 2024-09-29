@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22)
 project(
   qt_files_photo-gallery
   VERSION 0.1.1
-  DESCRIPTION "QT6 CXX20 console app to add photos to DB"
+  DESCRIPTION "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
   LANGUAGES CXX)
 
@@ -35,6 +35,8 @@ find_package(plog REQUIRED)
 
 add_library(inicpp includes/inicpp.h)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeFiles")
+
 # no need to list header files, but helpful for IDE
 add_executable(
   qt_files_photo-gallery
@@ -58,6 +60,10 @@ target_include_directories(qt_files_photo-gallery
 target_link_libraries(
   qt_files_photo-gallery Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Sql
   cxxopts::cxxopts plog::plog inicpp)
+
+# are we compliant?  
+include(ClangTidy)
+AddClangTidy(qt_files_photo-gallery)
 
 target_compile_definitions(
   qt_files_photo-gallery
@@ -88,7 +94,7 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     TARGET qt_files_photo-gallery
     POST_BUILD
     COMMAND Get-Filehash ARGS "$<TARGET_FILE_NAME:qt_files_photo-gallery.exe>"
-            > "qt_options.sha256sum")
+            > "qt_files_photo-gallery.sha256sum")
 endif()
 
 include(GNUInstallDirs)
