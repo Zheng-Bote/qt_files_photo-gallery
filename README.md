@@ -239,7 +239,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -271,9 +270,12 @@ Plog - portable, simple and extensible C++ logging library
 │   ├── CMAKEGraphVizOptions.cmake
 │   ├── CMakeCache.txt
 │   ├── CMakeFiles
-│   │   └── cmake.check_cache
+│   │   ├── ClangTidy.cmake
+│   │   ├── Doxygen.cmake
+│   │   ├── cmake.check_cache
+│   │   └── extra_headers
 │   ├── CMakeLists.txt
-│   ├── conanfile.py
+│   ├── CMakeUserPresets.json
 │   ├── conanfile.txt
 │   ├── configure
 │   │   └── rz_config.h.in
@@ -290,9 +292,8 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-10 directories, 37 files
+10 directories, 40 files
 ```
-
 <!-- readme-tree end -->
 
 ## Build
