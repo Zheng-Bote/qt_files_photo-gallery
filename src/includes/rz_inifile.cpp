@@ -5,7 +5,6 @@
  * @details simple class for reading and writing the inifile
  * @date 2023-04-15
  * @copyright Copyright (c) 2023 ZHENG Robert
- * @mainpage https://github.com/Zheng-Bote/
  */
 
 #include "rz_inifile.h"

@@ -5,7 +5,6 @@
  * @details simple class for directories
  * @date 2023-04-15
  * @copyright Copyright (c) 2023 ZHENG Robert
- * @mainpage https://github.com/Zheng-Bote/
  */
 
 #pragma once

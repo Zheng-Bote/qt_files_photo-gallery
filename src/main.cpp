@@ -1,12 +1,10 @@
 /**
  * @file main.cpp
- * @author ZHENG Robert (www.robert.hase-zheng.net)
+ * @author ZHENG Robert (https://github.com/Zheng-Bote/qt_files_photo-gallery)
  * @brief QT6 CXX20 console app to add photos to DB
  * @details QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB
  * @date 2024-09-19
  * @copyright Copyright (c) 2024 ZHENG Robert
- * @mainpage https://github.com/Zheng-Bote/qt_files_photo-gallery
- *
  */
 
 // ToDo: options logfile

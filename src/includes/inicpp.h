@@ -1,12 +1,10 @@
 /**
  * @file inicpp.h
- * @author Fabian Meyer
+ * @author Fabian Meyer (https://github.com/Rookfighter/inifile-cpp)
  * @brief A header-only and easy to use Ini file parser for C++.
  * @details inifile-cpp is a simple and easy to use single header-only ini file en- and decoder for C++.
  * @date 2015-12-26
  * @copyright Copyright (c) 2015 Fabian Meyer
- * @mainpage https://github.com/Rookfighter/inifile-cpp
- *
  */
 
 #ifndef INICPP_H_
