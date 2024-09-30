@@ -1,3 +1,13 @@
+/**
+ * @file rz_rz_readdir.cpp
+ * @author ZHENG Robert (www.robert.hase-zheng.net)
+ * @brief simple lib for folders and files
+ * @details simple class for directories
+ * @date 2023-04-15
+ * @copyright Copyright (c) 2023 ZHENG Robert
+ * @mainpage https://github.com/Zheng-Bote/
+ */
+
 #include "rz_readdir.h"
 
 ReadDir::ReadDir()
@@ -17,7 +27,8 @@ void ReadDir::searchFiles()
 {
     QDirIterator picsFileIt(ReadDir::path, {"*.jpg", "*.jpeg", "*.png", "*.bmp"}, QDir::Files);
 
-    while (picsFileIt.hasNext()) {
+    while (picsFileIt.hasNext())
+    {
         QFile f(picsFileIt.next());
         ReadDir::fileInfo(f);
     }
@@ -31,7 +42,8 @@ void ReadDir::searchFilesRekursive()
                             QDir::Files,
                             QDirIterator::Subdirectories);
 
-    while (picsFileIt.hasNext()) {
+    while (picsFileIt.hasNext())
+    {
         QFile f(picsFileIt.next());
         ReadDir::fileInfo(f);
     }

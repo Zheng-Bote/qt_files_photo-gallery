@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -115,7 +116,7 @@ flowchart LR;
 - [x] Buildsystem: CMake
 - [x] Clang-Tidy (cppcoreguidelines-\*)
 - [x] Documentation: Doxygen (modern style)
-- [ ] Installer: CMake
+- [x] Installer: CMake
 - [ ] portable application / runtime binaries (see Release)
 - [x] SBOM included (static; also Linux shell commands; GH-Action in work)
 - [ ] separation of documentation (general Readme - detailed `/docs/*`)
@@ -245,6 +246,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -299,7 +301,10 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 39 files
 ```
+
 <!-- readme-tree end -->
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Build
 
@@ -330,6 +335,18 @@ cmake --build .
 > generate Doxygen documentation with `cd build && cmake --build . --target doxygen`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Install
+
+### manually
+
+#### Linux, macOS
+
+Installing the binary and all necessary dependency libs:
+
+```Bash
+cd build && sudo cmake --install .
+```
 
 # API Reference
 

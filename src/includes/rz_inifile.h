@@ -1,3 +1,13 @@
+/**
+ * @file rz_inifile.cpp
+ * @author ZHENG Robert (www.robert.hase-zheng.net)
+ * @brief classlib for inicpp.h
+ * @details simple class for reading and writing the inifile
+ * @date 2023-04-15
+ * @copyright Copyright (c) 2023 ZHENG Robert
+ * @mainpage https://github.com/Zheng-Bote/
+ */
+
 #pragma once
 
 #include <QString>
@@ -43,5 +53,3 @@ public:
 private:
     ini::IniFile myIni;
 };
-
-

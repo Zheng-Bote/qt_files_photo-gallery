@@ -2,14 +2,15 @@
  * @file main.cpp
  * @author ZHENG Robert (www.robert.hase-zheng.net)
  * @brief QT6 CXX20 console app to add photos to DB
- * @details simple console app
+ * @details QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB
  * @date 2024-09-19
- *
  * @copyright Copyright (c) 2024 ZHENG Robert
+ * @mainpage https://github.com/Zheng-Bote/qt_files_photo-gallery
  *
  */
 
 // ToDo: options logfile
+// ToDo: configure default ini to /etc/<...>/... ???
 
 #include <QCoreApplication>
 #include <QDebug>
@@ -106,62 +107,86 @@ int main(int argc, char *argv[])
         inifile.append(".ini");
     }
 
-    if (result.count("env")) {
+    if (result.count("env"))
+    {
         std::string input = result["env"].as<std::string>();
 
-        if (input.compare("dev") == 0) {
+        if (input.compare("dev") == 0)
+        {
             env = "dev";
-        } else if (input.compare("int") == 0) {
+        }
+        else if (input.compare("int") == 0)
+        {
             env = "int";
-        } else if (input.compare("prod") == 0) {
+        }
+        else if (input.compare("prod") == 0)
+        {
             env = "prod";
-        } else {
+        }
+        else
+        {
             PLOG_ERROR << "Wrong Environment defined: " << input;
             exit(EXIT_FAILURE);
         }
     }
 
-    if (result.count("create")) {
+    if (result.count("create"))
+    {
         std::string input = result["create"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0) {
+        if (input.compare("<pathTo/inifile>") == 0)
+        {
             inifile = prog.c_str();
             inifile.append(".ini");
-        } else {
+        }
+        else
+        {
             inifile = input.c_str();
         }
         Inifile iniConfig;
         iniConfig.createIni();
-        if (!iniConfig.saveIniToFile(inifile)) {
+        if (!iniConfig.saveIniToFile(inifile))
+        {
             exit(EXIT_FAILURE);
         }
-        if (!iniConfig.loadIni(inifile)) {
+        if (!iniConfig.loadIni(inifile))
+        {
             exit(EXIT_FAILURE);
         }
         iniConfig.listIniEntries();
         exit(EXIT_SUCCESS);
     }
 
-    if (result.count("ini")) {
+    if (result.count("ini"))
+    {
         std::string input = result["ini"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0) {
-            std::cout << "\t=> missing argument <=\n" << std::endl;
+        if (input.compare("<pathTo/inifile>") == 0)
+        {
+            std::cout << "\t=> missing argument <=\n"
+                      << std::endl;
             std::cout << options.help() << std::endl;
             exit(EXIT_SUCCESS);
-        } else {
+        }
+        else
+        {
             inifile = input.c_str();
         }
     }
 
-    if (result.count("listini")) {
+    if (result.count("listini"))
+    {
         std::string input = result["listini"].as<std::string>();
-        if (input.compare("<pathTo/inifile>") == 0) {
+        if (input.compare("<pathTo/inifile>") == 0)
+        {
             inifile = prog.c_str();
             inifile.append(".ini");
-        } else {
+        }
+        else
+        {
             inifile = input.c_str();
         }
         Inifile iniConfig;
-        if (!iniConfig.loadIni(inifile)) {
+        if (!iniConfig.loadIni(inifile))
+        {
             exit(EXIT_FAILURE);
         }
         iniConfig.listIniEntries();
@@ -185,7 +210,8 @@ int main(int argc, char *argv[])
      * @brief inifile load
      */
     Inifile iniConfig;
-    if (!iniConfig.loadIni(inifile)) {
+    if (!iniConfig.loadIni(inifile))
+    {
         exit(EXIT_FAILURE);
     }
     /*
@@ -201,25 +227,36 @@ int main(int argc, char *argv[])
     PgDb pgDb;
 
     // dev: sql-file
-    if (env.compare("dev") == 0) {
+    if (env.compare("dev") == 0)
+    {
     }
     // int: sqlite3
-    if (env.compare("int") == 0) {
-        if (sqliteDb.connectDb(iniConfig, env)) {
-            if (sqliteDb.createTables() == true) {
+    if (env.compare("int") == 0)
+    {
+        if (sqliteDb.connectDb(iniConfig, env))
+        {
+            if (sqliteDb.createTables() == true)
+            {
                 PLOG_INFO << "SQLite3 db created";
-
-            } else {
+            }
+            else
+            {
                 exit(EXIT_FAILURE);
             }
-        } else {
+        }
+        else
+        {
             exit(EXIT_FAILURE);
         }
     }
     // prod: PostgreSQL
-    if (env.compare("prod") == 0) {
-        if (pgDb.connectDb(iniConfig, env)) {
-        } else {
+    if (env.compare("prod") == 0)
+    {
+        if (pgDb.connectDb(iniConfig, env))
+        {
+        }
+        else
+        {
             exit(EXIT_FAILURE);
         }
     }
@@ -234,7 +271,7 @@ int main(int argc, char *argv[])
     /**
      * @brief the end
      */
-    //pgDb.closeDb();
+    // pgDb.closeDb();
     sqliteDb.closeDb();
     exit(EXIT_SUCCESS);
 }

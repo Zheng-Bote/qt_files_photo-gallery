@@ -1,3 +1,13 @@
+/**
+ * @file rz_sqlite3_db.cpp
+ * @author ZHENG Robert (www.robert.hase-zheng.net)
+ * @brief simple classlib for SQLITE3
+ * @details simple class lib for SQLite3
+ * @date 2023-04-15
+ * @copyright Copyright (c) 2023 ZHENG Robert
+ * @mainpage https://github.com/Zheng-Bote/
+ */
+
 #include "rz_sqlite3_db.h"
 
 SqliteDb::SqliteDb() {}
@@ -18,10 +28,13 @@ bool SqliteDb::connectDb(Inifile &iniConfig, QString &env)
     SqliteDb::db = QSqlDatabase::addDatabase("QSQLITE");
     SqliteDb::db.setDatabaseName(iniConfig.getDbFile(env));
 
-    if (!SqliteDb::db.open()) {
+    if (!SqliteDb::db.open())
+    {
         PLOG_ERROR << "Connection to DB failed!";
         connectStatus = false;
-    } else {
+    }
+    else
+    {
         PLOG_INFO << "Connected to DB";
         connectStatus = true;
     }
@@ -38,9 +51,12 @@ bool SqliteDb::createTables()
                   "path            TEXT                 NOT NULL, "
                   "file_name       TEXT                 NOT NULL );");
 
-    if (query.exec()) {
+    if (query.exec())
+    {
         connectStatus = true;
-    } else {
+    }
+    else
+    {
         PLOG_ERROR << "Create table Photo failed: " << query.lastError().text();
     }
 
@@ -58,25 +74,34 @@ bool SqliteDb::createTables()
                   "Contact         VARCHAR(128)    DEFAULT NULL, "
                   "Capytion        TEXT          DEFAULT 0 );");
 
-    if (query.exec()) {
+    if (query.exec())
+    {
         connectStatus = true;
-    } else {
+    }
+    else
+    {
         PLOG_ERROR << "Create table IPTC failed: " << query.lastError().text();
     }
 
     query.prepare("CREATE INDEX IF NOT EXISTS index_id ON iptc (ID ASC);");
-    if (query.exec()) {
+    if (query.exec())
+    {
         connectStatus = true;
-    } else {
+    }
+    else
+    {
         PLOG_WARNING << "Create index failed: " << query.lastError().text();
     }
 
     query.prepare("CREATE TRIGGER IF NOT EXISTS trigger_photo_delete after delete on photos begin "
                   "delete from "
                   "iptc where id = OLD.id; END");
-    if (query.exec()) {
+    if (query.exec())
+    {
         connectStatus = true;
-    } else {
+    }
+    else
+    {
         PLOG_WARNING << "Create trigger failed: " << query.lastError().text();
     }
 

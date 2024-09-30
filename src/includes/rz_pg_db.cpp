@@ -1,3 +1,13 @@
+/**
+ * @file rz_pg_db.cpp
+ * @author ZHENG Robert (www.robert.hase-zheng.net)
+ * @brief simple classlib for PostgreSQL
+ * @details simple class lib for pg
+ * @date 2023-04-15
+ * @copyright Copyright (c) 2023 ZHENG Robert
+ * @mainpage https://github.com/Zheng-Bote/
+ */
+
 #include "rz_pg_db.h"
 
 PgDb::PgDb() {}
@@ -22,10 +32,13 @@ bool PgDb::connectDb(Inifile &iniConfig, QString &env)
     PgDb::db.setPassword(iniConfig.getDbPassword(env));
     PgDb::db.setPort(iniConfig.getDbPort(env));
 
-    if (!PgDb::db.open()) {
+    if (!PgDb::db.open())
+    {
         PLOG_ERROR << "Connection to DB failed!";
         connectStatus = false;
-    } else {
+    }
+    else
+    {
         PLOG_INFO << "Connected to DB";
         connectStatus = true;
     }

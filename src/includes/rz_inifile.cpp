@@ -1,13 +1,11 @@
 /**
  * @file rz_inifile.cpp
  * @author ZHENG Robert (www.robert.hase-zheng.net)
- * @brief lib to CRUD inifile
+ * @brief classlib for inicpp.h
  * @details simple class for reading and writing the inifile
- * @version 0.7.0
  * @date 2023-04-15
- *
  * @copyright Copyright (c) 2023 ZHENG Robert
- *
+ * @mainpage https://github.com/Zheng-Bote/
  */
 
 #include "rz_inifile.h"

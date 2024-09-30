@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.22)
 
 project(
-  qt_files_photo-gallery
-  VERSION 0.1.2
-  DESCRIPTION "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB"
+  files_photo-gallery
+  VERSION 0.1.4
+  DESCRIPTION
+    "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
   LANGUAGES CXX)
 
@@ -39,7 +40,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeFiles")
 
 # no need to list header files, but helpful for IDE
 add_executable(
-  qt_files_photo-gallery
+  files_photo-gallery
   main.cpp
   includes/rz_inifile.cpp
   includes/rz_inifile.h
@@ -54,55 +55,58 @@ set(PROG_NAME "${PROJECT_NAME}")
 set(PROG_VERSION "${PROJECT_VERSION}")
 set(PROG_HOMEPAGE "${PROJECT_HOMEPAGE_URL}")
 configure_file(configure/rz_config.h.in configured/rz_config.h)
-target_include_directories(qt_files_photo-gallery
+
+target_compile_features(files_photo-gallery PUBLIC cxx_std_20)
+
+target_include_directories(files_photo-gallery
                            PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 target_link_libraries(
-  qt_files_photo-gallery Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Sql
+  files_photo-gallery Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Sql
   cxxopts::cxxopts plog::plog inicpp)
 
-# are we compliant?  
+# are we compliant?
 include(ClangTidy)
-AddClangTidy(qt_files_photo-gallery)
+addclangtidy(files_photo-gallery)
 
 target_compile_definitions(
-  qt_files_photo-gallery
+  files_photo-gallery
   PRIVATE $<$<COMPILE_LANG_AND_ID:CXX,AppleClang,Clang>:CXX_CLANG>
           $<$<COMPILE_LANG_AND_ID:CXX,Intel>:CXX_INTEL>
           $<$<COMPILE_LANG_AND_ID:C,Clang,Clang>:C_CLANG>)
 
-target_compile_features(qt_files_photo-gallery PUBLIC cxx_std_20)
-
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   message(STATUS "building SHA256sum on Linux ${CMAKE_SYSTEM_VERSION}")
   add_custom_command(
-    TARGET qt_files_photo-gallery
+    TARGET files_photo-gallery
     POST_BUILD
-    COMMAND sha256sum ARGS "qt_files_photo-gallery" >
-            "qt_files_photo-gallery.sha256sum")
+    COMMAND sha256sum ARGS "files_photo-gallery" >
+            "files_photo-gallery.sha256sum")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   message(STATUS "building SHA256sum on MacOS ${CMAKE_SYSTEM_VERSION}")
   add_custom_command(
-    TARGET qt_files_photo-gallery
+    TARGET files_photo-gallery
     POST_BUILD
-    COMMAND shasum ARGS "-a 256 qt_files_photo-gallery" >
-            "qt_files_photo-gallery.sha256sum")
+    COMMAND shasum ARGS "-a 256 files_photo-gallery" >
+            "files_photo-gallery.sha256sum")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   message(STATUS "building SHA256sum on Windows ${CMAKE_SYSTEM_VERSION}")
   # Powershell
   add_custom_command(
-    TARGET qt_files_photo-gallery
+    TARGET files_photo-gallery
     POST_BUILD
-    COMMAND Get-Filehash ARGS "$<TARGET_FILE_NAME:qt_files_photo-gallery.exe>"
+    COMMAND Get-Filehash ARGS "$<TARGET_FILE_NAME:files_photo-gallery.exe>"
             > "qt_files_photo-gallery.sha256sum")
 endif()
 
 include(Doxygen)
-Doxygen(. docs)
-
+doxygen(. docs)
 
 include(GNUInstallDirs)
 install(
-  TARGETS qt_files_photo-gallery
+  TARGETS files_photo-gallery
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+install(TARGETS files_photo-gallery RUNTIME_DEPENDENCY_SET libDeps)
+install(RUNTIME_DEPENDENCY_SET libDeps)

@@ -1,3 +1,13 @@
+/**
+ * @file rz_rz_readdir.cpp
+ * @author ZHENG Robert (www.robert.hase-zheng.net)
+ * @brief simple lib for folders and files
+ * @details simple class for directories
+ * @date 2023-04-15
+ * @copyright Copyright (c) 2023 ZHENG Robert
+ * @mainpage https://github.com/Zheng-Bote/
+ */
+
 #pragma once
 
 #include <QDirIterator>
