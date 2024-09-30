@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -114,11 +115,12 @@ flowchart LR;
 <br>
 
 - [x] some more or less usefull Github Actions for GH-repo, GH-pages, GH-wiki, CI/CD-Pipelines, Release-Mgmt.
-- [x] Packaging: Conan
+- [x] Package-Manager: Conan
 - [x] Buildsystem: CMake
 - [x] Clang-Tidy (cppcoreguidelines-\*)
 - [x] Documentation: Doxygen (modern style)
 - [x] Installer: CMake
+- [x] Packaging: CPack (deb, rpm, zip, ...)
 - [ ] portable application / runtime binaries (see Release)
 - [x] SBOM included (static; also Linux shell commands; GH-Action in work)
 - [ ] separation of documentation (general Readme - detailed `/docs/*`)
@@ -248,6 +250,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -302,6 +305,7 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 39 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -329,6 +333,12 @@ cmake -S ../src -B . -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.
 
 # cmake --build . --parallel <number of CPU cores>
 cmake --build .
+```
+
+#### Packaging
+
+```Bash
+cd build && sudo cpack -G "ZIP;DEB;RPM" -B packages
 ```
 
 > [!NOTE]

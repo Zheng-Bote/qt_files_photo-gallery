@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(
   files_photo-gallery
-  VERSION 0.1.4
+  VERSION 0.1.5
   DESCRIPTION
     "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
@@ -110,3 +110,8 @@ install(
 
 install(TARGETS files_photo-gallery RUNTIME_DEPENDENCY_SET libDeps)
 install(RUNTIME_DEPENDENCY_SET libDeps)
+
+set(CPACK_PACKAGE_VENDOR "ZHENG Robert")
+set(CPACK_PACKAGE_CONTACT "https://github.com/Zheng-Bote/qt_files_photo-gallery")
+set(CPACK_PACKAGE_DESCRIPTION "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB")
+include(CPack)
