@@ -336,16 +336,18 @@ cmake -S ../src -B . -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.
 cmake --build .
 ```
 
-#### Packaging
-
-```Bash
-cd build && sudo cpack -G "ZIP;DEB;RPM" -B packages
-```
-
 > [!NOTE]
 > generate Doxygen documentation with `cd build && cmake --build . --target doxygen`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Packaging
+
+### Linux, macOS
+
+```Bash
+cd build && sudo cpack -G "ZIP;DEB;RPM" -B packages
+```
 
 ## Install
 

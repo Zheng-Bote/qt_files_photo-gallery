@@ -36,5 +36,5 @@ runs:
   steps:
     - name: create TOC of Markdown files
       id: doctoc
-      run: node ./.github/actions/doctoc/dist/index.js . --github --title '**Table of Contents**'
+      run: node ./.github/actions/doctoc/dist/index.js . --github --title '**Table of Contents**' --folding true
       shell: bash
