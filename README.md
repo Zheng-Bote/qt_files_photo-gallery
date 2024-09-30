@@ -276,6 +276,7 @@ Plog - portable, simple and extensible C++ logging library
 ├── dist
 │   ├── README.md
 │   ├── atom_usages_v0.1.0.json
+│   ├── main.cpp_v0.1.4.svg
 │   ├── qt_files_photo-gallery.ini
 │   └── sbom_v0.1.0.json
 ├── src
@@ -303,7 +304,7 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-10 directories, 39 files
+10 directories, 40 files
 ```
 
 <!-- readme-tree end -->
