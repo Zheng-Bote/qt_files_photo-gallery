@@ -112,6 +112,6 @@ install(TARGETS files_photo-gallery RUNTIME_DEPENDENCY_SET libDeps)
 install(RUNTIME_DEPENDENCY_SET libDeps)
 
 set(CPACK_PACKAGE_VENDOR "ZHENG Robert")
-set(CPACK_PACKAGE_CONTACT "https://github.com/Zheng-Bote/qt_files_photo-gallery")
+set(CPACK_PACKAGE_CONTACT "https://www.robert.hase-zheng.net")
 set(CPACK_PACKAGE_DESCRIPTION "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB")
 include(CPack)
