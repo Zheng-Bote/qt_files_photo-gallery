@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -39,6 +38,9 @@
     - [QT](#qt-1)
     - [manually](#manually)
       - [Linux, macOS](#linux-macos)
+  - [Install](#install)
+    - [manually](#manually-1)
+      - [Linux, macOS](#linux-macos-1)
 - [API Reference](#api-reference)
   - [Inputs / Parameters](#inputs--parameters)
   - [Outputs](#outputs)
@@ -246,7 +248,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -301,7 +302,6 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 39 files
 ```
-
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
