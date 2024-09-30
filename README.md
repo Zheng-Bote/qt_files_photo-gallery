@@ -1,5 +1,5 @@
 <div id="top" align="center">
-<h1>qt_files_photo-gallery</h1>
+<h1>files_photo-gallery</h1>
 
 <p>QT6 CXX20 console app to convert photos and add Metadata to Database</p>
 
