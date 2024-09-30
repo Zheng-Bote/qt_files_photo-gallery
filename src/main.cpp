@@ -94,8 +94,7 @@ int main(int argc, char *argv[])
     }
     if (result.count("version"))
     {
-        std::cout << QCoreApplication::applicationName().toStdString() << "-"
-                  << QCoreApplication::applicationVersion().toStdString() << std::endl;
+        std::cout << PROG_NAME << " v" << PROG_VERSION << std::endl;
         exit(0);
     }
 
