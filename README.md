@@ -14,11 +14,10 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Description](#description)
-  - [Features](#features)
+    - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -42,8 +41,7 @@
   - [Packaging](#packaging)
     - [Linux, macOS](#linux-macos-1)
   - [Install](#install)
-    - [manually](#manually-1)
-      - [Linux, macOS](#linux-macos-2)
+    - [Binaries](#binaries)
 - [API Reference](#api-reference)
   - [Inputs / Parameters](#inputs--parameters)
   - [Outputs](#outputs)
