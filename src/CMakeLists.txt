@@ -29,12 +29,12 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   message(STATUS "this is Windows")
 endif()
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Sql)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Sql)
+find_package(Qt6 REQUIRED COMPONENTS Core Sql)
 find_package(cxxopts REQUIRED)
 find_package(plog REQUIRED)
 
 add_library(inicpp includes/inicpp.h)
+#add_library(aesencrypt includes/qaesencryption.h)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeFiles")
 
@@ -49,7 +49,14 @@ add_executable(
   includes/rz_sqlite3_db.cpp
   includes/rz_sqlite3_db.h
   includes/rz_readdir.cpp
-  includes/rz_readdir.h)
+  includes/rz_readdir.h
+  includes/rz_datetime.h
+  includes/rz_datetime.cpp
+  includes/rz_aes.h
+  includes/rz_aes.cpp
+  includes/qaesencryption.h
+  includes/qaesencryption.cpp
+)
 
 set(PROG_NAME "${PROJECT_NAME}")
 set(PROG_VERSION "${PROJECT_VERSION}")
@@ -62,12 +69,12 @@ target_include_directories(files_photo-gallery
                            PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 target_link_libraries(
-  files_photo-gallery Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Sql
+  files_photo-gallery Qt6::Core Qt6::Sql
   cxxopts::cxxopts plog::plog inicpp)
 
 # are we compliant?
-include(ClangTidy)
-addclangtidy(files_photo-gallery)
+#include(ClangTidy)
+#addclangtidy(files_photo-gallery)
 
 target_compile_definitions(
   files_photo-gallery

@@ -9,7 +9,7 @@
 
 // ToDo: options logfile
 // ToDo: configure default path for ini to /etc/<...>/... ???
-// ToDo: configute default path for logfile to /var/logs/<...> ???
+// ToDo: AesEnc
 
 #include <QCoreApplication>
 #include <QDebug>
@@ -28,9 +28,15 @@
 #include "includes/rz_readdir.h"
 #include "includes/rz_sqlite3_db.h"
 
+#include "includes/rz_aes.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+
+    // ToDo
+    AesEnc aesEnc;
+
     /*
     QCoreApplication::setApplicationName("files_to_photo-gallery");
     QCoreApplication::setApplicationVersion("0.1.0");
@@ -43,7 +49,8 @@ int main(int argc, char *argv[])
     inifile.append(".ini");
 
     // default logging
-    QString logfile = prog.c_str();
+    QString logfile = "/var/log/";
+    logfile.append(prog.c_str());
     logfile.append(".log");
 
     // default env
