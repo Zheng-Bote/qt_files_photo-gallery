@@ -371,16 +371,11 @@ dpkg -i files_photo-gallery-0.1.5-Linux.deb
 
 unzip files_photo-gallery-0.1.5-Linux.zip
 
-...
+....
 
-graphical installer (QT6 IFW)
-
-```
-
+# graphical installer (QT6 IFW)
 ./files_photo-gallery-0.1.5-Linux.run
-
-````
-
+```
 
 ### manually
 
@@ -390,7 +385,7 @@ Installing the binary and all necessary dependency libs:
 
 ```Bash
 cd build && sudo cmake --install .
-````
+```
 
 # API Reference
 
@@ -403,10 +398,6 @@ cd build && sudo cmake --install .
 > at least 1 parameter is required
 
 - `-a` or `-i <path to>/<ini file>`
-
-> [!TIP]
-> use shortcuts
-
 - use `-a` for shortcut
 - use `-a -e <env>` for shortcut
 - use `-i <path to>/<ini file>`
