@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -105,7 +106,7 @@ flowchart LR;
 - [ ] Exchangeable Image File Format (Exif; read, write; sql insert)
 - [ ] IPTC-IIM (IPTC; read, write; sql insert)
 - [ ] converts images to several WebP sizes
-- [ ] Argon2 for (db) password encryption
+- [ ] (db) password encryption
 - [ ] advanced-extra-super-ultra-special feature xyz
 
 <br>
@@ -253,6 +254,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -309,6 +311,7 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 41 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
