@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(
   files_photo-gallery
-  VERSION 0.1.5
+  VERSION 0.1.6
   DESCRIPTION
     "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
@@ -111,7 +111,19 @@ install(
 install(TARGETS files_photo-gallery RUNTIME_DEPENDENCY_SET libDeps)
 install(RUNTIME_DEPENDENCY_SET libDeps)
 
+
+# IFW needs to set external export QTIFWDIR=...
+# set(QTIFWDIR "${GLOBAL}/Qt/Tools/QtInstallerFramework/4.8/bin")
+include(InstallRequiredSystemLibraries)
+set(CPACK_IFW_ROOT "$ENV{HOME}/Qt/Tools/QtInstallerFramework/4.8")
+set(CPACK_RESOURCE_FILE_LICENSE  ${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE)
 set(CPACK_PACKAGE_VENDOR "ZHENG Robert")
 set(CPACK_PACKAGE_CONTACT "https://www.robert.hase-zheng.net")
 set(CPACK_PACKAGE_DESCRIPTION "QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "convert photos and add Metadata to Database")
+set(CPACK_THREADS "${N}")
+set(CPACK_PACKAGE_CHECKSUM SHA256)
+set(CPACK_GENERATOR "IFW;DEB;ZIP;TBZ2;RPM")
+set(CPACK_PACKAGE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Packaging")
+
 include(CPack)

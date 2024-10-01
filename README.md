@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -121,7 +122,8 @@ flowchart LR;
 - [x] Clang-Tidy (cppcoreguidelines-\*)
 - [x] Documentation: Doxygen (modern style)
 - [x] Installer: CMake
-- [x] Packaging: CPack (deb, rpm, zip, ...)
+- [x] Packaging: CPack (IFW;DEB;ZIP;TBZ2;RPM)
+- [x] graphical installer (QT6 IFW)
 - [ ] portable application / runtime binaries (see Release)
 - [x] SBOM included (static; also Linux shell commands; GH-Action in work)
 - [ ] separation of documentation (general Readme - detailed `/docs/*`)
@@ -251,6 +253,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -306,6 +309,7 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 40 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -346,9 +350,37 @@ cmake --build .
 
 ```Bash
 cd build && sudo cpack -G "ZIP;DEB;RPM" -B packages
+# or
+cd build && sudo cmake --build . --target package
+```
+
+```Bash
+cd build && sudo cmake --build . --target  package_source
 ```
 
 ## Install
+
+### Binaries
+
+depends on your system
+
+```Bash
+rpm -i files_photo-gallery-0.1.5-Linux.rpm
+
+dpkg -i files_photo-gallery-0.1.5-Linux.deb
+
+unzip files_photo-gallery-0.1.5-Linux.zip
+
+...
+
+graphical installer (QT6 IFW)
+
+```
+
+./files_photo-gallery-0.1.5-Linux.run
+
+````
+
 
 ### manually
 
@@ -358,7 +390,7 @@ Installing the binary and all necessary dependency libs:
 
 ```Bash
 cd build && sudo cmake --install .
-```
+````
 
 # API Reference
 
@@ -423,6 +455,8 @@ flowchart TD;
 
 > \[!IMPORTANT]
 > documentation is still under construction.
+
+see also folder: [dist](./dist/)
 
 > [!NOTE]
 > generate Doxygen documentation with `cd build && cmake --build . --target doxygen`
