@@ -42,6 +42,8 @@
     - [Linux, macOS](#linux-macos-1)
   - [Install](#install)
     - [Binaries](#binaries)
+    - [manually](#manually-1)
+      - [Linux, macOS](#linux-macos-2)
 - [API Reference](#api-reference)
   - [Inputs / Parameters](#inputs--parameters)
   - [Outputs](#outputs)
