@@ -8,7 +8,8 @@
  */
 
 // ToDo: options logfile
-// ToDo: configure default ini to /etc/<...>/... ???
+// ToDo: configure default path for ini to /etc/<...>/... ???
+// ToDo: configute default path for logfile to /var/logs/<...> ???
 
 #include <QCoreApplication>
 #include <QDebug>
