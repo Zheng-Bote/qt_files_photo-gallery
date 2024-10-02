@@ -266,6 +266,7 @@ Plog - portable, simple and extensible C++ logging library
 │   │           ├── licenses.txt
 │   │           └── sourcemap-register.js
 │   └── workflows
+│       ├── ghp-markdown_index.yml
 │       ├── repo-actions_docu.yml
 │       ├── repo-call_Readme.yml
 │       ├── repo-create_doctoc.yml_
@@ -313,7 +314,7 @@ Plog - portable, simple and extensible C++ logging library
 │   └── main.cpp
 └── tree.bak
 
-10 directories, 47 files
+10 directories, 48 files
 ```
 <!-- readme-tree end -->
 
