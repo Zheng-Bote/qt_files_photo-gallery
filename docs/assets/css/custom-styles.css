@@ -29,10 +29,6 @@ ul.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
-input {
-  accent-color: #c70039;
-}
-
 pre,
 code,
 .language-Shell {
@@ -41,8 +37,8 @@ code,
 }
 
 input[type="checkbox"]:checked {
-  outline: 2px solid green;
-  background-color: rgb(80, 79, 79);
+  outline: 2px solid red;
+  accent-color: #878485;
 }
 
 /*
