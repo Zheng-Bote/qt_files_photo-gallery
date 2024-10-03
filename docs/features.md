@@ -2,6 +2,10 @@
 
 <span id="top"></span>
 
+<input type="checkbox" name="input-checkbox-example" value="Nier" checked>
+
+<input type="checkbox" name="input-checkbox-example2" value="NOK">
+
 # Features
 
 - [x] supports PostgreSQL (insert)
