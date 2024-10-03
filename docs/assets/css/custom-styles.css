@@ -39,8 +39,7 @@ input[type="checkbox"]:checked {
   accent-color: #535152;
 }
 
-/*
 .task-list-item-checkbox {
-  accent-color: #c70039;
+  outline: 2px solid red;
+  accent-color: #535152;
 }
-  */
