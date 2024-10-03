@@ -5,7 +5,7 @@ author:
 description: QT6 CXX20 console app to convert photos and add Metadata to Database
 
 remote_theme: jekyll/minima
-theme: minima
+#theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
