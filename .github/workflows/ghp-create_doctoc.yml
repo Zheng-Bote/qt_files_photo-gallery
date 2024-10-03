@@ -14,10 +14,10 @@ on:
   push:
     branches:
       - "gh-pages"
-    paths:
+  #  paths:
   #    - "README.md"
   #    - "dist/**"
-      - "docs/**"
+  #    - "docs/**"
   #    - ".github/actions/**"
   #    - ".github/workflows/**"
 
