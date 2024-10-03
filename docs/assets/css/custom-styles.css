@@ -29,11 +29,9 @@ ul.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
-pre,
-code,
-.language-Shell {
+pre > code.language-Shell {
   background-color: black;
-  color: green;
+  color: lightgreen;
 }
 
 input[type="checkbox"]:checked {
