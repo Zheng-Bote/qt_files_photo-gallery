@@ -20,3 +20,8 @@ ul.breadcrumb li a:hover {
   color: #01447e;
   text-decoration: underline;
 }
+
+input[type="checkbox"] {
+  accent-color: #c70039;
+  color: green;
+}
