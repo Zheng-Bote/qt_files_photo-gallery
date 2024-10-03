@@ -30,9 +30,11 @@ ul.breadcrumb li a:hover {
 }
 
 pre {
-  code.language-Shell {
-    background-color: black;
-    color: lightgreen;
+  code {
+    .language-Shell {
+      background-color: black;
+      color: lightgreen;
+    }
   }
 }
 
