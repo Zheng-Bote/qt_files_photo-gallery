@@ -1,7 +1,10 @@
 # 
-# content erste dritte Zeile
+content erste dritte Zeile
 
 > QT6 CXX20 console app to convert photos and add Metadata to Database
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+![GitHub Created At](https://img.shields.io/github/created-at/Zheng-Bote/qt_files_photo-gallery)
 
 <hr>
 
@@ -30,17 +33,10 @@ Photos are converted into different sizes in WebP format and the metadata is wri
 
 Any existing Exif and IPTC metadata is also taken into account.
 
-<div align="center">
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-![GitHub Created At](https://img.shields.io/github/created-at/Zheng-Bote/qt_files_photo-gallery)
-
 ![Status](https://img.shields.io/badge/Status-under_construction-red)
 
 ![GitHub Issues](https://img.shields.io/github/issues/Zheng-Bote/qt_files_photo-gallery)
 ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Zheng-Bote/qt_files_photo-gallery)
-
-</div>
 
 
 ## Categories
