@@ -2,7 +2,7 @@ title: files_photo-gallery
 author:
   name: ZHENG Robert
   #email: no.spam@hotmail.dev
-description: convert photos and add Metadata to Database
+description: QT6 CXX20 console app to convert photos and add Metadata to Database
 
 remote_theme: jekyll/minima
 #theme: minima

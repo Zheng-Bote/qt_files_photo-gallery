@@ -1,6 +1,6 @@
 # About
 
-Development environment ("Spielwiese")
+<p>{{ site.description | escape }}</p>
 
 ## Kontakt
 
