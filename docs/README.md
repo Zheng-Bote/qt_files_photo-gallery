@@ -14,6 +14,8 @@ Brief
 
   - [Description](#description)
 - [Features](#features)
+  - [Categories](#categories)
+  - [Documents](#documents)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
