@@ -1,20 +1,38 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [](#)
-  - [Categories](#categories)
-  - [Documents](#documents)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # 
 > QT6 CXX20 console app to convert photos and add Metadata to Database
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![GitHub Created At](https://img.shields.io/github/created-at/Zheng-Bote/qt_files_photo-gallery)
 
-das ist ein TEst
+# Description
+
+![QT](https://img.shields.io/badge/Community-6-41CD52?logo=qt)
+![CXX](https://img.shields.io/badge/C++-20-blue?logo=cplusplus)
+
+QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB.
+
+> The purpose of this tool is to run as a microservice to prepare photos for a web-based photo-gallery.
+
+Photos are converted into different sizes in WebP format and the metadata is written into a database.
+
+Any existing Exif and IPTC metadata is also taken into account.
+
+```mermaid
+flowchart LR;
+  A["`local storage
+  **Photos**`"] --> B[[files to photo-db]]
+  B-- Metadata ---C[(**Database**)]
+  B-- "sql" ---D["`**SQL-File**
+  _insert into ..._`"]
+  B-- "convert & enrich" ---S[["`local storage
+  **./WebP-Photos**`"]]
+```
+
+        <ol>
+          <li><a href="#">Viennoiseries</a></li>
+          <li><a href="#">Tartelettes</a></li>
+          <li><a href="#">Aux mûres</a></li>
+        </ol>
 
 
 ## Categories
