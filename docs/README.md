@@ -3,7 +3,6 @@
 **Table of Contents**
 
 - [](#)
-- [content erste Zeile](#content-erste-zeile)
 - [Description](#description)
   - [Categories](#categories)
   - [Documents](#documents)
@@ -11,7 +10,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # 
-# content erste Zeile
+content erste Zeile
 
 > QT6 CXX20 console app to convert photos and add Metadata to Database
 
