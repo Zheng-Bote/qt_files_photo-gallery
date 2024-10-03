@@ -1,5 +1,9 @@
 :root {
-  accent-color: blue;
+  accent-color: oklch(59.99% 0 0);
+}
+html {
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 ul.breadcrumb {

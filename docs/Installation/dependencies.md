@@ -1,5 +1,7 @@
 ## Dependencies
 
+<span id="top"></span>
+
 _All licenses are therefore GPL-compatible._
 
 ### Conan
@@ -70,3 +72,5 @@ Plog - portable, simple and extensible C++ logging library
 
 > \[!NOTE]
 > managed via the package manager [![Conan Center](https://img.shields.io/conan/v/plog)](https://conan.io/center/recipes/plog)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
