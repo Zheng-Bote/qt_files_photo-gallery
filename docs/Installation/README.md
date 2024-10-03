@@ -18,4 +18,5 @@ eine weitere Zeile in content.md
 
 
 ## Documents
+- [dependencies](dependencies.md)
 - [manual](manual.md)
