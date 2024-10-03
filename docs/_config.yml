@@ -2,7 +2,7 @@ title: files_photo-gallery
 author:
   name: ZHENG Robert
   #email: no.spam@hotmail.dev
-description: QT6 CXX20 console app to convert photos and add Metadata to Database
+description: convert photos and add Metadata to Database
 
 remote_theme: jekyll/minima
 #theme: minima
@@ -13,8 +13,8 @@ plugins:
 minima:
   skin: auto
   social_links: 
-    - { platform: github,         user_url: "https://github.com/jekyll/minima" }
-    - { platform: linkedin,       user_url: "https://www.linkedin.com/in/jekyll" }
+    - { platform: github,         user_url: "https://github.com/Zheng-Bote" }
+    - { platform: linkedin,       user_url: "https://www.linkedin.com/in/robert-zheng-67899965/" }
   date_format: "%Y-%m-%d %H:%M"
 
 
@@ -24,7 +24,7 @@ author:
 
 page_created: 2024-09-09
 page_url: https://zheng-bote.github.io/qt_files_photo-gallery
-page_desc: QT6 CXX20 console app to convert photos and add Metadata to Database
+page_desc: convert photos and add Metadata to Database
 
 header_pages:
   - about.md
