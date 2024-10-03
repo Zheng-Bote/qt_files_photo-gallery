@@ -1,6 +1,17 @@
 # About
 
+<span id="top"></span>
+
 <p>{{ site.description | escape }}</p>
+
+<hr>
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<hr>
 
 ## Contact
 
@@ -17,6 +28,8 @@
     <svg class="svg-icon orange">
       <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
     </svg>
-    <span>Subscribe</span>
+    <span>RSS atom feed</span>
   </a>
 </div>
+
+<p align="right">(<a href="#top">back to top</a>)</p>

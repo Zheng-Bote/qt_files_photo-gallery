@@ -1,3 +1,5 @@
+<!-- DOCTOC SKIP -->
+
 # Links
 
 - Github: [qt_files_photo-gallery](https://github.com/Zheng-Bote/qt_files_photo-gallery)
