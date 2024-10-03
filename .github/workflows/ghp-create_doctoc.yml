@@ -20,6 +20,7 @@ on:
   #    - "docs/**"
   #    - ".github/actions/**"
   #    - ".github/workflows/**"
+  page_build:
 
 permissions:
   checks: write
