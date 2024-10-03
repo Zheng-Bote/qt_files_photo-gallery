@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -253,6 +254,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -315,6 +317,7 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 47 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -331,7 +334,7 @@ just load the project in QT Creator and run build <debug> or <release...>
 
 #### Linux, macOS
 
-```Bash
+```Shell
 cd src
 
 conan install . --output-folder=../build --build=missing
