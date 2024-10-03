@@ -1,5 +1,4 @@
-@import "minima/skins/{{ site.minima.skin | default: 'classic' }}",
-  "minima/initialize";
+@import "minima/skins/{{ site.minima.skin | default: 'classic' }}";
 
 ul.breadcrumb {
   padding: 10px 16px;
