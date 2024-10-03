@@ -54,7 +54,7 @@ jobs:
         uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: "main"
+          push-branch: "gh-pages"
           commit-message: "appended by Github Actions"
           force-add: "true"
           #files: README.md
