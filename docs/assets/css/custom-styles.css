@@ -1,3 +1,7 @@
+:root {
+  accent-color: blue;
+}
+
 ul.breadcrumb {
   /*padding: 10px 16px; */
   list-style: none;
@@ -21,11 +25,6 @@ ul.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
-input[type="checkbox"] {
+input {
   accent-color: #c70039;
-}
-
-input[type="checkbox"]:checked {
-  color: green;
-  font-weight: bold;
 }
