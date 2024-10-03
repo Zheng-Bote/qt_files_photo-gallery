@@ -29,18 +29,14 @@ ul.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
-pre {
-  code {
-    .language-Shell {
-      background-color: black;
-      color: lightgreen;
-    }
-  }
+pre code .language-Shell {
+  background-color: black;
+  color: lightgreen;
 }
 
 input[type="checkbox"]:checked {
   outline: 2px solid red;
-  accent-color: #878485;
+  accent-color: #535152;
 }
 
 /*
