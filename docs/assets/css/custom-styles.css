@@ -37,3 +37,7 @@ input {
   background-color: black;
   color: green;
 }
+
+.task-list-item-checkbox {
+  accent-color: #c70039;
+}
