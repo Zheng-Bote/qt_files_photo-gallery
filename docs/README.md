@@ -1,5 +1,5 @@
 # 
-main
+Brief
 
 > QT6 CXX20 console app to convert photos and add Metadata to Database
 
@@ -41,6 +41,5 @@ Any existing Exif and IPTC metadata is also taken into account.
 - [Installation](./Installation/README.md)
 
 ## Documents
-- [.include](.include.md)
 - [features](features.md)
 - [main](main.md)
