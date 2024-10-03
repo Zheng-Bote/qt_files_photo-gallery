@@ -1,7 +1,5 @@
 <!-- DOCTOC SKIP -->
 
-<span id="top"></span>
-
 <input type="checkbox" name="input-checkbox-example" value="Nier" checked>
 
 <style>

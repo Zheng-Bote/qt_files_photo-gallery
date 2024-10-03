@@ -32,3 +32,8 @@ ul.breadcrumb li a:hover {
 input {
   accent-color: #c70039;
 }
+
+.language-Shell {
+  background-color: black;
+  color: green;
+}
