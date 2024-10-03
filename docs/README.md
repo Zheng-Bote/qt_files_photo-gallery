@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [](#)
+- [Description](#description)
+  - [Categories](#categories)
+  - [Documents](#documents)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 
 > QT6 CXX20 console app to convert photos and add Metadata to Database
 
