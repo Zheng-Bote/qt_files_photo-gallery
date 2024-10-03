@@ -33,7 +33,10 @@ input {
   accent-color: #c70039;
 }
 
-code.language-Shell {
+pre {
+  background-color: lightblue;
+}
+pre > code > .language-Shell {
   background-color: black;
   color: green;
 }
