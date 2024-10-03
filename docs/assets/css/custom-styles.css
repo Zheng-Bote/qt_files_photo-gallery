@@ -40,7 +40,12 @@ input[type="checkbox"]:checked {
 }
 
 .task-list-item-checkbox {
-  /*outline: 2px solid red;*/
+  outline: 2px solid black;
+  accent-color: #535152;
+}
+
+.task-list-item-checkbox:checked {
+  outline: 2px solid black;
   accent-color: #535152;
   background-color: tomato;
 }
