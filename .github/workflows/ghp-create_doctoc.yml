@@ -6,7 +6,7 @@ name: GHP - create TOC of Markdown files
 # <!-- START doctoc -->   // fix position of TOC; otherwise on top of markdown file
 # <!-- END doctoc -->     // end of ToC area
 
-run-name: create README table of contents by ${{ github.actor }}
+run-name: create GHP table of contents by ${{ github.actor }}
 
 on:
   workflow_dispatch:
