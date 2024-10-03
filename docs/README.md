@@ -10,8 +10,6 @@
 **Table of Contents**
 
 - [Description](#description)
-- [Categories](#categories)
-- [Documents](#documents)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -47,4 +45,5 @@ Any existing Exif and IPTC metadata is also taken into account.
 - [Installation](./Installation/README.md)
 
 ## Documents
+- [features](features.md)
 - [main](main.md)
