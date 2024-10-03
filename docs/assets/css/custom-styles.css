@@ -36,7 +36,7 @@ code.language-Shell {
 }
 
 input[type="checkbox"]:checked {
-  outline: 2px solid red;
+  /*outline: 2px solid red;*/
   accent-color: #535152;
 }
 
