@@ -33,7 +33,7 @@ jobs:
           folder: ./docs/
           filename: README.md
           content-file: .content.md
-          include: .include.md
+          include-file: .include.md
           exclude: |
             about.md
             links.md
