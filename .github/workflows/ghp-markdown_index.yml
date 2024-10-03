@@ -34,6 +34,7 @@ jobs:
           filename: README.md
           content-file: .content.md
           exclude: |
+            about.md
             links.md
             *.html
 
