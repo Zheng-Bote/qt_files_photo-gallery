@@ -33,17 +33,16 @@ input {
   accent-color: #c70039;
 }
 
-pre {
-  background-color: lightblue;
-}
-pre > code > .language-Shell {
+pre,
+code,
+.language-Shell {
   background-color: black;
   color: green;
 }
 
 input[type="checkbox"]:checked {
   outline: 2px solid green;
-  background-color: grey;
+  background-color: rgb(80, 79, 79);
 }
 
 /*
