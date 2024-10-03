@@ -33,11 +33,18 @@ input {
   accent-color: #c70039;
 }
 
-.language-Shell {
+code.language-Shell {
   background-color: black;
   color: green;
 }
 
+input[type="checkbox"]:checked {
+  outline: 2px solid green;
+  background-color: grey;
+}
+
+/*
 .task-list-item-checkbox {
   accent-color: #c70039;
 }
+  */

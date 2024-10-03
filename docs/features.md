@@ -2,12 +2,6 @@
 
 <input type="checkbox" name="input-checkbox-example" value="Nier" checked>
 
-<style>
-  input {
-  accent-color: #c70039;
-}
-</style>
-
 <input type="checkbox" name="input-checkbox-example2" value="NOK">
 
 # Features
