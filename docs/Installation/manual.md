@@ -12,7 +12,7 @@
 
 #### Linux, macOS
 
-```Bash
+```Shell
 cd src
 
 conan install . --output-folder=../build --build=missing
@@ -25,7 +25,7 @@ cmake -S ../src -B . -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.
 cmake --build .
 ```
 
-> [!NOTE]
+> NOTE  
 > generate Doxygen documentation with `cd build && cmake --build . --target doxygen`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
