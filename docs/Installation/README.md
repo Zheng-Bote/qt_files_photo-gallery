@@ -1,5 +1,5 @@
 # Installation
-How to install manually or with binaries
+> How to install manually or with binaries
 
 
 ## Categories

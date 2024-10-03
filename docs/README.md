@@ -5,4 +5,4 @@
 - [Installation](./Installation/README.md)
 
 ## Documents
-- [main](main.md)
+- [index](index.md)
