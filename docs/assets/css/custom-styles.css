@@ -29,7 +29,7 @@ ul.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
-pre code.language-Shell {
+pre + code.language-Shell {
   background-color: black;
   color: lightgreen;
 }
@@ -40,12 +40,12 @@ input[type="checkbox"]:checked {
 }
 
 .task-list-item-checkbox {
-  outline: 2px solid black;
+  /*outline: 2px solid black;*/
   accent-color: #535152;
 }
 
 .task-list-item-checkbox:checked {
   outline: 2px solid black;
   accent-color: #535152;
-  background-color: tomato;
+  color: tomato;
 }
