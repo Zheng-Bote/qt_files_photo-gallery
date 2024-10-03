@@ -1,5 +1,5 @@
 # 
-main
+Brief
 
 > QT6 CXX20 console app to convert photos and add Metadata to Database
 
@@ -13,6 +13,8 @@ main
 **Table of Contents**
 
 - [Description](#description)
+- [Categories](#categories)
+- [Documents](#documents)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -41,6 +43,5 @@ Any existing Exif and IPTC metadata is also taken into account.
 - [Installation](./Installation/README.md)
 
 ## Documents
-- [.include](.include.md)
 - [features](features.md)
 - [main](main.md)
