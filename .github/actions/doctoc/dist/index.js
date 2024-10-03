@@ -10,7 +10,7 @@ var path  =  __nccwpck_require__(1017)
  ,  _   =  __nccwpck_require__(5067);
 
 var markdownExts = ['.md', '.markdown'];
-var ignoredDirs  = ['.', '..', '.git', 'node_modules','README.md'];
+var ignoredDirs  = ['.', '..', '.git', 'node_modules'];
 
 function separateFilesAndDirs(fileInfos) {
   return {
