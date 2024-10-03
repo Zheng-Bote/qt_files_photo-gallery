@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Dependencies](#dependencies)
+  - [Conan](#conan)
+  - [CMake](#cmake)
+  - [Doxygen](#doxygen)
+    - [Doxygen Awesome](#doxygen-awesome)
+  - [QT](#qt)
+  - [cxxopts](#cxxopts)
+  - [inifile-cpp](#inifile-cpp)
+  - [plog](#plog)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Dependencies
 
 _All licenses are therefore GPL-compatible._
