@@ -25,7 +25,7 @@ input[type="checkbox"] {
   accent-color: #c70039;
 }
 
-nput[type="checkbox"]:checked {
+input[type="checkbox"]:checked {
   color: green;
   font-weight: bold;
 }
