@@ -1,8 +1,8 @@
 /**
  * @file main.cpp
  * @author ZHENG Robert (https://github.com/Zheng-Bote/qt_files_photo-gallery)
- * @brief QT6 CXX20 console app to add photos to DB
- * @details QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB
+ * @brief QT6 CXX23 console app to add photos to DB
+ * @details QT6 CXX23 console app to convert photos, collect Exif/IPTC and add metadata to DB
  * @date 2024-09-19
  * @copyright Copyright (c) 2024 ZHENG Robert
  */
@@ -28,14 +28,14 @@
 #include "includes/rz_readdir.h"
 #include "includes/rz_sqlite3_db.h"
 
-#include "includes/rz_aes.h"
+// #include "includes/rz_aes.h"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
     // ToDo
-    AesEnc aesEnc;
+    //   AesEnc aesEnc;
 
     /*
     QCoreApplication::setApplicationName("files_to_photo-gallery");
