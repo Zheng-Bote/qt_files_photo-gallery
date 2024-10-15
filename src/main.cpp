@@ -1,8 +1,8 @@
 /**
  * @file main.cpp
  * @author ZHENG Robert (https://github.com/Zheng-Bote/qt_files_photo-gallery)
- * @brief QT6 CXX23 console app to add photos to DB
- * @details QT6 CXX23 console app to convert photos, collect Exif/IPTC and add metadata to DB
+ * @brief app to add photos to DB
+ * @details QT6 CXX23 console app with plugins to convert photos, collect Exif/IPTC and add metadata to DB
  * @date 2024-09-19
  * @copyright Copyright (c) 2024 ZHENG Robert
  */
@@ -12,7 +12,8 @@
 // ToDo: AesEnc
 
 #include <QCoreApplication>
-#include <QDebug>
+
+#include <print>
 
 #include "plog/Appenders/ColorConsoleAppender.h"
 #include "plog/Appenders/RollingFileAppender.h"
@@ -23,12 +24,10 @@
 
 #include "configured/rz_config.h"
 #include "cxxopts.hpp"
+#include "includes/rz_datetime.h"
 #include "includes/rz_inifile.h"
-#include "includes/rz_pg_db.h"
-#include "includes/rz_readdir.h"
-#include "includes/rz_sqlite3_db.h"
-
-// #include "includes/rz_aes.h"
+#include "includes/rz_output.h"
+#include "includes/rz_string_lib.h"
 
 int main(int argc, char *argv[])
 {
@@ -219,64 +218,22 @@ int main(int argc, char *argv[])
     {
         exit(EXIT_FAILURE);
     }
-    /*
-    if (!iniConfig.checkSqlMeta())
-    {
-        exit(EXIT_FAILURE);
-    }*/
 
-    /**
-     * @brief check environment for db or sqlfile
-     */
-    SqliteDb sqliteDb;
-    PgDb pgDb;
+    Output output;
+    QString plugPath
+        = "/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/Desktop_Qt_6_7_3-Debug";
+    output.listPlugins(output.getPlugins(plugPath));
 
-    // dev: sql-file
-    if (env.compare("dev") == 0)
-    {
-    }
-    // int: sqlite3
-    if (env.compare("int") == 0)
-    {
-        if (sqliteDb.connectDb(iniConfig, env))
-        {
-            if (sqliteDb.createTables() == true)
-            {
-                PLOG_INFO << "SQLite3 db created";
-            }
-            else
-            {
-                exit(EXIT_FAILURE);
-            }
-        }
-        else
-        {
-            exit(EXIT_FAILURE);
-        }
-    }
-    // prod: PostgreSQL
-    if (env.compare("prod") == 0)
-    {
-        if (pgDb.connectDb(iniConfig, env))
-        {
-        }
-        else
-        {
-            exit(EXIT_FAILURE);
-        }
-    }
+    DateTime dt;
 
-    /**
-     * @brief read dirs
-     */
-    QString path = "/home/zb_bamboo/Dokumente/2021";
-    ReadDir readDir(path);
-    readDir.searchFilesRekursive();
+    std::println("{}",
+                 rz_string_lib::replace("/var/log/{{ DATE_TIME }}_dev.log",
+                                        "{{ DATE_TIME }}",
+                                        dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS")));
 
     /**
      * @brief the end
      */
-    // pgDb.closeDb();
-    sqliteDb.closeDb();
-    exit(EXIT_SUCCESS);
+
+    EXIT_SUCCESS;
 }

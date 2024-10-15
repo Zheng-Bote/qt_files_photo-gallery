@@ -2,12 +2,10 @@
 
 AesEnc::AesEnc()
 {
-    datetime.setDateTime();
-    QString utcTime = datetime.getHumanUTC();
+    //datetime.setDateTime();
+    QString humanUTC = datetime.getUtcDateTimeHuman().c_str();
     QAESEncryption encryption(QAESEncryption::AES_256, QAESEncryption::CBC);
 
-    QDateTime UTC(QDateTime::currentDateTimeUtc());
-    dt.humanUTC = UTC.toString("yyyy-MM-dd HH:mm:ss");
 
     qDebug() << "dt: " << dt.humanUTC.toStdString() << "\n";
 

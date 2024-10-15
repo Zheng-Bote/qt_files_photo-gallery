@@ -50,8 +50,12 @@ else()
 endif()
 
 set(SRC_LIST   main.cpp
+    includes/rz_photo-gallery_plugins.h
+    includes/rz_output.cpp
+    includes/rz_output.h
     includes/rz_inifile.cpp
     includes/rz_inifile.h
+    includes/rz_string_lib.h
     includes/rz_pg_db.cpp
     includes/rz_pg_db.h
     includes/rz_sqlite3_db.cpp

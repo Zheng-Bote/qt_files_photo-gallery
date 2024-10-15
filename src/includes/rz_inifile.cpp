@@ -38,10 +38,10 @@ void Inifile::Test()
 
 void Inifile::createIni()
 {
-    myIni["DB_dev"]["enabled"] = "";
-    myIni["DB_dev"]["rdbms"] = "";
+    myIni["DB_dev"]["enabled"] = "yes";
+    myIni["DB_dev"]["rdbms"] = "sqlfile";
     myIni["DB_dev"]["dbname"] = "";
-    myIni["DB_dev"]["dbfile"] = "";
+    myIni["DB_dev"]["dbfile"] = "/var/{{ PROG_NAME }}/{{ DATE_TIME }}_{{ PROG_NAME }}.sqlite";
     myIni["DB_dev"]["hostname"] = "";
     myIni["DB_dev"]["password"] = "";
     myIni["DB_dev"]["port"] = "";
@@ -68,9 +68,9 @@ void Inifile::createIni()
     myIni["DB_prod"]["username"] = "";
     myIni["DB_prod"]["sql_file"] = "";
 
-    myIni["APP_dev"]["Logifle"] = "";
-    myIni["APP_int"]["Logifle"] = "";
-    myIni["APP_prod"]["Logifle"] = "";
+    myIni["APP_dev"]["Logifle"] = "/var/log/{{ PROG_NAME }}_dev.log";
+    myIni["APP_int"]["Logifle"] = "/var/log/{{ PROG_NAME }}_int.log";
+    myIni["APP_prod"]["Logifle"] = "/var/log/{{ PROG_NAME }}_prod.log";
 }
 
 bool Inifile::saveIniToFile(QString &pathFile)

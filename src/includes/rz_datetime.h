@@ -1,45 +1,40 @@
+/**
+ * @file rz_datetime.h
+ * @author ZHENG Bote (robert.hase-zheng.net)
+ * @brief CXX20 datetime lib
+ * @version 2.1.0
+ * @date 2023-03-25
+ *
+ * @copyright Copyright (c) 2023 ZHENG Robert
+ *
+ */
+
 #pragma once
 
-#include <QDateTime>
-#include <QString>
-#include <QTimeZone>
+#include <iostream>
+#include <chrono>
+#include <clocale>
+#include <string>
 
-namespace rz_datetime {
-
-struct date_time {
-    QString humanUTC;
-    QString stringUTC;
-    QString timeUTC;
-    QString timeUtcOffset;
-    QString timeZAbbreviation;
-    QString localTime;
-    QString UTCcurrent;
-};
-
-// the end
-}
-
+/**
+ * @brief DateTime class
+ *
+ */
 class DateTime
 {
 public:
-    DateTime();
-    ~DateTime();
+  DateTime();
 
-    void setDateTime();
-    QString getHumanUTC();
-    QString getUTC();
+  std::string getUtcDateTimeSys();
+  std::string getUtcDateTimeHuman();
+  std::string getFormatedUtcDateTimeHuman(const std::string &format = "YYYY-MM-DD_HH-MM");
 
-private:
-    struct date_time
-    {
-        QString humanUTC;
-        QString stringUTC;
-        QString timeUTC;
-        QString timeUtcOffset;
-        QString timeZAbbreviation;
-        QString localTime;
-        QString UTCcurrent;
-    };
+  std::string getLocalTimeSys();
+  std::string getLocalTimeHuman();
+  std::string getFormatedLocalDateTimeHuman(const std::string &format = "YYYY-MM-DD_HH-MM");
 
-    date_time dt;
+  std::string getCurrentZoneOffset();
+
+  void showAllTimezones();
+  std::string findTimezoneTime(const std::string &endName = "Paris");
 };
