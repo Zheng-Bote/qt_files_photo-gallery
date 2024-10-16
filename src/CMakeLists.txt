@@ -7,7 +7,7 @@ project(
   files_photo-gallery
   VERSION 0.1.7
   DESCRIPTION
-    "QT6 CXX23 console app to convert photos, collect Exif/IPTC and add metadata to DB"
+    "QT6 CXX23 console app to add photos to web-based photo-gallery"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
   LANGUAGES CXX)
 
@@ -86,7 +86,11 @@ find_package(plog REQUIRED)
 add_library(inicpp includes/inicpp.h)
 
 # no need to list header files, but helpful for IDE
-add_executable(${PROJECT_NAME} ${SRC_LIST})
+add_executable(${PROJECT_NAME} ${SRC_LIST}
+    includes/rz_snippets.h includes/rz_snippets.cpp
+    includes/rz_qt_snippets.h includes/rz_qt_snippets.cpp
+    includes/rz_filesystem.cpp
+    includes/rz_filesystem.h)
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
