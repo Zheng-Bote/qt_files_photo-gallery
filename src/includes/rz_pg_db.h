@@ -19,10 +19,10 @@ class PgDb
 {
 public:
     PgDb();
-    PgDb(Inifile &iniConfig, QString &env);
+    PgDb(Inifile &iniConfig, QString &env, QString &ProgName);
     ~PgDb();
 
-    bool connectDb(Inifile &iniConfig, QString &env);
+    bool connectDb(Inifile &iniConfig, QString &env, QString &ProgName);
     void closeDb();
 
 private:

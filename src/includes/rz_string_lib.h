@@ -22,72 +22,6 @@ namespace rz_string_lib
 
   template <typename CharT>
   using tstringstream = std::basic_stringstream<CharT, std::char_traits<CharT>, std::allocator<CharT>>;
-  // --------
-
-  namespace mutable_version
-  {
-    template <typename CharT>
-    inline void to_upper(tstring<CharT> &text)
-    {
-      std::transform(std::begin(text), std::end(text), std::begin(text), toupper);
-    }
-
-    template <typename CharT>
-    inline void to_lower(tstring<CharT> &text)
-    {
-      std::transform(std::begin(text), std::end(text), std::begin(text), tolower);
-    }
-
-    template <typename CharT>
-    inline void reverse(tstring<CharT> &text)
-    {
-      std::reverse(std::begin(text), std::end(text));
-    }
-
-    template <typename CharT>
-    inline void trim(tstring<CharT> &text)
-    {
-      auto first{text.find_first_not_of(' ')};
-      auto last{text.find_last_not_of(' ')};
-      text = text.substr(first, (last - first + 1));
-    }
-
-    template <typename CharT>
-    inline void trimleft(tstring<CharT> &text)
-    {
-      auto first{text.find_first_not_of(' ')};
-      text = text.substr(first, text.size() - first);
-    }
-
-    template <typename CharT>
-    inline void trimright(tstring<CharT> &text)
-    {
-      auto last{text.find_last_not_of(' ')};
-      text = text.substr(0, last + 1);
-    }
-
-    template <typename CharT>
-    bool is_valid_format(tstring<CharT> const &pattern, tstring<CharT> const &text)
-    {
-      auto rx = std::basic_regex<CharT>{pattern, std::regex_constants::icase};
-      return std::regex_match(text, rx);
-    }
-
-    bool is_valid_email_format(std::string const &email)
-    {
-      using namespace std::string_literals;
-      auto rx = std::regex{R"(^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$)"s, std::regex_constants::icase};
-      return std::regex_match(email, rx);
-    }
-
-    bool is_valid_email_format_w(std::wstring const &text)
-    {
-      using namespace std::string_literals;
-      return is_valid_format(LR"(^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$)"s, text);
-    }
-  }
-
-  // ----------
 
   /**
    * @brief rz_string_lib::to_upper
@@ -229,49 +163,5 @@ namespace rz_string_lib
     }
 
     return tokens;
-  }
-
-  /**
-   * @brief rz_string_lib::is_valid_format
-   *
-   * @tparam CharT
-   * @param pattern
-   * @param text
-   * @return true
-   * @return false
-   */
-  template <typename CharT>
-  bool is_valid_format(tstring<CharT> const &pattern, tstring<CharT> const &text)
-  {
-    using namespace std::string_literals;
-    auto rx = std::basic_regex<CharT>{pattern, std::regex_constants::icase};
-    return std::regex_match(text, rx);
-  }
-
-  /**
-   * @brief rz_string_lib::is_valid_email_format
-   *
-   * @param email
-   * @return true
-   * @return false
-   */
-  bool is_valid_email_format(std::string const &email)
-  {
-    using namespace std::string_literals;
-    auto rx = std::regex{R"(^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$)"s, std::regex_constants::icase};
-    return std::regex_match(email, rx);
-  }
-
-  /**
-   * @brief rz_string_lib::is_valid_email_format_w
-   *
-   * @param email
-   * @return true
-   * @return false
-   */
-  bool is_valid_email_format_w(std::wstring const &text)
-  {
-    using namespace std::string_literals;
-    return is_valid_format(LR"(^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$)"s, text);
   }
 }

@@ -11,9 +11,9 @@
 
 SqliteDb::SqliteDb() {}
 
-SqliteDb::SqliteDb(Inifile &iniConfig, QString &env)
+SqliteDb::SqliteDb(Inifile &iniConfig, QString &env, QString &ProgName)
 {
-    SqliteDb::connectDb(iniConfig, env);
+    SqliteDb::connectDb(iniConfig, env, ProgName);
 }
 
 SqliteDb::~SqliteDb()
@@ -21,11 +21,11 @@ SqliteDb::~SqliteDb()
     SqliteDb::db.close();
 }
 
-bool SqliteDb::connectDb(Inifile &iniConfig, QString &env)
+bool SqliteDb::connectDb(Inifile &iniConfig, QString &env, QString &ProgName)
 {
     bool connectStatus = false;
     SqliteDb::db = QSqlDatabase::addDatabase("QSQLITE");
-    SqliteDb::db.setDatabaseName(iniConfig.getDbFile(env));
+    SqliteDb::db.setDatabaseName(iniConfig.getDbFile(env, ProgName));
 
     if (!SqliteDb::db.open())
     {

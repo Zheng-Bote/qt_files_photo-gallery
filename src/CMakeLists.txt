@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.23)
 
 project(
   files_photo-gallery
-  VERSION 0.1.7
+  VERSION 0.1.8
   DESCRIPTION
     "QT6 CXX23 console app to add photos to web-based photo-gallery"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
@@ -28,6 +28,8 @@ set(CXX_FLAGS_RELEASE "-O3")
 set(PROG_NAME "${PROJECT_NAME}")
 set(PROG_VERSION "${PROJECT_VERSION}")
 set(PROG_HOMEPAGE "${PROJECT_HOMEPAGE_URL}")
+set(PROG_DESCRIPTION "${PROJECT_DESCRIPTION}")
+
 configure_file("${CMAKE_SOURCE_DIR}/configure/rz_config.h.in" configured/rz_config.h)
 
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL GNU)
@@ -90,7 +92,8 @@ add_executable(${PROJECT_NAME} ${SRC_LIST}
     includes/rz_snippets.h includes/rz_snippets.cpp
     includes/rz_qt_snippets.h includes/rz_qt_snippets.cpp
     includes/rz_filesystem.cpp
-    includes/rz_filesystem.h)
+    includes/rz_filesystem.h
+    includes/rz_options.hpp)
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

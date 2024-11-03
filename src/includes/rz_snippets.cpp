@@ -21,10 +21,9 @@ bool Snippets::checkFunctionReturn(const std::tuple<bool, std::string> &ret,
 {
     bool oknok{false};
     Status status = statusInstruction;
-
     std::string msg{"blank"};
-
     std::tie(oknok, msg) = ret;
+
     if (oknok) {
         PLOG_DEBUG << "checkFunction OK: " << msg;
     } else {
@@ -34,10 +33,11 @@ bool Snippets::checkFunctionReturn(const std::tuple<bool, std::string> &ret,
             break;
         case Status::ERROR:
             PLOG_ERROR << msg;
+            oknok = false;
             break;
         case Status::FATAL:
             PLOG_FATAL << msg;
-            exit(1);
+            exit(EXIT_FAILURE);
             break;
         }
     }

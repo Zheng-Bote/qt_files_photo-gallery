@@ -11,9 +11,9 @@
 
 PgDb::PgDb() {}
 
-PgDb::PgDb(Inifile &iniConfig, QString &env)
+PgDb::PgDb(Inifile &iniConfig, QString &env, QString &ProgName)
 {
-    PgDb::connectDb(iniConfig, env);
+    PgDb::connectDb(iniConfig, env, ProgName);
 }
 
 PgDb::~PgDb()
@@ -21,14 +21,14 @@ PgDb::~PgDb()
     PgDb::db.close();
 }
 
-bool PgDb::connectDb(Inifile &iniConfig, QString &env)
+bool PgDb::connectDb(Inifile &iniConfig, QString &env, QString &ProgName)
 {
     bool connectStatus = false;
     PgDb::db = QSqlDatabase::addDatabase("QPSQL", "source");
-    PgDb::db.setHostName(iniConfig.getDbHostname(env));
-    PgDb::db.setDatabaseName(iniConfig.getDbName(env));
-    PgDb::db.setUserName(iniConfig.getDbUsername(env));
-    PgDb::db.setPassword(iniConfig.getDbPassword(env));
+    PgDb::db.setHostName(iniConfig.getDbHostname(env, ProgName));
+    PgDb::db.setDatabaseName(iniConfig.getDbName(env, ProgName));
+    PgDb::db.setUserName(iniConfig.getDbUsername(env, ProgName));
+    PgDb::db.setPassword(iniConfig.getDbPassword(env, ProgName));
     PgDb::db.setPort(iniConfig.getDbPort(env));
 
     if (!PgDb::db.open())

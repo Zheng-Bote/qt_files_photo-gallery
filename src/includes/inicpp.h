@@ -67,7 +67,7 @@ namespace ini
 
     inline bool strToLong(const std::string &value, long &result)
     {
-        char *endptr;
+        char *endptr = nullptr;
         // check if decimal
         result = std::strtol(value.c_str(), &endptr, 10);
         if (*endptr == '\0')
@@ -86,7 +86,7 @@ namespace ini
 
     inline bool strToULong(const std::string &value, unsigned long &result)
     {
-        char *endptr;
+        char *endptr = nullptr;
         // check if decimal
         result = std::strtoul(value.c_str(), &endptr, 10);
         if (*endptr == '\0')

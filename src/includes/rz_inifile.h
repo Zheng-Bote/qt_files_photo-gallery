@@ -19,6 +19,10 @@
 /* https://github.com/Rookfighter/inifile-cpp */
 #include "inicpp.h"
 
+#include "rz_datetime.h"
+#include "rz_qt_snippets.h"
+#include "rz_string_lib.h"
+
 class Inifile
 {
 public:
@@ -35,20 +39,29 @@ public:
 
     // DB
     bool getDbEnabled(QString &env);
-    QString getDbRdbms(QString &env);
-    QString getDbName(QString &env);
-    QString getDbFile(QString &env);
-    QString getDbHostname(QString &env);
-    QString getDbPassword(QString &env);
+    QString getDbRdbms(QString &env, QString &ProgName);
+    QString getDbName(QString &env, QString &ProgName);
+    QString getDbFile(QString &env, QString &ProgName);
+    QString getDbHostname(QString &env, QString &ProgName);
+    QString getDbPassword(QString &env, QString &ProgName);
     int getDbPort(QString &env);
-    QString getDbUsername(QString &env);
-    QString getDbSqlFile(QString &env);
+    QString getDbUsername(QString &env, QString &ProgName);
+    QString getDbSqlFile(QString &env, QString &ProgName);
+    // Photos
+    QString getPhotosOutputFormat();
+    QString getPhotosCopyrightDefault();
+    QString getPhotosBasePathCut();
+    QStringList getPhotosOutputSizes();
+    // App
+    QString getPluginsDir(QString &env, QString &ProgName);
+    QStringList getPluginsToUse(QString &env);
 
-    void listIniEntries();
+    void listIniEntries(QT_snippets &qt_snippets);
     QString getInifile();
 
     QString pathToInifile;
 
 private:
     ini::IniFile myIni;
+    DateTime dt;
 };

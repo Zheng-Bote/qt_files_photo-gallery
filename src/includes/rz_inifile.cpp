@@ -38,39 +38,47 @@ void Inifile::Test()
 
 void Inifile::createIni()
 {
-    myIni["DB_dev"]["enabled"] = "yes";
-    myIni["DB_dev"]["rdbms"] = "sqlfile";
+    myIni["DB_dev"]["enabled"] = "true";
+    myIni["DB_dev"]["rdbms"] = "sqlite";
     myIni["DB_dev"]["dbname"] = "";
-    myIni["DB_dev"]["dbfile"] = "/var/{{ PROG_NAME }}/{{ DATE_TIME }}_{{ PROG_NAME }}.sqlite";
+    myIni["DB_dev"]["file"] = "/var/{{ PROG_NAME }}/{{ DATE_TIME }}_{{ PROG_NAME }}.sqlite";
     myIni["DB_dev"]["hostname"] = "";
     myIni["DB_dev"]["password"] = "";
     myIni["DB_dev"]["port"] = "";
     myIni["DB_dev"]["username"] = "";
-    myIni["DB_dev"]["sql_file"] = "";
 
-    myIni["DB_int"]["enabled"] = "";
-    myIni["DB_int"]["rdbms"] = "";
+    myIni["DB_int"]["enabled"] = "false";
+    myIni["DB_int"]["rdbms"] = "csv";
     myIni["DB_int"]["dbname"] = "";
-    myIni["DB_int"]["dbfile"] = "";
+    myIni["DB_int"]["file"] = "/var/{{ PROG_NAME }}/{{ DATE_TIME }}_{{ PROG_NAME }}.csv";
     myIni["DB_int"]["hostname"] = "";
     myIni["DB_int"]["password"] = "";
     myIni["DB_int"]["port"] = "";
     myIni["DB_int"]["username"] = "";
-    myIni["DB_int"]["sql_file"] = "";
 
-    myIni["DB_prod"]["enabled"] = "";
-    myIni["DB_prod"]["rdbms"] = "";
-    myIni["DB_prod"]["dbname"] = "";
-    myIni["DB_prod"]["dbfile"] = "";
-    myIni["DB_prod"]["hostname"] = "";
-    myIni["DB_prod"]["password"] = "";
-    myIni["DB_prod"]["port"] = "";
-    myIni["DB_prod"]["username"] = "";
-    myIni["DB_prod"]["sql_file"] = "";
+    myIni["DB_prod"]["enabled"] = "false";
+    myIni["DB_prod"]["rdbms"] = "pg";
+    myIni["DB_prod"]["dbname"] = "{{ PROG_NAME }}";
+    myIni["DB_prod"]["file"] = "";
+    myIni["DB_prod"]["hostname"] = "my-db-server.de";
+    myIni["DB_prod"]["password"] = "ENV_SECRET_PROD_DB_PWD";
+    myIni["DB_prod"]["port"] = 8154;
+    myIni["DB_prod"]["username"] = "ENV_PROD_DB_USER";
 
-    myIni["APP_dev"]["Logifle"] = "/var/log/{{ PROG_NAME }}_dev.log";
-    myIni["APP_int"]["Logifle"] = "/var/log/{{ PROG_NAME }}_int.log";
-    myIni["APP_prod"]["Logifle"] = "/var/log/{{ PROG_NAME }}_prod.log";
+    myIni["APP_dev"]["plugins_dir"] = "./{{ PROG_NAME }}/plugins";
+    myIni["APP_dev"]["plugins_to_use"] = "pg, sqlite, csv, sql, webp, png, exif, iptc";
+
+    myIni["APP_int"]["plugins_dir"] = "/usr/local/{{ PROG_NAME }}/plugins";
+    myIni["APP_int"]["plugins_to_use"] = "csv, webp, exif, iptc";
+
+    myIni["APP_prod"]["plugins_dir"] = "/usr/local/{{ PROG_NAME }}/plugins";
+    myIni["APP_prod"]["plugins_to_use"] = "pg, webp, exif, iptc";
+
+    myIni["Photos"]["output_formats"] = "webp, png";
+    myIni["Photos"]["output_sizes"] = "480, 640, 800, 1024";
+    myIni["Photos"]["copyright_default"] = "ZHENG Robert";
+    myIni["Photos"]["images_orig_path"] = "/var/data/{{PROG_NAME}}/images_orig";
+    myIni["Photos"]["base_path_cut"] = "/var/data/{{ PROG_NAME }}/images_orig";
 }
 
 bool Inifile::saveIniToFile(QString &pathFile)
@@ -133,34 +141,44 @@ bool Inifile::getDbEnabled(QString &env)
     return myIni[dbenv]["enabled"].as<bool>();
 }
 
-QString Inifile::getDbRdbms(QString &env)
+QString Inifile::getDbRdbms(QString &env, QString &ProgName)
 {
     std::string dbenv = "DB_" + env.toStdString();
     return myIni[dbenv]["rdbms"].as<std::string>().c_str();
 }
 
-QString Inifile::getDbName(QString &env)
+QString Inifile::getDbName(QString &env, QString &ProgName)
 {
     std::string dbenv = "DB_" + env.toStdString();
     return myIni[dbenv]["dbname"].as<std::string>().c_str();
 }
 
-QString Inifile::getDbFile(QString &env)
+QString Inifile::getDbFile(QString &env, QString &ProgName)
 {
     std::string dbenv = "DB_" + env.toStdString();
-    return myIni[dbenv]["dbfile"].as<std::string>().c_str();
+    std::string ret = rz_string_lib::replace(myIni[dbenv]["dbfile"].as<std::string>(),
+                                             "{{ DATE_TIME }}",
+                                             dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+    ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
+    return ret.c_str();
 }
 
-QString Inifile::getDbHostname(QString &env)
+QString Inifile::getDbHostname(QString &env, QString &ProgName)
 {
     std::string dbenv = "DB_" + env.toStdString();
-    return myIni[dbenv]["hostname"].as<std::string>().c_str();
+    std::string ret = rz_string_lib::replace(myIni[dbenv]["hostname"].as<std::string>(),
+                                             "{{ DATE_TIME }}",
+                                             dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+    ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
+    return ret.c_str();
 }
 
-QString Inifile::getDbPassword(QString &env)
+QString Inifile::getDbPassword(QString &env, QString &ProgName)
 {
     std::string dbenv = "DB_" + env.toStdString();
-    return myIni[dbenv]["password"].as<std::string>().c_str();
+    std::string ret = myIni[dbenv]["password"].as<std::string>().c_str();
+    ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
+    return ret.c_str();
 }
 
 int Inifile::getDbPort(QString &env)
@@ -169,19 +187,64 @@ int Inifile::getDbPort(QString &env)
     return myIni[dbenv]["port"].as<int>();
 }
 
-QString Inifile::getDbUsername(QString &env)
+QString Inifile::getDbUsername(QString &env, QString &ProgName)
 {
     std::string dbenv = "DB_" + env.toStdString();
-    return myIni[dbenv]["username"].as<std::string>().c_str();
+    std::string ret = myIni[dbenv]["username"].as<std::string>().c_str();
+    ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
+    return ret.c_str();
 }
 
-QString Inifile::getDbSqlFile(QString &env)
+QString Inifile::getDbSqlFile(QString &env, QString &ProgName)
 {
     std::string dbenv = "DB_" + env.toStdString();
-    return myIni[dbenv]["sql_to_file"].as<std::string>().c_str();
+    std::string ret = rz_string_lib::replace(myIni[dbenv]["sql_to_file"].as<std::string>(),
+                                             "{{ DATE_TIME }}",
+                                             dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+    ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
+    return ret.c_str();
 }
 
-void Inifile::listIniEntries()
+QString Inifile::getPhotosOutputFormat()
+{
+    return myIni["Photos"]["output_format"].as<std::string>().c_str();
+}
+
+QString Inifile::getPhotosCopyrightDefault()
+{
+    return myIni["Photos"]["copyright_default"].as<std::string>().c_str();
+}
+
+QString Inifile::getPhotosBasePathCut()
+{
+    return myIni["Photos"]["base_path_cut"].as<std::string>().c_str();
+}
+
+QStringList Inifile::getPhotosOutputSizes()
+{
+    std::string extensionsStr = myIni["Photos"]["output_sizes"].as<std::string>();
+    QString qextensionsStr = extensionsStr.c_str();
+    return (qextensionsStr.remove(" ").split(",", Qt::SkipEmptyParts));
+}
+
+QString Inifile::getPluginsDir(QString &env, QString &ProgName)
+{
+    std::string appenv = "APP_" + env.toStdString();
+    std::string ret = rz_string_lib::replace(myIni[appenv]["plugins_dir"].as<std::string>(),
+                                             "{{ PROG_NAME }}",
+                                             ProgName.toStdString());
+    return ret.c_str();
+}
+
+QStringList Inifile::getPluginsToUse(QString &env)
+{
+    std::string appenv = "APP_" + env.toStdString();
+    std::string extensionsStr = myIni[appenv]["plugins_to_use"].as<std::string>();
+    QString pluginsStr = extensionsStr.c_str();
+    return (pluginsStr.remove(" ").split(",", Qt::SkipEmptyParts));
+}
+
+void Inifile::listIniEntries(QT_snippets &qt_snippets)
 {
     std::cout << "Parsed ini contents" << std::endl;
     std::cout << "Has " << myIni.size() << " sections" << std::endl;
@@ -195,7 +258,13 @@ void Inifile::listIniEntries()
         {
             const std::string &fieldName = fieldPair.first;
             const ini::IniField &field = fieldPair.second;
-            std::cout << "  Field '" << fieldName << "' Value '" << field.as<std::string>() << "'" << std::endl;
+            std::string ret = rz_string_lib::replace(field.as<std::string>(),
+                                                     "{{ PROG_NAME }}",
+                                                     qt_snippets.getProgName().toStdString());
+            ret = rz_string_lib::replace(ret,
+                                         "{{ DATE_TIME }}",
+                                         dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+            std::cout << "  Field '" << fieldName << "' Value '" << ret << "'" << std::endl;
         }
     }
 }
