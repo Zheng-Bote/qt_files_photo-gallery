@@ -426,15 +426,15 @@ cd build && sudo cmake --install .
 > \[!IMPORTANT]
 > still under construction.
 
-| Parameter      | Type     | Description                                                                               |
-| :------------- | :------- | :---------------------------------------------------------------------------------------- |
-| `-a --auto`    | `none`   | _Optional:_ load Ini `<program path>/<program>.ini>`                                      |
-| `-c --create`  | `string` | _Optional:_ create Ini `<path to>/<file.ini>` or default: `<program path>/<program>.ini>` |
-| `-e --env`     | `string` | _Optional:_ `<dev> , <ini> , <prod>`or default:`dev`                                      |
-| `-i --ini`     | `string` | _Optional:_ `<pathTo/inifile>`                                                            |
-| `-l --listini` | `string` | _Optional:_ `<pathTo/inifile>` or default: `<program path>/<program>.ini>`                |
-| `-v --version` | `none`   | _Optional:_ `<program>-<major>.<minor>.<patch>`                                           |
-| `-h --help`    | `none`   | _Optional:_ list help menu                                                                |
+| Parameter      | Type     | Description                                                                                     |
+| :------------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `-a --auto`    | `none`   | _Optional:_ load Ini `/<user home>/.config/<program>.ini>``                                     |
+| `-c --create`  | `string` | _Optional:_ create Ini `<path to>/<file.ini>` or default: `/<user home>/.config/<program>.ini>` |
+| `-e --env`     | `string` | _Optional:_ `<dev> , <int> , <prod>` or default:`dev`                                           |
+| `-i --ini`     | `string` | _Optional:_ `<pathTo/inifile>`                                                                  |
+| `-l --listini` | `string` | _Optional:_ `<pathTo/inifile>` or default: `default: `/<user home>/.config/<program>.ini>`      |
+| `-v --version` | `none`   | _Optional:_ `<program>-v<major>.<minor>.<patch>`                                                |
+| `-h --help`    | `none`   | _Optional:_ list help menu                                                                      |
 
 ## Outputs
 

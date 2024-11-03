@@ -77,8 +77,9 @@ void Inifile::createIni()
     myIni["Photos"]["output_formats"] = "webp, png";
     myIni["Photos"]["output_sizes"] = "480, 640, 800, 1024";
     myIni["Photos"]["copyright_default"] = "ZHENG Robert";
-    myIni["Photos"]["images_orig_path"] = "/var/data/{{PROG_NAME}}/images_orig";
-    myIni["Photos"]["base_path_cut"] = "/var/data/{{ PROG_NAME }}/images_orig";
+    myIni["Photos"]["images_source_path"] = "/var/data/{{ PROG_NAME }}/images";
+    myIni["Photos"]["base_path_cut"] = "/var/data/{{ PROG_NAME }}/";
+    myIni["Photos"]["base_path_replace"] = "{{ PROG_NAME }}/web_img/";
 }
 
 bool Inifile::saveIniToFile(QString &pathFile)
@@ -252,10 +253,16 @@ void Inifile::listIniEntries(QT_snippets &qt_snippets)
     {
         const std::string &sectionName = sectionPair.first;
         const ini::IniSection &section = sectionPair.second;
-        std::cout << "Section '" << sectionName << "' has " << section.size() << " fields" << std::endl;
 
-        for (const auto &fieldPair : sectionPair.second)
-        {
+        std::string out = "\nSection '" + sectionName + "' has " + std::to_string(section.size())
+                          + " fields";
+        int len = out.length();
+
+        //std::cout << "Section '" << sectionName << "' has " << section.size() << " fields" << std::endl;
+        std::cout << out << std::endl;
+        std::cout << std::setfill('*') << std::setw(len) << "\n";
+
+        for (const auto &fieldPair : sectionPair.second) {
             const std::string &fieldName = fieldPair.first;
             const ini::IniField &field = fieldPair.second;
             std::string ret = rz_string_lib::replace(field.as<std::string>(),
@@ -264,7 +271,7 @@ void Inifile::listIniEntries(QT_snippets &qt_snippets)
             ret = rz_string_lib::replace(ret,
                                          "{{ DATE_TIME }}",
                                          dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
-            std::cout << "  Field '" << fieldName << "' Value '" << ret << "'" << std::endl;
+            std::cout << fieldName << " = " << ret << std::endl;
         }
     }
 }
