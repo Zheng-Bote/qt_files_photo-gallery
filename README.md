@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -76,9 +77,9 @@
 # Description
 
 ![QT](https://img.shields.io/badge/Community-6-41CD52?logo=qt)
-![CXX](https://img.shields.io/badge/C++-20-blue?logo=cplusplus)
+![CXX](https://img.shields.io/badge/C++-23-blue?logo=cplusplus)
 
-QT6 CXX20 console app to convert photos, collect Exif/IPTC and add metadata to DB.
+QT6 C++23 console app to convert photos, collect Exif/IPTC and add metadata to DB.
 
 > The purpose of this tool is to run as a microservice to prepare photos for a web-based photo-gallery.
 
@@ -102,10 +103,12 @@ flowchart LR;
 - [x] supports PostgreSQL (insert)
 - [x] supports SQLite3 (incl. create tables, indexes, triggers; insert)
 - [x] supports exports to SQL-file ("native", system-independent SQL; insert)
+- [x] supports exports to csv-file
 - [ ] Exchangeable Image File Format (Exif; read, write; sql insert)
 - [ ] IPTC-IIM (IPTC; read, write; sql insert)
-- [ ] converts images to several WebP sizes
+- [ ] converts images to several WebP / PNG sizes
 - [ ] (db) password encryption
+- [x] Plugin-based System (eg. PG, SQLite3, EXIF/IPTC, WebP, PNG)
 - [ ] advanced-extra-super-ultra-special feature xyz
 
 <br>
@@ -192,7 +195,7 @@ Conan, software package manager for C and C++ developers
 
 CMake: A Powerful Software Build System
 
-[![CMake](https://img.shields.io/badge/CMake-v3.22+-064F8C?logo=cmake)](https://github.com/conan-io/conan)
+[![CMake](https://img.shields.io/badge/CMake-v3.23+-064F8C?logo=cmake)](https://github.com/conan-io/conan)
 [![BSD-3 License](https://img.shields.io/badge/License-BSD_3-green.svg)](https://choosealicense.com/licenses/bsd-3-clause/)
 
 ### Doxygen
@@ -253,6 +256,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -317,6 +321,7 @@ Plog - portable, simple and extensible C++ logging library
 
 10 directories, 49 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -570,52 +575,11 @@ flowchart LR;
 
 ### Example Inifile
 
-see also: `<prog> -c` : create Inifile
+see `dist/qt_files_photo-gallery.ini`
 
-```Ini
-[DB_dev]
-enabled=true                      # <true> | <false>
-rdbms=file                        # <pg> | <sqlite> | <file>
-dbname=                           # empty if file
-dbfile=                           # empty if file
-hostname=                         # empty if file
-password=                         # empty if file
-port=                             # empty if file
-username=                         # empty if file
-sql_file=./qt_files_photo.sql     # <path/to/file.sql>
-
-[DB_int]
-enabled=true                      # <true> | <false>
-rdbms=sqlite                      # <pg> | <sqlite> | <file>
-dbname=                           # empty if sqlite
-dbfile=./photo_gallery.sqlite     # <path/to/sqlite.db>
-hostname=                         # empty if sqlite
-password=                         # empty if sqlite
-port=                             # empty if sqlite
-username=                         # empty if sqlite
-sql_to_file=                      # empty if sqlite
-
-[DB_prod]
-enabled=true                      # <true> | <false>
-rdbms=pg                          # <pg> | <sqlite> | <file>
-dbname=photo_gallery              # <my database>
-dbfile=                           # empty if pg
-hostname=rdbms_srv                # <database server> // IP-Address or FQDN
-password=Top_Secret!              # <database user password>
-port=8154                         # <database server port>
-username=photo_rw_user            # <database user>
-sql_to_file=                      # empty if pg
-
-
-[APP_dev]
-Logifle=./qt_files_photo.log      # <path/to/logfile.log>
-
-[APP_int]
-Logifle=./qt_files_photo.log      # <path/to/logfile.log>
-
-[APP_prod]
-Logifle=./qt_files_photo.log      # <path/to/logfile.log>
-```
+> [!TIP]
+> call: `<prog> -c` : create new Inifile
+> call: `<prog> -l` : list existing Inifile
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -712,8 +676,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-        https://choosealicense.com/licenses/mit/
-
 ## Authors
 
 - [![Zheng Robert](https://img.shields.io/badge/Github-Zheng_Robert-black?logo=github)](https://www.github.com/Zheng-Bote)
@@ -721,8 +683,6 @@ SOFTWARE.
 ### Code Contributors
 
 ![Contributors](https://img.shields.io/github/contributors/Zheng-Bote/qt_files_photo-gallery?color=dark-green)
-
-[![Zheng Robert](https://img.shields.io/badge/Github-Zheng_Robert-black?logo=github)](https://www.github.com/Zheng-Bote)
 
 <hr>
 
