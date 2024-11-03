@@ -290,15 +290,12 @@ Plog - portable, simple and extensible C++ logging library
 │   └── screenshot_graphical-installer_de.png
 ├── src
 │   ├── CMAKEGraphVizOptions.cmake
-│   ├── CMakeFiles
-│   │   ├── ClangTidy.cmake
-│   │   ├── Doxygen.cmake
-│   │   ├── cmake.check_cache
-│   │   └── extra_headers
 │   ├── CMakeLists.txt
-│   ├── CMakeUserPresets.json
 │   ├── conanfile.txt
 │   ├── configure
+│   │   ├── ClangTidy.cmake
+│   │   ├── Doxygen.cmake
+│   │   ├── extra_headers
 │   │   └── rz_config.h.in
 │   ├── includes
 │   │   ├── inicpp.h
@@ -308,18 +305,29 @@ Plog - portable, simple and extensible C++ logging library
 │   │   ├── rz_aes.h
 │   │   ├── rz_datetime.cpp
 │   │   ├── rz_datetime.h
+│   │   ├── rz_filesystem.cpp
+│   │   ├── rz_filesystem.h
 │   │   ├── rz_inifile.cpp
 │   │   ├── rz_inifile.h
+│   │   ├── rz_options.hpp
+│   │   ├── rz_output.cpp
+│   │   ├── rz_output.h
 │   │   ├── rz_pg_db.cpp
 │   │   ├── rz_pg_db.h
+│   │   ├── rz_photo-gallery_plugins.h
+│   │   ├── rz_qt_snippets.cpp
+│   │   ├── rz_qt_snippets.h
 │   │   ├── rz_readdir.cpp
 │   │   ├── rz_readdir.h
+│   │   ├── rz_snippets.cpp
+│   │   ├── rz_snippets.h
 │   │   ├── rz_sqlite3_db.cpp
-│   │   └── rz_sqlite3_db.h
+│   │   ├── rz_sqlite3_db.h
+│   │   └── rz_string_lib.h
 │   └── main.cpp
 └── tree.bak
 
-10 directories, 49 files
+9 directories, 58 files
 ```
 
 <!-- readme-tree end -->
