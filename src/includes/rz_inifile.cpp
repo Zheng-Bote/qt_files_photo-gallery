@@ -38,7 +38,7 @@ void Inifile::Test()
 
 void Inifile::createIni()
 {
-    myIni["DB_dev"]["enabled"] = "true";
+    myIni["DB_dev"]["enabled"] = true;
     myIni["DB_dev"]["rdbms"] = "sqlite";
     myIni["DB_dev"]["dbname"] = "";
     myIni["DB_dev"]["file"] = "/var/{{ PROG_NAME }}/{{ DATE_TIME }}_{{ PROG_NAME }}.sqlite";
@@ -47,7 +47,7 @@ void Inifile::createIni()
     myIni["DB_dev"]["port"] = "";
     myIni["DB_dev"]["username"] = "";
 
-    myIni["DB_int"]["enabled"] = "false";
+    myIni["DB_int"]["enabled"] = false;
     myIni["DB_int"]["rdbms"] = "csv";
     myIni["DB_int"]["dbname"] = "";
     myIni["DB_int"]["file"] = "/var/{{ PROG_NAME }}/{{ DATE_TIME }}_{{ PROG_NAME }}.csv";
@@ -56,7 +56,7 @@ void Inifile::createIni()
     myIni["DB_int"]["port"] = "";
     myIni["DB_int"]["username"] = "";
 
-    myIni["DB_prod"]["enabled"] = "false";
+    myIni["DB_prod"]["enabled"] = false;
     myIni["DB_prod"]["rdbms"] = "pg";
     myIni["DB_prod"]["dbname"] = "{{ PROG_NAME }}";
     myIni["DB_prod"]["file"] = "";
@@ -75,11 +75,12 @@ void Inifile::createIni()
     myIni["APP_prod"]["plugins_to_use"] = "pg, webp, exif, iptc";
 
     myIni["Photos"]["output_formats"] = "webp, png";
-    myIni["Photos"]["output_sizes"] = "480, 640, 800, 1024";
+    myIni["Photos"]["output_sizes"] = "256, 480, 640, 800, 1024";
     myIni["Photos"]["copyright_default"] = "ZHENG Robert";
     myIni["Photos"]["images_source_path"] = "/var/data/{{ PROG_NAME }}/images";
     myIni["Photos"]["base_path_cut"] = "/var/data/{{ PROG_NAME }}/";
     myIni["Photos"]["base_path_replace"] = "{{ PROG_NAME }}/web_img/";
+    myIni["Photos"]["reduced_copy_comment"] = true;
 }
 
 bool Inifile::saveIniToFile(QString &pathFile)

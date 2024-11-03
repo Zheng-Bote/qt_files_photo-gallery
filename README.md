@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -255,6 +256,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -327,6 +329,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 58 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -430,8 +433,8 @@ cd build && sudo cmake --install .
 | `-e --env`     | `string` | _Optional:_ `<dev> , <int> , <prod>` or default:`dev`                                           |
 | `-i --ini`     | `string` | _Optional:_ `<pathTo/inifile>`                                                                  |
 | `-l --listini` | `string` | _Optional:_ `<pathTo/inifile>` or default: `default: `/<user home>/.config/<program>.ini>`      |
-| `-v --version` | `none`   | _Optional:_ `<program>-v<major>.<minor>.<patch>`                                                |
-| `-h --help`    | `none`   | _Optional:_ list help menu                                                                      |
+| `-v --version` | `string` | _Optional:_ `<program>-v<major>.<minor>.<patch>`                                                |
+| `-h --help`    | `string` | _Optional:_ list help menu                                                                      |
 
 ## Outputs
 
