@@ -89,7 +89,7 @@ private:
     friend Os &operator<<(Os &os, HumanReadable hr)
     {
       int i{};
-      double mantissa = hr.size;
+      double mantissa = (double) hr.size;
       for (; mantissa >= 1024.; ++i)
       {
         mantissa /= 1024.;

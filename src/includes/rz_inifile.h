@@ -21,6 +21,7 @@
 
 #include "rz_datetime.h"
 #include "rz_qt_snippets.h"
+#include "rz_snippets.h"
 #include "rz_string_lib.h"
 
 class Inifile
@@ -33,9 +34,9 @@ public:
 
     void Test();
     void createIni();
-    bool saveIniToFile(QString &pathFile);
-    bool saveIniToFile(QString &path, QString &file);
-    bool loadIni(QString &pathFile);
+    std::tuple<bool, std::string> saveIniToFile(QString &pathFile);
+    std::tuple<bool, std::string> saveIniToFile(QString &path, QString &file);
+    std::tuple<bool, std::string> loadIni(QString &pathFile);
 
     // DB
     bool getDbEnabled(QString &env);
@@ -53,15 +54,14 @@ public:
     QString getPhotosBasePathCut();
     QStringList getPhotosOutputSizes();
     // App
-    QString getPluginsDir(QString &env, QString &ProgName);
-    QStringList getPluginsToUse(QString &env);
+    QString getPluginsDir(const QString &env, const QString &ProgName);
+    QStringList getPluginsToUse(const QString &env);
 
     void listIniEntries(QT_snippets &qt_snippets);
     QString getInifile();
 
-    QString pathToInifile;
-
 private:
     ini::IniFile myIni;
     DateTime dt;
+    QString pathToInifile;
 };

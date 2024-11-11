@@ -93,7 +93,8 @@ add_executable(${PROJECT_NAME} ${SRC_LIST}
     includes/rz_qt_snippets.h includes/rz_qt_snippets.cpp
     includes/rz_filesystem.cpp
     includes/rz_filesystem.h
-    includes/rz_options.hpp)
+    includes/rz_options.hpp
+    includes/rz_do_thread.h includes/rz_do_thread.cpp)
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

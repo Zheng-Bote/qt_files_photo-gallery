@@ -83,7 +83,7 @@ void Inifile::createIni()
     myIni["Photos"]["reduced_copy_comment"] = true;
 }
 
-bool Inifile::saveIniToFile(QString &pathFile)
+std::tuple<bool, std::string> Inifile::saveIniToFile(QString &pathFile)
 {
     try
     {
@@ -92,13 +92,13 @@ bool Inifile::saveIniToFile(QString &pathFile)
     catch (...)
     {
         PLOG_WARNING << "Write Ini failed: " << pathFile;
-        return false;
+        return std::make_tuple(false, std::format("Write Ini {} failed", pathFile.toStdString()));
     }
 
-    return true;
+    return std::make_tuple(true, std::format("Write Ini {} successfull", pathFile.toStdString()));
 }
 
-bool Inifile::saveIniToFile(QString &path, QString &file)
+std::tuple<bool, std::string> Inifile::saveIniToFile(QString &path, QString &file)
 {
     QString pathFile = path + "/" + file;
 
@@ -109,13 +109,13 @@ bool Inifile::saveIniToFile(QString &path, QString &file)
     catch (...)
     {
         PLOG_WARNING << "Write Ini failed: " << pathFile;
-        return false;
+        return std::make_tuple(false, std::format("Write Ini {} failed", pathFile.toStdString()));
     }
 
-    return true;
+    return std::make_tuple(true, std::format("Write Ini {} successfull", pathFile.toStdString()));
 }
 
-bool Inifile::loadIni(QString &pathFile)
+std::tuple<bool, std::string> Inifile::loadIni(QString &pathFile)
 {
     Inifile::pathToInifile = pathFile;
     QFileInfo fi(pathFile);
@@ -123,7 +123,9 @@ bool Inifile::loadIni(QString &pathFile)
     if (fi.exists() == false || fi.isReadable() == false)
     {
         PLOG_WARNING << "File doesn't exist or is not readable: " << pathFile;
-        return false;
+        return std::make_tuple(false,
+                               std::format("doesn't exist or is not readable: {}",
+                                           pathFile.toStdString()));
     }
 
     myIni.load(pathFile.toStdString());
@@ -132,9 +134,11 @@ bool Inifile::loadIni(QString &pathFile)
     {
         PLOG_WARNING << "wrong INI size, should be at least 1 section (maybe not readable?): "
                      << myIni.size();
-        return false;
+        return std::make_tuple(false,
+                               std::format("wrong INI size {}, should be at least 1 section.",
+                                           myIni.size()));
     }
-    return true;
+    return std::make_tuple(true, std::format("Inifile {} loaded", pathFile.toStdString()));
 }
 
 bool Inifile::getDbEnabled(QString &env)
@@ -229,7 +233,7 @@ QStringList Inifile::getPhotosOutputSizes()
     return (qextensionsStr.remove(" ").split(",", Qt::SkipEmptyParts));
 }
 
-QString Inifile::getPluginsDir(QString &env, QString &ProgName)
+QString Inifile::getPluginsDir(const QString &env, const QString &ProgName)
 {
     std::string appenv = "APP_" + env.toStdString();
     std::string ret = rz_string_lib::replace(myIni[appenv]["plugins_dir"].as<std::string>(),
@@ -238,7 +242,7 @@ QString Inifile::getPluginsDir(QString &env, QString &ProgName)
     return ret.c_str();
 }
 
-QStringList Inifile::getPluginsToUse(QString &env)
+QStringList Inifile::getPluginsToUse(const QString &env)
 {
     std::string appenv = "APP_" + env.toStdString();
     std::string extensionsStr = myIni[appenv]["plugins_to_use"].as<std::string>();

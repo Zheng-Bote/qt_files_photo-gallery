@@ -13,7 +13,6 @@
 
 #include <QCoreApplication>
 
-// TODOS: async
 #include <future>
 #include <print>
 
@@ -62,6 +61,8 @@ int main(int argc, char *argv[])
     QMap<QString, QString> pluginsMap;
 
     Inifile iniConfig;
+    Snippets snippets;
+    Output output;
 
     // ################## ok-la, let's do it ################## //
 
@@ -84,29 +85,28 @@ int main(int argc, char *argv[])
     PLOG_INFO << "Logfile: " << logfile;
 
     // get the options
-    rz_options::check_options(qt_snippets, argc, argv, inifile, env, iniConfig);
+    rz_options::check_options(qt_snippets, snippets, argc, argv, inifile, env, iniConfig);
 
     // load inifile
-    if (!iniConfig.loadIni(inifile)) {
-        exit(EXIT_FAILURE);
-    }
+    snippets.checkFunctionReturn(iniConfig.loadIni(inifile), Snippets::Status::FATAL);
 
-    Output output;
-    QString plugPath
-        = "/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/Desktop_Qt_6_7_3-Debug";
-    output.listPlugins(output.getPlugins(plugPath));
+    snippets.checkFunctionReturn(output.testPlugins(pluginsMap,
+                                                    output.getPlugins(iniConfig.getPluginsDir(
+                                                        env, qt_snippets.getProgName()))),
+                                 Snippets::Status::FATAL);
 
-    Snippets snippets;
+    // output.listPlugins(output.getPlugins(plugPath));
+
+    // reduce to used plugins
+    output.reducePlugins(pluginsMap, iniConfig.getPluginsToUse(env));
+
     if (snippets.checkFunctionReturn(snippets.test("Hello World!"), Snippets::Status::ERROR)) {
         std::println("main: OK");
     } else {
         std::println("main: NOK");
     }
-    if (snippets.checkFunctionReturn(snippets.test("Hello World!"), Snippets::Status::FATAL)) {
-        std::println("main: OK");
-    } else {
-        std::println("main: NOK");
-    }
+    // FATAL doesn't need if-case due to EXIT_FAILURE
+    snippets.checkFunctionReturn(snippets.test("Hello World!"), Snippets::Status::FATAL);
 
     /**
      * @brief the end

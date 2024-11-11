@@ -12,6 +12,7 @@
 namespace rz_options {
 
 void check_options(QT_snippets &qt_snippets,
+                   Snippets snippets,
                    const int argc,
                    char *argv[],
                    QString &inifile,
@@ -73,12 +74,8 @@ void check_options(QT_snippets &qt_snippets,
         }
 
         iniConfig.createIni();
-        if (!iniConfig.saveIniToFile(inifile)) {
-            exit(EXIT_FAILURE);
-        }
-        if (!iniConfig.loadIni(inifile)) {
-            exit(EXIT_FAILURE);
-        }
+        snippets.checkFunctionReturn(iniConfig.saveIniToFile(inifile), Snippets::Status::FATAL);
+        snippets.checkFunctionReturn(iniConfig.loadIni(inifile), Snippets::Status::FATAL);
         iniConfig.listIniEntries(qt_snippets);
         exit(EXIT_SUCCESS);
     }
@@ -91,9 +88,7 @@ void check_options(QT_snippets &qt_snippets,
             inifile = input.c_str();
         }
 
-        if (!iniConfig.loadIni(inifile)) {
-            exit(EXIT_FAILURE);
-        }
+        snippets.checkFunctionReturn(iniConfig.loadIni(inifile), Snippets::Status::FATAL);
         iniConfig.listIniEntries(qt_snippets);
         exit(EXIT_SUCCESS);
     }
