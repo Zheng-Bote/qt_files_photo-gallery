@@ -257,7 +257,6 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -299,38 +298,41 @@ Plog - portable, simple and extensible C++ logging library
 │   │   ├── extra_headers
 │   │   └── rz_config.h.in
 │   ├── includes
+│   │   ├── httplib.h
 │   │   ├── inicpp.h
 │   │   ├── qaesencryption.cpp
 │   │   ├── qaesencryption.h
 │   │   ├── rz_aes.cpp
 │   │   ├── rz_aes.h
 │   │   ├── rz_datetime.cpp
-│   │   ├── rz_datetime.h
+│   │   ├── rz_datetime.hpp
+│   │   ├── rz_do_thread.cpp
+│   │   ├── rz_do_thread.hpp
 │   │   ├── rz_filesystem.cpp
-│   │   ├── rz_filesystem.h
+│   │   ├── rz_filesystem.hpp
 │   │   ├── rz_inifile.cpp
-│   │   ├── rz_inifile.h
+│   │   ├── rz_inifile.hpp
 │   │   ├── rz_options.hpp
 │   │   ├── rz_output.cpp
-│   │   ├── rz_output.h
+│   │   ├── rz_output.hpp
 │   │   ├── rz_pg_db.cpp
-│   │   ├── rz_pg_db.h
-│   │   ├── rz_photo-gallery_plugins.h
+│   │   ├── rz_pg_db.hpp
+│   │   ├── rz_photo-gallery_plugins.hpp
 │   │   ├── rz_qt_snippets.cpp
-│   │   ├── rz_qt_snippets.h
+│   │   ├── rz_qt_snippets.hpp
 │   │   ├── rz_readdir.cpp
-│   │   ├── rz_readdir.h
+│   │   ├── rz_readdir.hpp
 │   │   ├── rz_snippets.cpp
-│   │   ├── rz_snippets.h
+│   │   ├── rz_snippets.hpp
 │   │   ├── rz_sqlite3_db.cpp
-│   │   ├── rz_sqlite3_db.h
-│   │   └── rz_string_lib.h
+│   │   ├── rz_sqlite3_db.hpp
+│   │   ├── rz_string_lib.hpp
+│   │   └── rz_webserver.hpp
 │   └── main.cpp
 └── tree.bak
 
-9 directories, 58 files
+9 directories, 62 files
 ```
-
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
