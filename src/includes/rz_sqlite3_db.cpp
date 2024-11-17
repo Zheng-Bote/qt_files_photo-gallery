@@ -7,13 +7,13 @@
  * @copyright Copyright (c) 2023 ZHENG Robert
  */
 
-#include "rz_sqlite3_db.h"
+#include "rz_sqlite3_db.hpp"
 
 SqliteDb::SqliteDb() {}
 
-SqliteDb::SqliteDb(Inifile &iniConfig, QString &env, QString &ProgName)
+SqliteDb::SqliteDb(std::shared_ptr<Inifile> sptr_ini_config, QString &env, QString &ProgName)
 {
-    SqliteDb::connectDb(iniConfig, env, ProgName);
+    SqliteDb::connectDb(sptr_ini_config, env, ProgName);
 }
 
 SqliteDb::~SqliteDb()
@@ -21,11 +21,11 @@ SqliteDb::~SqliteDb()
     SqliteDb::db.close();
 }
 
-bool SqliteDb::connectDb(Inifile &iniConfig, QString &env, QString &ProgName)
+bool SqliteDb::connectDb(std::shared_ptr<Inifile> sptr_ini_config, QString &env, QString &ProgName)
 {
     bool connectStatus = false;
     SqliteDb::db = QSqlDatabase::addDatabase("QSQLITE");
-    SqliteDb::db.setDatabaseName(iniConfig.getDbFile(env, ProgName));
+    SqliteDb::db.setDatabaseName(sptr_ini_config->getDbFile(env, ProgName));
 
     if (!SqliteDb::db.open())
     {

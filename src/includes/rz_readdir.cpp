@@ -7,12 +7,12 @@
  * @copyright Copyright (c) 2023 ZHENG Robert
  */
 
-#include "rz_readdir.h"
+#include "rz_readdir.hpp"
 
 ReadDir::ReadDir()
 {
-    QDir path = QDir::currentPath();
-    ReadDir::path = path.path();
+    QDir qdir_path = QDir::currentPath();
+    ReadDir::path = qdir_path.path();
 }
 
 ReadDir::ReadDir(QString &dir)
@@ -51,19 +51,18 @@ void ReadDir::searchFilesRekursive()
 void ReadDir::fileInfo(QFile &f)
 {
     // path/to/file
-    std::cout << "# " << f.fileName().toUtf8().toStdString() << std::endl;
+    std::println("# {}", f.fileName().toUtf8().toStdString());
 
     // filename
     QFileInfo fileInfo(f.fileName());
-    std::cout << "## " << fileInfo.completeBaseName().toStdString() << " " << f.size() / 1024
-              << "Kb" << std::endl;
+    std::println("## {} {}Kb", fileInfo.completeBaseName().toStdString(), f.size() / 1024);
 
     // file extension
-    std::cout << "## " << fileInfo.completeSuffix().toStdString() << std::endl;
+    std::println("## {}", fileInfo.completeSuffix().toStdString());
 
     // only dir
     QDir d = QFileInfo(f).absoluteDir();
-    std::cout << "### " << d.absolutePath().toStdString() << std::endl;
+    std::println("### {}", d.absolutePath().toStdString());
 
     // cutted dir
     /*      QString fPath = d.absolutePath();

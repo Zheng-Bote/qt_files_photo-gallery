@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2023 ZHENG Robert
  */
 
-#include "rz_inifile.h"
+#include "rz_inifile.hpp"
 
 Inifile::Inifile()
 {
@@ -25,7 +25,10 @@ Inifile::Inifile(QString &path, QString &file)
     Inifile::loadIni(pathFile);
 }
 
-Inifile::~Inifile() {}
+Inifile::~Inifile()
+{
+    sptr_dt = nullptr;
+}
 
 QString Inifile::getInifile()
 {
@@ -147,13 +150,13 @@ bool Inifile::getDbEnabled(QString &env)
     return myIni[dbenv]["enabled"].as<bool>();
 }
 
-QString Inifile::getDbRdbms(QString &env, QString &ProgName)
+QString Inifile::getDbRdbms(QString &env)
 {
     std::string dbenv = "DB_" + env.toStdString();
     return myIni[dbenv]["rdbms"].as<std::string>().c_str();
 }
 
-QString Inifile::getDbName(QString &env, QString &ProgName)
+QString Inifile::getDbName(QString &env)
 {
     std::string dbenv = "DB_" + env.toStdString();
     return myIni[dbenv]["dbname"].as<std::string>().c_str();
@@ -164,7 +167,8 @@ QString Inifile::getDbFile(QString &env, QString &ProgName)
     std::string dbenv = "DB_" + env.toStdString();
     std::string ret = rz_string_lib::replace(myIni[dbenv]["dbfile"].as<std::string>(),
                                              "{{ DATE_TIME }}",
-                                             dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+                                             sptr_dt->getFormatedUtcDateTimeHuman(
+                                                 "YYYY-MM-DD_HH-MM-SS"));
     ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
     return ret.c_str();
 }
@@ -174,7 +178,8 @@ QString Inifile::getDbHostname(QString &env, QString &ProgName)
     std::string dbenv = "DB_" + env.toStdString();
     std::string ret = rz_string_lib::replace(myIni[dbenv]["hostname"].as<std::string>(),
                                              "{{ DATE_TIME }}",
-                                             dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+                                             sptr_dt->getFormatedUtcDateTimeHuman(
+                                                 "YYYY-MM-DD_HH-MM-SS"));
     ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
     return ret.c_str();
 }
@@ -206,7 +211,8 @@ QString Inifile::getDbSqlFile(QString &env, QString &ProgName)
     std::string dbenv = "DB_" + env.toStdString();
     std::string ret = rz_string_lib::replace(myIni[dbenv]["sql_to_file"].as<std::string>(),
                                              "{{ DATE_TIME }}",
-                                             dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+                                             sptr_dt->getFormatedUtcDateTimeHuman(
+                                                 "YYYY-MM-DD_HH-MM-SS"));
     ret = rz_string_lib::replace(ret, "{{ PROG_NAME }}", ProgName.toStdString());
     return ret.c_str();
 }
@@ -250,10 +256,10 @@ QStringList Inifile::getPluginsToUse(const QString &env)
     return (pluginsStr.remove(" ").split(",", Qt::SkipEmptyParts));
 }
 
-void Inifile::listIniEntries(QT_snippets &qt_snippets)
+void Inifile::listIniEntries(std::shared_ptr<QtSnippets> sptr_qt_snippets)
 {
-    std::cout << "Parsed ini contents" << std::endl;
-    std::cout << "Has " << myIni.size() << " sections" << std::endl;
+    std::println("Parsed ini contents");
+    std::println("Has {} sections", myIni.size());
     for (const auto &sectionPair : myIni)
     {
         const std::string &sectionName = sectionPair.first;
@@ -261,10 +267,10 @@ void Inifile::listIniEntries(QT_snippets &qt_snippets)
 
         std::string out = "\nSection '" + sectionName + "' has " + std::to_string(section.size())
                           + " fields";
-        int len = out.length();
+        int len = (int) out.length();
 
         //std::cout << "Section '" << sectionName << "' has " << section.size() << " fields" << std::endl;
-        std::cout << out << std::endl;
+        std::println("{}", out);
         std::cout << std::setfill('*') << std::setw(len) << "\n";
 
         for (const auto &fieldPair : sectionPair.second) {
@@ -272,10 +278,11 @@ void Inifile::listIniEntries(QT_snippets &qt_snippets)
             const ini::IniField &field = fieldPair.second;
             std::string ret = rz_string_lib::replace(field.as<std::string>(),
                                                      "{{ PROG_NAME }}",
-                                                     qt_snippets.getProgName().toStdString());
+                                                     sptr_qt_snippets->getProgName().toStdString());
             ret = rz_string_lib::replace(ret,
                                          "{{ DATE_TIME }}",
-                                         dt.getFormatedUtcDateTimeHuman("YYYY-MM-DD_HH-MM-SS"));
+                                         sptr_dt->getFormatedUtcDateTimeHuman(
+                                             "YYYY-MM-DD_HH-MM-SS"));
             std::cout << fieldName << " = " << ret << std::endl;
         }
     }

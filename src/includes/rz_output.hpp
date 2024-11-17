@@ -6,11 +6,12 @@
 #include <QPluginLoader>
 #include <QThread>
 #include <QThreadPool>
+#include <memory>
 
 #include "plog/Log.h"
-#include "rz_do_thread.h"
-#include "rz_inifile.h"
-#include "rz_photo-gallery_plugins.h"
+#include "rz_do_thread.hpp"
+#include "rz_inifile.hpp"
+#include "rz_photo-gallery_plugins.hpp"
 
 class Output : public QObject
 {
@@ -29,7 +30,7 @@ public:
     void runPlugins(const QMap<QString, QString> &pluginMap,
                     const QString &inFile,
                     const QString &outFile,
-                    Inifile &iniConfig);
+                    std::shared_ptr<Inifile> sptr_ini_config);
 
 private:
     int countedPlugins{0};

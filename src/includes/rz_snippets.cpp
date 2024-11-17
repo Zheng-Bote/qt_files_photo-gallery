@@ -1,6 +1,8 @@
-#include "rz_snippets.h"
+#include "rz_snippets.hpp"
 
 Snippets::Snippets() {}
+
+Snippets::~Snippets() {}
 
 std::tuple<bool, std::string> Snippets::test(const std::string &text)
 {

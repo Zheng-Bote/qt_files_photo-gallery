@@ -9,20 +9,21 @@
 
 #pragma once
 
-#include <QString>
-#include <iostream>
 #include <QDir>
 #include <QFile>
+#include <QString>
+#include <iostream>
+#include <memory>
 
 #include "plog/Log.h"
 
 /* https://github.com/Rookfighter/inifile-cpp */
 #include "inicpp.h"
 
-#include "rz_datetime.h"
-#include "rz_qt_snippets.h"
-#include "rz_snippets.h"
-#include "rz_string_lib.h"
+#include "rz_datetime.hpp"
+#include "rz_qt_snippets.hpp"
+
+#include "rz_string_lib.hpp"
 
 class Inifile
 {
@@ -40,8 +41,8 @@ public:
 
     // DB
     bool getDbEnabled(QString &env);
-    QString getDbRdbms(QString &env, QString &ProgName);
-    QString getDbName(QString &env, QString &ProgName);
+    QString getDbRdbms(QString &env);
+    QString getDbName(QString &env);
     QString getDbFile(QString &env, QString &ProgName);
     QString getDbHostname(QString &env, QString &ProgName);
     QString getDbPassword(QString &env, QString &ProgName);
@@ -57,11 +58,13 @@ public:
     QString getPluginsDir(const QString &env, const QString &ProgName);
     QStringList getPluginsToUse(const QString &env);
 
-    void listIniEntries(QT_snippets &qt_snippets);
+    void listIniEntries(std::shared_ptr<QtSnippets> sptr_qt_snippets);
     QString getInifile();
 
 private:
     ini::IniFile myIni;
-    DateTime dt;
+    //DateTime dt;
+    std::shared_ptr<DateTime> sptr_dt;
+
     QString pathToInifile;
 };

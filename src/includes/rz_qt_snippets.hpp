@@ -8,13 +8,14 @@
 
 #include <tuple>
 
-#include "rz_filesystem.h"
-#include "rz_snippets.h"
+#include "rz_filesystem.hpp"
+#include "rz_snippets.hpp"
 
-class QT_snippets
+class QtSnippets
 {
 public:
-    QT_snippets();
+    QtSnippets();
+    ~QtSnippets();
 
     std::tuple<bool, std::string> setProgData(QString const &pathToProg);
 

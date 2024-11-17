@@ -7,13 +7,13 @@
  * @copyright Copyright (c) 2023 ZHENG Robert
  */
 
-#include "rz_pg_db.h"
+#include "rz_pg_db.hpp"
 
 PgDb::PgDb() {}
 
-PgDb::PgDb(Inifile &iniConfig, QString &env, QString &ProgName)
+PgDb::PgDb(std::shared_ptr<Inifile> sptr_ini_config, QString &env, QString &ProgName)
 {
-    PgDb::connectDb(iniConfig, env, ProgName);
+    PgDb::connectDb(sptr_ini_config, env, ProgName);
 }
 
 PgDb::~PgDb()
@@ -21,15 +21,15 @@ PgDb::~PgDb()
     PgDb::db.close();
 }
 
-bool PgDb::connectDb(Inifile &iniConfig, QString &env, QString &ProgName)
+bool PgDb::connectDb(std::shared_ptr<Inifile> sptr_ini_config, QString &env, QString &ProgName)
 {
     bool connectStatus = false;
     PgDb::db = QSqlDatabase::addDatabase("QPSQL", "source");
-    PgDb::db.setHostName(iniConfig.getDbHostname(env, ProgName));
-    PgDb::db.setDatabaseName(iniConfig.getDbName(env, ProgName));
-    PgDb::db.setUserName(iniConfig.getDbUsername(env, ProgName));
-    PgDb::db.setPassword(iniConfig.getDbPassword(env, ProgName));
-    PgDb::db.setPort(iniConfig.getDbPort(env));
+    PgDb::db.setHostName(sptr_ini_config->getDbHostname(env, ProgName));
+    PgDb::db.setDatabaseName(sptr_ini_config->getDbName(env));
+    PgDb::db.setUserName(sptr_ini_config->getDbUsername(env, ProgName));
+    PgDb::db.setPassword(sptr_ini_config->getDbPassword(env, ProgName));
+    PgDb::db.setPort(sptr_ini_config->getDbPort(env));
 
     if (!PgDb::db.open())
     {

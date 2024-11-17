@@ -1,8 +1,8 @@
 /**
- * @file rz_datetime.h
+ * @file rz_datetime.hpp
  * @author ZHENG Bote (robert.hase-zheng.net)
  * @brief CXX20 datetime lib
- * @version 2.1.0
+ * @version 2.2.0
  * @date 2023-03-25
  *
  * @copyright Copyright (c) 2023 ZHENG Robert
@@ -11,9 +11,9 @@
 
 #pragma once
 
-#include <iostream>
 #include <chrono>
 #include <clocale>
+#include <print>
 #include <string>
 
 /**
@@ -24,6 +24,7 @@ class DateTime
 {
 public:
   DateTime();
+  ~DateTime();
 
   std::string getUtcDateTimeSys();
   std::string getUtcDateTimeHuman();

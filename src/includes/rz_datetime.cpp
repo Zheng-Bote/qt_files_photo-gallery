@@ -2,7 +2,7 @@
  * @file rz_datetime.cpp
  * @author ZHENG Bote (robert.hase-zheng.net)
  * @brief CXX20 datetime lib
- * @version 2.1.0
+ * @version 2.2.0
  * @date 2023-03-25
  *
  * @copyright Copyright (c) 2023 ZHENG Robert
@@ -11,7 +11,7 @@
 
 // https://en.cppreference.com/w/cpp/chrono/duration/formatter
 
-#include "rz_datetime.h"
+#include "rz_datetime.hpp"
 
 /**
  * @brief Construct a new Date Time:: Date Time object
@@ -20,6 +20,8 @@
 DateTime::DateTime()
 {
 }
+
+DateTime::~DateTime() {}
 
 /**
  * @brief DateTime::getUtcDateTime
@@ -190,7 +192,7 @@ void DateTime::showAllTimezones()
   const std::vector<std::chrono::time_zone> &tzs{tzdb.zones};
   for (const std::chrono::time_zone &tz : tzs)
   {
-    std::cout << tz.name() << '\n';
+      std::println("{}", tz.name());
   }
 }
 
@@ -223,7 +225,7 @@ std::string DateTime::findTimezoneTime(const std::string &endName)
     }
     catch (const std::runtime_error &e)
     {
-      std::cout << e.what() << '\n';
+        std::println("{}", e.what());
     }
   }
   return ret;

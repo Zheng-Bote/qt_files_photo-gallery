@@ -12,7 +12,7 @@
 #include <QDirIterator>
 
 #include "plog/Log.h"
-#include <iostream>
+#include <print>
 
 class ReadDir
 {

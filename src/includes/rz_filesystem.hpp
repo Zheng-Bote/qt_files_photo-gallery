@@ -11,11 +11,12 @@
 
 #pragma once
 
+#include <chrono>
+#include <cmath>
 #include <filesystem>
 #include <format>
 #include <iostream>
-#include <chrono>
-#include <cmath>
+#include <print>
 
 /**
  * @brief The Filesystem class
@@ -90,9 +91,8 @@ private:
     {
       int i{};
       double mantissa = (double) hr.size;
-      for (; mantissa >= 1024.; ++i)
-      {
-        mantissa /= 1024.;
+      for (; mantissa >= 1024.; ++i) {
+          mantissa /= 1024.;
       }
       mantissa = std::ceil(mantissa * 10.) / 10.;
       os << mantissa << "BKMGTPE"[i];

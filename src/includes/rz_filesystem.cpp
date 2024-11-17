@@ -9,7 +9,7 @@
  *
  */
 
-#include "rz_filesystem.h"
+#include "rz_filesystem.hpp"
 
 /**
  * @brief Filesystem::Filesystem
@@ -27,12 +27,12 @@ bool Filesystem::createDirectory(const std::filesystem::path &p) noexcept
 
     if (std::filesystem::create_directory(dir, ec))
     {
-        std::cout << "Directory created successfully\n";
+        std::println("Directory created successfully");
         return true;
     }
     else
     {
-        std::cout << "Failed to create directory\n";
+        std::println("Failed to create directory");
         // std::cout << ec.message() << '\n';
     }
 
@@ -52,18 +52,18 @@ bool Filesystem::createDirectories(const std::filesystem::path &p) noexcept
     {
         if (std::filesystem::create_directories(nested))
         {
-            std::cout << "Nested directories created successfully\n";
+            std::println("Nested directories created successfully");
             return true;
         }
         else
         {
-            std::cout << "Failed to create nested directories\n";
+            std::println("Failed to create nested directories");
             // std::cout << ec.message() << '\n';
         }
     }
     catch (const std::exception &ex)
     {
-        std::cout << ex.what() << '\n';
+        std::println("{}", ex.what());
     }
 
     return false;
@@ -83,12 +83,12 @@ bool Filesystem::copyDirectories(const std::filesystem::path &src,
     try
     {
         std::filesystem::copy(src, dest, copyOptions);
-        std::cout << "Directories copied successfully\n";
+        std::println("Directories copied successfully");
         return true;
     }
     catch (std::filesystem::filesystem_error &e)
     {
-        std::cout << e.what() << '\n';
+        std::println("{}", e.what());
     }
     return false;
 }
@@ -106,18 +106,18 @@ bool Filesystem::removeDirectory(const std::filesystem::path &p) noexcept
     {
         if (std::filesystem::remove(dir))
         {
-            std::cout << "Directory removed\n";
+            std::println("Directory removed");
             return true;
         }
         else
         {
-            std::cout << "Failed to remove the directory...\n";
-            std::cout << ec.message() << '\n';
+            std::println("Failed to remove the directory...");
+            std::println("{}", ec.message());
         }
     }
     catch (const std::exception &ex)
     {
-        std::cout << ex.what() << '\n';
+        std::println("{}", ex.what());
     }
 
     return false;
@@ -135,12 +135,12 @@ bool Filesystem::removeDirectories(const std::filesystem::path &p) noexcept
     try
     {
         const auto cnt = std::filesystem::remove_all(dir);
-        std::cout << std::format("removed {} items\n", cnt);
+        std::println("removed {} items", cnt);
         return true;
     }
     catch (const std::exception &ex)
     {
-        std::cout << ex.what() << '\n';
+        std::println("{}", ex.what());
     }
 
     return false;
@@ -170,7 +170,7 @@ void Filesystem::listDirectory(const std::filesystem::path &p)
     std::filesystem::path dir = p;
 
     for (const auto &entry : std::filesystem::directory_iterator(p))
-        std::cout << entry.path() << '\n';
+        std::println("{}", entry.path().c_str());
 }
 
 /**
@@ -186,15 +186,15 @@ void Filesystem::listDirectories(const std::filesystem::path &p, unsigned tabs)
         {
             if (tabs > 0)
             {
-                std::cout << std::string(tabs, '-');
+                std::println("{}", std::string(tabs, '-'));
             }
             if (entry.is_regular_file())
             {
-                std::cout << "-> " << std::filesystem::path(entry).filename() << "\n";
+                std::println("-> {}", std::filesystem::path(entry).filename().c_str());
             }
             else
             {
-                std::cout << entry.path().stem().c_str() << '\n';
+                std::println("{}", entry.path().stem().c_str());
             }
             if (entry.is_directory())
             {
@@ -204,7 +204,7 @@ void Filesystem::listDirectories(const std::filesystem::path &p, unsigned tabs)
     }
     catch (const std::exception &ex)
     {
-        std::cout << ex.what() << '\n';
+        std::println("{}", ex.what());
     }
 }
 
@@ -218,7 +218,7 @@ bool Filesystem::showDirectoryTree(const std::string &p)
     std::string treePath = "tree " + p;
 
     // static_cast<void>(std::system(treePath.c_str()));
-    uint_fast32_t ret = std::system(treePath.c_str());
+    int ret = std::system(treePath.c_str());
     if (ret == 0)
     {
         return true;
@@ -259,12 +259,12 @@ bool Filesystem::copyFile(const std::filesystem::path &src,
     try
     {
         std::filesystem::copy(src, dest, copyOptions);
-        std::cout << "File copied successfully\n";
+        std::println("File copied successfully");
         return true;
     }
     catch (std::filesystem::filesystem_error &e)
     {
-        std::cout << e.what() << '\n';
+        std::println("{}", e.what());
     }
 
     return false;
@@ -294,12 +294,12 @@ bool Filesystem::copyFilesRecursive(const std::filesystem::path &src,
     try
     {
         std::filesystem::copy(src, dest, copyOptions);
-        std::cout << "Directory content copied successfully\n";
+        std::println("Directory content copied successfully");
         return true;
     }
     catch (std::filesystem::filesystem_error &e)
     {
-        std::cout << e.what() << '\n';
+        std::println("{}", e.what());
     }
 
     return false;
@@ -316,7 +316,7 @@ bool Filesystem::isFile(const std::filesystem::path &p)
 {
     if (std::filesystem::is_regular_file(p))
     {
-        std::cout << "It's a file\n";
+        std::println("It's a file");
         return true;
     }
 
@@ -369,11 +369,12 @@ void Filesystem::showFileSizeHuman(const std::filesystem::path &file) noexcept
 {
     try
     {
-        std::cout << std::filesystem::path(file).filename() << " size: " << HumanReadable{std::filesystem::file_size(file)} << '\n';
+        std::cout << std::filesystem::path(file).filename()
+                  << " size: " << HumanReadable{std::filesystem::file_size(file)} << std::endl;
     }
     catch (std::filesystem::filesystem_error &e)
     {
-        std::cout << e.what() << '\n';
+        std::println("{}", e.what());
     }
 }
 
@@ -488,7 +489,7 @@ void Filesystem::printDiskSpaceInfo(std::string const &dir, int width)
 
     std::cout << '\n';
 
-    std::error_code ec;
+    //std::error_code ec;
     const std::filesystem::space_info si = std::filesystem::space(dir);
     for (auto x : {si.capacity / kB, si.free / kB, si.available / kB, diskUsagePercent(si)})
         std::cout << "│ " << std::setw(width) << static_cast<std::intmax_t>(x) << ' ';

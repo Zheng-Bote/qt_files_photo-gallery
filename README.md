@@ -1,7 +1,7 @@
 <div id="top" align="center">
 <h1>files_photo-gallery</h1>
 
-<p>QT6 CXX20 console app to convert photos and add Metadata to Database</p>
+<p>QT6 CXX23 SCS to convert photos and add Metadata to Database</p>
 
 [Report Issue](https://github.com/Zheng-Bote/qt_files_photo-gallery/issues) [Request Feature](https://github.com/Zheng-Bote/qt_files_photo-gallery/pulls)
 
@@ -14,10 +14,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Description](#description)
-    - [Features](#features)
+  - [Features](#features)
   - [Status](#status)
     - [Application / Tool](#application--tool)
     - [Documentation](#documentation)
@@ -78,7 +79,7 @@
 ![QT](https://img.shields.io/badge/Community-6-41CD52?logo=qt)
 ![CXX](https://img.shields.io/badge/C++-23-blue?logo=cplusplus)
 
-QT6 C++23 console app to convert photos, collect Exif/IPTC and add metadata to DB.
+QT6 C++23 Self Contained System (SCS) to convert photos, collect Exif/IPTC and add metadata to DB.
 
 > The purpose of this tool is to run as a microservice to prepare photos for a web-based photo-gallery.
 
@@ -99,6 +100,7 @@ flowchart LR;
 
 ### Features
 
+- [x] Webserver (SCS) for steering and managing
 - [x] supports PostgreSQL (insert)
 - [x] supports SQLite3 (incl. create tables, indexes, triggers; insert)
 - [x] supports exports to SQL-file ("native", system-independent SQL; insert)
@@ -255,6 +257,7 @@ Plog - portable, simple and extensible C++ logging library
 ## folder structure
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -327,6 +330,7 @@ Plog - portable, simple and extensible C++ logging library
 
 9 directories, 58 files
 ```
+
 <!-- readme-tree end -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>

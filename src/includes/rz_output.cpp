@@ -1,4 +1,4 @@
-#include "rz_output.h"
+#include "rz_output.hpp"
 
 #include <iostream>
 
@@ -124,7 +124,7 @@ int Output::getCountedPlugins()
 void Output::runPlugins(const QMap<QString, QString> &pluginMap,
                         const QString &inFile,
                         const QString &outFile,
-                        Inifile &iniConfig)
+                        std::shared_ptr<Inifile> sptr_ini_config)
 {
     QThread::currentThread()->setObjectName("runPlugins");
     QThreadPool pool;

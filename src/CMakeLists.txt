@@ -5,9 +5,9 @@ cmake_minimum_required(VERSION 3.23)
 
 project(
   files_photo-gallery
-  VERSION 0.1.8
+  VERSION 0.1.10
   DESCRIPTION
-    "QT6 CXX23 console app to add photos to web-based photo-gallery"
+    "QT6 CXX23 SCS to add photos to photo-gallery"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
   LANGUAGES CXX)
 
@@ -52,19 +52,29 @@ else()
 endif()
 
 set(SRC_LIST   main.cpp
-    includes/rz_photo-gallery_plugins.h
+    includes/rz_photo-gallery_plugins.hpp
+    includes/rz_webserver.hpp
+    includes/rz_snippets.hpp
+    includes/rz_snippets.cpp
+    includes/rz_qt_snippets.hpp
+    includes/rz_qt_snippets.cpp
+    includes/rz_do_thread.hpp
+    includes/rz_do_thread.cpp
+     includes/rz_options.hpp
+    includes/rz_filesystem.cpp
+    includes/rz_filesystem.hpp
     includes/rz_output.cpp
-    includes/rz_output.h
+    includes/rz_output.hpp
     includes/rz_inifile.cpp
-    includes/rz_inifile.h
-    includes/rz_string_lib.h
+    includes/rz_inifile.hpp
+    includes/rz_string_lib.hpp
     includes/rz_pg_db.cpp
-    includes/rz_pg_db.h
+    includes/rz_pg_db.hpp
     includes/rz_sqlite3_db.cpp
-    includes/rz_sqlite3_db.h
+    includes/rz_sqlite3_db.hpp
     includes/rz_readdir.cpp
-    includes/rz_readdir.h
-    includes/rz_datetime.h
+    includes/rz_readdir.hpp
+    includes/rz_datetime.hpp
     includes/rz_datetime.cpp
     includes/rz_aes.h
     includes/rz_aes.cpp
@@ -88,13 +98,7 @@ find_package(plog REQUIRED)
 add_library(inicpp includes/inicpp.h)
 
 # no need to list header files, but helpful for IDE
-add_executable(${PROJECT_NAME} ${SRC_LIST}
-    includes/rz_snippets.h includes/rz_snippets.cpp
-    includes/rz_qt_snippets.h includes/rz_qt_snippets.cpp
-    includes/rz_filesystem.cpp
-    includes/rz_filesystem.h
-    includes/rz_options.hpp
-    includes/rz_do_thread.h includes/rz_do_thread.cpp)
+add_executable(${PROJECT_NAME} ${SRC_LIST})
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

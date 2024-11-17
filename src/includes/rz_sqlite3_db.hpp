@@ -10,19 +10,20 @@
 #pragma once
 
 #include <QtSql>
+#include <memory>
 
 #include "plog/Log.h"
 
-#include "rz_inifile.h"
+#include "rz_inifile.hpp"
 
 class SqliteDb
 {
 public:
     SqliteDb();
-    SqliteDb(Inifile &iniConfig, QString &env, QString &ProgName);
+    SqliteDb(std::shared_ptr<Inifile> sptr_ini_config, QString &env, QString &ProgName);
     ~SqliteDb();
 
-    bool connectDb(Inifile &iniConfig, QString &env, QString &ProgName);
+    bool connectDb(std::shared_ptr<Inifile> sptr_ini_config, QString &env, QString &ProgName);
     bool createTables();
 
     void closeDb();

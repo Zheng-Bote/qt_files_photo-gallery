@@ -7,12 +7,13 @@
 #include <QRunnable>
 #include <QThread>
 
-#include "rz_photo-gallery_plugins.h"
+#include "rz_photo-gallery_plugins.hpp"
 
 class DoThread : public QRunnable
 {
 public:
     DoThread();
+    ~DoThread();
 
     void run() override;
 

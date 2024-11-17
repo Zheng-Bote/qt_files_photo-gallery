@@ -1,23 +1,23 @@
 #pragma once
 
-#pragma once
+#include <memory>
+#include <print>
 
 #include "configured/rz_config.h"
 #include "cxxopts.hpp"
-#include "rz_inifile.h"
-#include "rz_qt_snippets.h"
+#include "rz_inifile.hpp"
+#include "rz_qt_snippets.hpp"
 
-#include <iostream>
 
 namespace rz_options {
 
-void check_options(QT_snippets &qt_snippets,
-                   Snippets snippets,
+void check_options(std::shared_ptr<QtSnippets> sptr_qt_snippets,
+                   std::shared_ptr<Snippets> sptr_snippets,
                    const int argc,
                    char *argv[],
                    QString &inifile,
                    QString &env,
-                   Inifile &iniConfig)
+                   std::shared_ptr<Inifile> sptr_ini_config)
 {
     std::string prog = PROG_NAME;
 
@@ -68,28 +68,31 @@ void check_options(QT_snippets &qt_snippets,
     if (result.count("create")) {
         std::string input = result["create"].as<std::string>();
         if (input.compare("<pathTo/inifile>") == 0) {
-            inifile = qt_snippets.getProgDefaultIni();
+            inifile = sptr_qt_snippets->getProgDefaultIni();
         } else {
             inifile = input.c_str();
         }
 
-        iniConfig.createIni();
-        snippets.checkFunctionReturn(iniConfig.saveIniToFile(inifile), Snippets::Status::FATAL);
-        snippets.checkFunctionReturn(iniConfig.loadIni(inifile), Snippets::Status::FATAL);
-        iniConfig.listIniEntries(qt_snippets);
+        sptr_ini_config->createIni();
+        sptr_snippets->checkFunctionReturn(sptr_ini_config->saveIniToFile(inifile),
+                                           Snippets::Status::FATAL);
+        sptr_snippets->checkFunctionReturn(sptr_ini_config->loadIni(inifile),
+                                           Snippets::Status::FATAL);
+        sptr_ini_config->listIniEntries(sptr_qt_snippets);
         exit(EXIT_SUCCESS);
     }
 
     if (result.count("listini")) {
         std::string input = result["listini"].as<std::string>();
         if (input.compare("<pathTo/inifile>") == 0) {
-            inifile = qt_snippets.getProgDefaultIni();
+            inifile = sptr_qt_snippets->getProgDefaultIni();
         } else {
             inifile = input.c_str();
         }
 
-        snippets.checkFunctionReturn(iniConfig.loadIni(inifile), Snippets::Status::FATAL);
-        iniConfig.listIniEntries(qt_snippets);
+        sptr_snippets->checkFunctionReturn(sptr_ini_config->loadIni(inifile),
+                                           Snippets::Status::FATAL);
+        sptr_ini_config->listIniEntries(sptr_qt_snippets);
         exit(EXIT_SUCCESS);
     }
 

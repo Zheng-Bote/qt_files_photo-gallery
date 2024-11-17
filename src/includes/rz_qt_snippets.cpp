@@ -1,13 +1,15 @@
-#include "rz_qt_snippets.h"
+#include "rz_qt_snippets.hpp"
 
-QT_snippets::QT_snippets() {}
+QtSnippets::QtSnippets() {}
+
+QtSnippets::~QtSnippets() {}
 
 /**
- * @brief QT_snippets::getEnvVar
+ * @brief QtSnippets::getEnvVar
  * @param name
  * @return tuple (bool, name environment value)
  */
-std::tuple<bool, std::string> QT_snippets::getEnvVar(const QString &name)
+std::tuple<bool, std::string> QtSnippets::getEnvVar(const QString &name)
 {
     QProcessEnvironment::systemEnvironment();
 
@@ -19,27 +21,27 @@ std::tuple<bool, std::string> QT_snippets::getEnvVar(const QString &name)
     return std::make_tuple(false, "Environment not found");
 }
 
-QString QT_snippets::getProgName()
+QString QtSnippets::getProgName()
 {
     return progName;
 }
 
-QString QT_snippets::getProgAbsolutePath()
+QString QtSnippets::getProgAbsolutePath()
 {
     return progAbsolutePath;
 }
 
-QString QT_snippets::getProgDefaultLog()
+QString QtSnippets::getProgDefaultLog()
 {
     return progDefaultLog;
 }
 
-QString QT_snippets::getProgDefaultIni()
+QString QtSnippets::getProgDefaultIni()
 {
     return progDefaultIni;
 }
 
-std::tuple<bool, std::string> QT_snippets::setProgData(const QString &pathToProg)
+std::tuple<bool, std::string> QtSnippets::setProgData(const QString &pathToProg)
 {
     QFile file = pathToProg;
     QFileInfo fileInfo(file.fileName());

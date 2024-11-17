@@ -1,6 +1,8 @@
-#include "rz_do_thread.h"
+#include "rz_do_thread.hpp"
 
 DoThread::DoThread() {}
+
+DoThread::~DoThread() {}
 
 void DoThread::run()
 {
