@@ -16,8 +16,8 @@ void DoThread::run()
 
     Plugin *pPlugin = qobject_cast<Plugin *>(pLoader.instance());
     if (pPlugin) {
-        //qInfo() << "Plugin loaded: " << pPlugin->getVersion();
-        pPlugin->doRun(inFile, outFile);
+        qInfo() << "Plugin loaded: " << pPlugin->getVersion();
+        //pPlugin->doRun(inFile, outFile);
     }
 }
 

@@ -40,10 +40,18 @@ Thumbs.db
 /.qmake.cache
 /.qmake.stash
 *.pro.user*
-src/CMakeCache.txt
-src/CMakeLists.txt.user*
 build/**
 src/build/**
+src/.qt/**
+src/_deps/**
+
+# CMake generated files
+src/CMakeFiles/**
+src/cmake_install.cmake
+src/CMakeCache.txt
+src/CMakeLists.txt.user*
+src/libs/**
+
 *_ORI
 
 # xemacs temporary files

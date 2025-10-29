@@ -53,7 +53,8 @@ void Output::listPlugins(QStringList plugins)
                 // std::cout << std::left << std::setfill('.') << std::setw(20) << "Plugin Name:" << plugin->getNameShort().toStdString() << std::endl;
                 PLOG_INFO << "Plugin short Name: " << plugin->getNameShort().toStdString();
                 // std::cout << std::left << std::setfill('.') << std::setw(20) << "Version:" << plugin->getVersion().toStdString() << std::endl;
-                PLOG_INFO << "Plugin Version: " << plugin->getVersion().toStdString();
+                PLOG_INFO << "Plugin Version ?: " << plugin->getVersion().toStdString();
+                PLOG_INFO << "Plugin Description: " << plugin->getDescription().toStdString();
                 loader.unload();
             } else {
                 PLOG_WARNING << "Could not cast: " << loader.fileName();
@@ -89,6 +90,9 @@ std::tuple<bool, std::string> Output::testPlugins(QMap<QString, QString> &plugin
                       << "Plugin long Name:" << plugin->getNameLong().toStdString() << std::endl;
             std::cout << std::left << std::setfill('.') << std::setw(width)
                       << "Plugin Version:" << plugin->getVersion().toStdString() << std::endl;
+            std::cout << "Plugin Description: " << plugin->getDescription().toStdString()
+                      << std::endl;
+
             loader.unload();
             pluginMap[plugin->getNameShort()] = loader.fileName();
         } else {

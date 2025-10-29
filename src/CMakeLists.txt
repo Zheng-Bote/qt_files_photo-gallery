@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.23)
 
 project(
   files_photo-gallery
-  VERSION 0.1.10
+  VERSION 0.2.0
   DESCRIPTION
     "QT6 CXX23 SCS to add photos to photo-gallery"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"
@@ -17,7 +17,7 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
 set(CMAKE_CXX_CLANG_TIDY clang-tidy;  -header-filter=.; -checks=cppcoreguidelines-*)
 
@@ -25,12 +25,17 @@ set(CXX_FLAGS_ALL "-m64 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -pthread"
 set(CXX_FLAGS_DEBUG "-g3 -O0")
 set(CXX_FLAGS_RELEASE "-O3")
 
-set(PROG_NAME "${PROJECT_NAME}")
+set(PROG_EXEC_NAME "${PROJECT_NAME}")
+set(PROG_NAME "Photos to Gallery")
 set(PROG_VERSION "${PROJECT_VERSION}")
 set(PROG_HOMEPAGE "${PROJECT_HOMEPAGE_URL}")
 set(PROG_DESCRIPTION "${PROJECT_DESCRIPTION}")
+set(PROG_ORGANIZATION_NAME "ZHENG Robert")
+set(PROG_ORGANIZATION_DOMAIN "net.hase-zheng")
 
-configure_file("${CMAKE_SOURCE_DIR}/configure/rz_config.h.in" configured/rz_config.h)
+set(PROG_BUILD_TYPE "${CMAKE_BUILD_TYPE}")
+
+configure_file("${CMAKE_SOURCE_DIR}/configure/rz_config.h.in" includes/rz_config.h)
 
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL GNU)
     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 14)
@@ -79,7 +84,9 @@ set(SRC_LIST   main.cpp
     includes/rz_aes.h
     includes/rz_aes.cpp
     includes/qaesencryption.h
-    includes/qaesencryption.cpp)
+    includes/qaesencryption.cpp
+    libs/plog/include/plog/Log.h
+  )
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
   set(CMAKE_CXX_FLAGS "${CXX_FLAGS_DEBUG} ${CXX_FLAGS_ALL}")
@@ -93,7 +100,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/configure")
 
 find_package(Qt6 REQUIRED COMPONENTS Core Sql)
 find_package(cxxopts REQUIRED)
-find_package(plog REQUIRED)
+#find_package(plog REQUIRED)
 
 add_library(inicpp includes/inicpp.h)
 
@@ -101,9 +108,9 @@ add_library(inicpp includes/inicpp.h)
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} "libs/plog/include")
 
-target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Sql cxxopts::cxxopts plog::plog inicpp)
+target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Sql cxxopts::cxxopts inicpp)
 
 # are we compliant?
 #include(ClangTidy)

@@ -1,5 +1,7 @@
 #include "rz_aes.h"
 
+#include <QDebug>
+
 AesEnc::AesEnc()
 {
     //datetime.setDateTime();

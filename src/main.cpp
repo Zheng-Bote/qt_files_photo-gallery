@@ -24,7 +24,7 @@
 #include "plog/Initializers/RollingFileInitializer.h"
 #include "plog/Log.h"
 
-#include "configured/rz_config.h"
+#include "includes/rz_config.h"
 
 #include "includes/rz_inifile.hpp"
 #include "includes/rz_options.hpp"
@@ -38,11 +38,13 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    /*
-    QCoreApplication::setApplicationName("files_to_photo-gallery");
-    QCoreApplication::setApplicationVersion("0.1.0");
-    QCoreApplication::setOrganizationDomain("https://github.com/Zheng-Bote/qt_files_photo-gallery");
 
+    QCoreApplication::setApplicationName(PROG_EXEC_NAME);
+    QCoreApplication::setApplicationVersion(PROG_VERSION);
+    QCoreApplication::setOrganizationName(PROG_ORGANIZATION_NAME);
+    QCoreApplication::setOrganizationDomain(PROG_ORGANIZATION_DOMAIN);
+
+    /*
     PLOG_VERBOSE << "This is a VERBOSE message";
     PLOG_DEBUG << "This is a DEBUG message";
     PLOG_INFO << "This is an INFO message";

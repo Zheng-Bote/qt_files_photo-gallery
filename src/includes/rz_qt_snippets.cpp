@@ -43,7 +43,7 @@ QString QtSnippets::getProgDefaultIni()
 
 std::tuple<bool, std::string> QtSnippets::setProgData(const QString &pathToProg)
 {
-    QFile file = pathToProg;
+    QFile file(pathToProg);
     QFileInfo fileInfo(file.fileName());
     QDir dir = QFileInfo(file).absoluteDir();
 
@@ -55,11 +55,11 @@ std::tuple<bool, std::string> QtSnippets::setProgData(const QString &pathToProg)
     progName = fileInfo.completeBaseName();
     progAbsolutePath = dir.absolutePath();
 
-    // logfile & path
-    if (fs.isDirectory("/var/log")) {
+    // logfile & path // read only: /var/log
+    if (fs.isDirectory("/var/logs")) {
         progDefaultLog = "/var/log/";
     } else {
-        progDefaultLog = progAbsolutePath;
+        progDefaultLog = progAbsolutePath + "/";
     }
     progDefaultLog.append(progName);
     progDefaultLog.append(".log");
@@ -72,7 +72,7 @@ std::tuple<bool, std::string> QtSnippets::setProgData(const QString &pathToProg)
             progDefaultIni = msg.c_str();
             progDefaultIni.append("/.config/");
         } else {
-            progDefaultIni = progAbsolutePath;
+            progDefaultIni = progAbsolutePath + "/";
         }
         progDefaultIni.append(progName);
         progDefaultIni.append(".ini");
