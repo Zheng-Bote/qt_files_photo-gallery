@@ -124,6 +124,24 @@ int main(int argc, char *argv[])
     // FATAL doesn't need if-case due to EXIT_FAILURE
     sptr_snippets->checkFunctionReturn(sptr_snippets->test("Hello World!"), Snippets::Status::FATAL);
 
+    QPluginLoader loader("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
+                         "Desktop_Qt_6_7_3-Debug/plugins/librz_read_metadata.so");
+    if (!loader.load()) {
+        qDebug() << "Error: " << loader.fileName() << " Error: " << loader.errorString();
+    }
+
+    qDebug() << "Loaded: " << loader.fileName();
+
+    Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
+    if (plugin) {
+        QMap<QString, QString> mapParseKey;
+        plugin->parseFile(mapParseKey, "/home/zb_bamboo/DEV/images/2003-05-24_164033.jpg");
+    }
+
+    // ######################################
+    exit(EXIT_SUCCESS);
+    // ######################################
+
     // start webserver
     httplib::Server svr;
     auto img = svr.set_mount_point("/img", "./html/img");
