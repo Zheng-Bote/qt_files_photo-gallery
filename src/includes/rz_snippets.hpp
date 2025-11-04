@@ -24,7 +24,7 @@ public:
     Snippets();
     ~Snippets();
 
-    enum class Status { OK, ERROR, FATAL };
+    enum class Status { OK, WARNING, ERROR, FATAL };
 
     std::tuple<bool, std::string> test(std::string const &text);
 

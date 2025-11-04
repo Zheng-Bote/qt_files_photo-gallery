@@ -33,6 +33,10 @@ bool Snippets::checkFunctionReturn(const std::tuple<bool, std::string> &ret,
         switch (status) {
         case Status::OK:
             break;
+        case Status::WARNING:
+            PLOG_WARNING << msg;
+            oknok = false;
+            break;
         case Status::ERROR:
             PLOG_ERROR << msg;
             oknok = false;

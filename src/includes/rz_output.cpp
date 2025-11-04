@@ -51,10 +51,10 @@ void Output::listPlugins(QStringList plugins)
             Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
             if (plugin) {
                 // std::cout << std::left << std::setfill('.') << std::setw(20) << "Plugin Name:" << plugin->getNameShort().toStdString() << std::endl;
-                PLOG_INFO << "Plugin short Name: " << plugin->getNameShort().toStdString();
+                PLOG_INFO << "Plugin short Name: " << plugin->getPluginNameShort().toStdString();
                 // std::cout << std::left << std::setfill('.') << std::setw(20) << "Version:" << plugin->getVersion().toStdString() << std::endl;
-                PLOG_INFO << "Plugin Version ?: " << plugin->getVersion().toStdString();
-                PLOG_INFO << "Plugin Description: " << plugin->getDescription().toStdString();
+                PLOG_INFO << "Plugin Version ?: " << plugin->getPluginVersion().toStdString();
+                PLOG_INFO << "Plugin Description: " << plugin->getPluginDescription().toStdString();
                 loader.unload();
             } else {
                 PLOG_WARNING << "Could not cast: " << loader.fileName();
@@ -83,18 +83,20 @@ std::tuple<bool, std::string> Output::testPlugins(QMap<QString, QString> &plugin
         Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
         const auto width = 20;
         if (plugin) {
-            pluginMap[plugin->getNameShort()] = loader.fileName();
+            pluginMap[plugin->getPluginNameShort()] = loader.fileName();
             std::cout << std::left << std::setfill('.') << std::setw(width)
-                      << "Plugin short Name:" << plugin->getNameShort().toStdString() << std::endl;
+                      << "Plugin short Name:" << plugin->getPluginNameShort().toStdString()
+                      << std::endl;
             std::cout << std::left << std::setfill('.') << std::setw(width)
-                      << "Plugin long Name:" << plugin->getNameLong().toStdString() << std::endl;
+                      << "Plugin long Name:" << plugin->getPluginNameLong().toStdString()
+                      << std::endl;
             std::cout << std::left << std::setfill('.') << std::setw(width)
-                      << "Plugin Version:" << plugin->getVersion().toStdString() << std::endl;
-            std::cout << "Plugin Description: " << plugin->getDescription().toStdString()
+                      << "Plugin Version:" << plugin->getPluginVersion().toStdString() << std::endl;
+            std::cout << "Plugin Description: " << plugin->getPluginDescription().toStdString()
                       << std::endl;
 
             loader.unload();
-            pluginMap[plugin->getNameShort()] = loader.fileName();
+            pluginMap[plugin->getPluginNameShort()] = loader.fileName();
         } else {
             qDebug() << "Could not cast: " << loader.fileName();
             --countedPlugins;

@@ -124,8 +124,9 @@ int main(int argc, char *argv[])
     // FATAL doesn't need if-case due to EXIT_FAILURE
     sptr_snippets->checkFunctionReturn(sptr_snippets->test("Hello World!"), Snippets::Status::FATAL);
 
+    // ###################################### DEBUG
     QPluginLoader loader("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
-                         "Desktop_Qt_6_7_3-Debug/plugins/librz_read_metadata.so");
+                         "Desktop_Qt_6_7_3-Debug/plugins/librz_default_metadata");
     if (!loader.load()) {
         qDebug() << "Error: " << loader.fileName() << " Error: " << loader.errorString();
     }
@@ -134,8 +135,18 @@ int main(int argc, char *argv[])
 
     Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
     if (plugin) {
+        qDebug() << "Plugin found";
         QMap<QString, QString> mapParseKey;
-        plugin->parseFile(mapParseKey, "/home/zb_bamboo/DEV/images/2003-05-24_164033.jpg");
+        mapParseKey.insert("pathToDb",
+                           "/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
+                           "Desktop_Qt_6_7_3-Debug/qt_metadata_desktop.sqlite");
+        sptr_snippets->checkFunctionReturn(plugin->parseFile(mapParseKey, ""),
+                                           Snippets::Status::FATAL);
+        QHash<QString, QString> exifMetaTags;
+        exifMetaTags = plugin->getHashMap("EXIF");
+        for (auto i = exifMetaTags.begin(); i != exifMetaTags.end(); ++i) {
+            qDebug() << i.key() << ": " << i.value();
+        }
     }
 
     // ######################################
