@@ -110,9 +110,19 @@ int main(int argc, char *argv[])
         Snippets::Status::FATAL);
 
     // output.listPlugins(output.getPlugins(plugPath));
+    qDebug() << "output Plugins found";
+    for (auto i = pluginsMap.begin(); i != pluginsMap.end(); ++i) {
+        qDebug() << i.key() << ": " << i.value();
+    }
 
-    // reduce to used plugins
-    sptr_output->reducePlugins(pluginsMap, sptr_ini_config->getPluginsToUse(env));
+    // reduce to ordered list of used plugins which also exist
+    QList<QString> list = sptr_output->reducePlugins(pluginsMap,
+                                                     sptr_ini_config->getPluginsToUse(env));
+    for (auto i = list.begin(); i != list.end(); ++i) {
+        qDebug() << "to use: " << ": " << *i;
+    }
+
+    exit(EXIT_SUCCESS);
 
     // just some tests
     if (sptr_snippets->checkFunctionReturn(sptr_snippets->test("Hello World!"),

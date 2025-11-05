@@ -25,7 +25,7 @@ public:
     void listPlugins(QStringList plugins);
     std::tuple<bool, std::string> testPlugins(QMap<QString, QString> &pluginMap,
                                               const QStringList &plugins);
-    void reducePlugins(QMap<QString, QString> &pluginMap, const QStringList &pluginsToUse);
+    QList<QString> reducePlugins(QMap<QString, QString> &pluginMap, const QStringList &pluginsToUse);
     int getCountedPlugins();
     void runPlugins(const QMap<QString, QString> &pluginMap,
                     const QString &inFile,

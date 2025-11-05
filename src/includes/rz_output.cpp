@@ -111,14 +111,30 @@ std::tuple<bool, std::string> Output::testPlugins(QMap<QString, QString> &plugin
     return std::make_tuple(true, std::format("Plugins found: {}", countedPlugins));
 }
 
-void Output::reducePlugins(QMap<QString, QString> &pluginMap, const QStringList &pluginsToUse)
+QList<QString> Output::reducePlugins(QMap<QString, QString> &pluginMap,
+                                     const QStringList &pluginsToUse)
 {
-    for (const auto &plugin : std::as_const(pluginMap)) {
-        if (pluginsToUse.contains(plugin) == false) {
-            pluginMap.remove(plugin);
+    QList<QString> rmItem, orderedPluginsToUse;
+    // for (const auto &plugin : std::as_const(pluginMap)) // only for values
+    for (auto i = pluginMap.cbegin(), end = pluginMap.cend(); i != end; ++i) {
+        if (pluginsToUse.contains(i.key()) == false) {
+            //qDebug() << "not contains: " << i.key();
+            rmItem.append(i.key());
+            //pluginMap.remove(i.key()); // Bug!
+        } else {
+            //qDebug() << "pluginsToUse contains: " << i.key();
+            if (pluginMap.contains(i.key())) {
+                orderedPluginsToUse.append(i.key());
+            }
         }
     }
+
+    for (auto i = rmItem.cbegin(), end = rmItem.cend(); i != end; ++i) {
+        pluginMap.remove(*i);
+    }
+
     countedPlugins = (int) pluginMap.size();
+    return orderedPluginsToUse;
 }
 
 int Output::getCountedPlugins()
