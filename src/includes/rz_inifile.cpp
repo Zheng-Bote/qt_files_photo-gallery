@@ -35,6 +35,12 @@ QString Inifile::getInifile()
     return Inifile::pathToInifile;
 }
 
+QString Inifile::getDefaultMetadataSource(QString &env)
+{
+    std::string appenv = "APP_" + env.toStdString();
+    return myIni[appenv]["default_metadata_source"].as<std::string>().c_str();
+}
+
 void Inifile::Test()
 {
 }

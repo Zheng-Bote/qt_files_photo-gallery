@@ -61,6 +61,8 @@ public:
     void listIniEntries(std::shared_ptr<QtSnippets> sptr_qt_snippets);
     QString getInifile();
 
+    QString getDefaultMetadataSource(QString &env);
+
 private:
     ini::IniFile myIni;
     //DateTime dt;

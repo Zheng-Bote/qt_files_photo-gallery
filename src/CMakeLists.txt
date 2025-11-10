@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.23)
 
 project(
   files_photo-gallery
-  VERSION 0.3.0
+  VERSION 0.4.0
   DESCRIPTION
     "QT6 CXX23 SCS to add photos to photo-gallery"
   HOMEPAGE_URL "https://github.com/Zheng-Bote/qt_files_photo-gallery"

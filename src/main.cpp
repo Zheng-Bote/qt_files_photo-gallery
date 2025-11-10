@@ -110,31 +110,25 @@ int main(int argc, char *argv[])
         Snippets::Status::FATAL);
 
     // output.listPlugins(output.getPlugins(plugPath));
-    qDebug() << "output Plugins found";
-    for (auto i = pluginsMap.begin(); i != pluginsMap.end(); ++i) {
+    //qDebug() << "output Plugins found";
+    /*for (auto i = pluginsMap.begin(); i != pluginsMap.end(); ++i) {
         qDebug() << i.key() << ": " << i.value();
-    }
+    }*/
 
     // reduce to ordered list of used plugins which also exist
     QList<QString> list = sptr_output->reducePlugins(pluginsMap,
                                                      sptr_ini_config->getPluginsToUse(env));
-    for (auto i = list.begin(); i != list.end(); ++i) {
+    /*for (auto i = list.begin(); i != list.end(); ++i) {
         qDebug() << "to use: " << ": " << *i;
-    }
+    }*/
 
-    exit(EXIT_SUCCESS);
-
-    // just some tests
-    if (sptr_snippets->checkFunctionReturn(sptr_snippets->test("Hello World!"),
-                                           Snippets::Status::ERROR)) {
-        std::println("main: OK");
-    } else {
-        std::println("main: NOK");
-    }
-    // FATAL doesn't need if-case due to EXIT_FAILURE
-    sptr_snippets->checkFunctionReturn(sptr_snippets->test("Hello World!"), Snippets::Status::FATAL);
+    qDebug() << "0) " << list[0];
+    qDebug() << "1) " << list[1];
 
     // ###################################### DEBUG
+
+    QHash<QString, QString> exifDefaultMetaTags, iptcDefaultMetaTags, xmpDefaultMetaTags;
+
     QPluginLoader loader("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
                          "Desktop_Qt_6_7_3-Debug/plugins/librz_default_metadata");
     if (!loader.load()) {
@@ -147,14 +141,39 @@ int main(int argc, char *argv[])
     if (plugin) {
         qDebug() << "Plugin found";
         QMap<QString, QString> mapParseKey;
-        mapParseKey.insert("pathToDb",
-                           "/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
-                           "Desktop_Qt_6_7_3-Debug/qt_metadata_desktop.sqlite");
+        mapParseKey.insert("pathToDb", sptr_ini_config->getDefaultMetadataSource(env));
         sptr_snippets->checkFunctionReturn(plugin->parseFile(mapParseKey, ""),
                                            Snippets::Status::FATAL);
-        QHash<QString, QString> exifMetaTags;
-        exifMetaTags = plugin->getHashMap("EXIF");
-        for (auto i = exifMetaTags.begin(); i != exifMetaTags.end(); ++i) {
+        exifDefaultMetaTags = plugin->getHashMap("EXIF");
+        iptcDefaultMetaTags = plugin->getHashMap("IPTC");
+        xmpDefaultMetaTags = plugin->getHashMap("XMP");
+
+        /*
+        for (auto i = exifDefaultMetaTags.begin(); i != exifDefaultMetaTags.end(); ++i) {
+            qDebug() << i.key() << ": " << i.value();
+        }
+        */
+    }
+
+    loader.setFileName("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
+                       "Desktop_Qt_6_7_3-Debug/plugins/librz_read_metadata");
+    if (!loader.load()) {
+        qDebug() << "Error: " << loader.fileName() << " Error: " << loader.errorString();
+    }
+
+    qDebug() << "Loaded read meta: " << loader.fileName();
+
+    QMap<QString, QString> eMT;
+    QString pathToImgImg = "/home/zb_bamboo/DEV/images/2003-05-24_164033.jpg";
+    plugin = qobject_cast<Plugin *>(loader.instance());
+    if (plugin) {
+        qDebug() << "Plugin found";
+        sptr_snippets->checkFunctionReturn(plugin->parseFile(eMT, pathToImgImg),
+                                           Snippets::Status::FATAL);
+        plugin->setHashMap(exifDefaultMetaTags, "EXIF");
+        QHash<QString, QString> exifData = plugin->getHashMap("EXIF");
+
+        for (auto i = exifData.begin(); i != exifData.end(); ++i) {
             qDebug() << i.key() << ": " << i.value();
         }
     }

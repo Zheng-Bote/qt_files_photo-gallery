@@ -115,25 +115,14 @@ QList<QString> Output::reducePlugins(QMap<QString, QString> &pluginMap,
                                      const QStringList &pluginsToUse)
 {
     QList<QString> rmItem, orderedPluginsToUse;
-    // for (const auto &plugin : std::as_const(pluginMap)) // only for values
-    for (auto i = pluginMap.cbegin(), end = pluginMap.cend(); i != end; ++i) {
-        if (pluginsToUse.contains(i.key()) == false) {
-            //qDebug() << "not contains: " << i.key();
-            rmItem.append(i.key());
-            //pluginMap.remove(i.key()); // Bug!
-        } else {
-            //qDebug() << "pluginsToUse contains: " << i.key();
-            if (pluginMap.contains(i.key())) {
-                orderedPluginsToUse.append(i.key());
-            }
+
+    for (auto i = pluginsToUse.cbegin(), end = pluginsToUse.cend(); i != end; ++i) {
+        if (pluginMap.contains(*i)) {
+            orderedPluginsToUse.append(*i);
         }
     }
 
-    for (auto i = rmItem.cbegin(), end = rmItem.cend(); i != end; ++i) {
-        pluginMap.remove(*i);
-    }
-
-    countedPlugins = (int) pluginMap.size();
+    countedPlugins = (int) orderedPluginsToUse.size();
     return orderedPluginsToUse;
 }
 
