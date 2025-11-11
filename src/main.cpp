@@ -178,6 +178,22 @@ int main(int argc, char *argv[])
         }
     }
 
+    // convert image
+    loader.setFileName("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
+                       "Desktop_Qt_6_7_3-Debug/plugins/librz_convert_image");
+    if (!loader.load()) {
+        qDebug() << "Error: " << loader.fileName() << " Error: " << loader.errorString();
+    }
+    plugin = qobject_cast<Plugin *>(loader.instance());
+    if (plugin) {
+        qDebug() << "Plugin found";
+        sptr_snippets->checkFunctionReturn(plugin->parseFile(eMT, pathToImgImg),
+                                           Snippets::Status::FATAL);
+        sptr_snippets->checkFunctionReturn(plugin->writeFile(eMT, eMT, pathToImgImg),
+                                           Snippets::Status::WARNING);
+        ;
+    }
+
     // ######################################
     exit(EXIT_SUCCESS);
     // ######################################
