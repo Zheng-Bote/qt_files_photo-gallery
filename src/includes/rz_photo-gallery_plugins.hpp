@@ -27,6 +27,8 @@ public:
                                                     QMap<QString, QString> mapFileAttribs,
                                                     QString pathToFile)
         = 0;
+
+    virtual void doClose() = 0;
 };
 
 Q_DECLARE_INTERFACE(Plugin, "net.hase-zheng.photo_gallery_plugins");

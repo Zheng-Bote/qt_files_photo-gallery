@@ -153,6 +153,8 @@ int main(int argc, char *argv[])
             qDebug() << i.key() << ": " << i.value();
         }
         */
+        plugin->doClose();
+        loader.unload();
     }
 
     loader.setFileName("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
@@ -192,6 +194,27 @@ int main(int argc, char *argv[])
         sptr_snippets->checkFunctionReturn(plugin->writeFile(eMT, eMT, pathToImgImg),
                                            Snippets::Status::WARNING);
         ;
+    }
+
+    // write SQL-File
+    eMT.insert("pathToDb", sptr_ini_config->getDefaultMetadataSource(env));
+    loader.setFileName("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
+                       "Desktop_Qt_6_7_3-Debug/plugins/librz_write_sqlfile");
+    if (!loader.load()) {
+        qDebug() << "Error: " << loader.fileName() << " Error: " << loader.errorString();
+    }
+    plugin = qobject_cast<Plugin *>(loader.instance());
+    if (plugin) {
+        qDebug() << "Plugin found";
+        sptr_snippets->checkFunctionReturn(plugin->parseFile(eMT, pathToImgImg),
+                                           Snippets::Status::FATAL);
+
+        plugin->setHashMap(exifDefaultMetaTags, "EXIF");
+        plugin->setHashMap(exifDefaultMetaTags, "IPTC");
+        plugin->setHashMap(exifDefaultMetaTags, "XMP");
+
+        sptr_snippets->checkFunctionReturn(plugin->writeFile(eMT, eMT, "./SQL-files"),
+                                           Snippets::Status::FATAL);
     }
 
     // ######################################
