@@ -3,11 +3,10 @@
 #include <memory>
 #include <print>
 
-#include "configured/rz_config.h"
 #include "cxxopts.hpp"
+#include "rz_config.h"
 #include "rz_inifile.hpp"
 #include "rz_qt_snippets.hpp"
-
 
 namespace rz_options {
 

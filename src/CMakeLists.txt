@@ -117,7 +117,7 @@ target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Sql cxxopts::cxxopts inicpp
 #addclangtidy(files_photo-gallery)
 
 include(Doxygen)
-doxygen(. docs)
+doxygen(src docs)
 
 IF(CMAKE_BUILD_TYPE MATCHES Release)
   message("RELEASE mode")

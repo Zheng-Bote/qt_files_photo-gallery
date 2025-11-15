@@ -10,6 +10,11 @@ function(Doxygen input output)
   set(DOXYGEN_GENERATE_HTML YES)
   set(DOXYGEN_HTML_OUTPUT ${PROJECT_BINARY_DIR}/${output})
 
+  set(DOXYGEN_HTML_COLORSTYLE "TOGGLE")
+  set(DOXYGEN_FILE_PATTERNS *.c *.cpp *.h *.hpp)
+  doxygen_add_docs(example_docs "${CMAKE_CURRENT_SOURCE_DIR}/src" ALL)
+  
+     
   UseDoxygenAwesomeCss()
   UseDoxygenAwesomeExtensions()
 
@@ -41,9 +46,9 @@ macro(UseDoxygenAwesomeExtensions)
     ${doxygen-awesome-css_SOURCE_DIR}/doxygen-awesome-interactive-toc.js
   )
 
-  execute_process(COMMAND doxygen -w html header.html footer.html style.css
-                  WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
-  execute_process(COMMAND sed -i "/<\\/head>/r ${PROJECT_SOURCE_DIR}/CMakeFiles/extra_headers" header.html
-                  WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
-  set(DOXYGEN_HTML_HEADER ${PROJECT_BINARY_DIR}/header.html)
+  execute_process(COMMAND doxygen ${PROJECT_SOURCE_DIR}/configure/Doxyfile -w html header.html footer.html style.css
+                  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src})
+#  execute_process(COMMAND sed -i "/<\\/head>/r ${PROJECT_SOURCE_DIR}/configure/extra_headers" header.html
+#                  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src})
+#  set(DOXYGEN_HTML_HEADER ${PROJECT_BINARY_DIR}/header.html)
 endmacro()

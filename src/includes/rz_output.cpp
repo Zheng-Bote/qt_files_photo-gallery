@@ -4,7 +4,8 @@
 
 Output::Output(QObject *parent)
     : QObject(parent)
-{}
+{
+}
 
 Output::~Output() {}
 
@@ -14,22 +15,25 @@ QStringList Output::getPlugins(const QString &path)
     QStringList plugins;
     QStringList filter;
     // Windows, Linux, Mac
-    //filter << "*.dll" << "*.so" << "*.dylib";
+    // filter << "*.dll" << "*.so" << "*.dylib";
     filter << "*.so";
 
     QDir dir(path);
     QFileInfoList list = dir.entryInfoList(filter);
-    foreach (QFileInfo file, list) {
+    foreach (QFileInfo file, list)
+    {
 #ifndef Q_OS_MACX
         plugins.append(file.filePath());
 #else
-        if (!file.isSymLink()) {
+        if (!file.isSymLink())
+        {
             plugins.append(file.filePath());
         }
 #endif
     }
 
-    if (plugins.length() == 0) {
+    if (plugins.length() == 0)
+    {
         PLOG_WARNING << "No PlugIns found";
         return plugins;
     }
@@ -41,22 +45,29 @@ void Output::listPlugins(QStringList plugins)
 {
     PLOG_INFO << "listPlugins";
 
-    foreach (QString file, plugins) {
+    foreach (QString file, plugins)
+    {
         QPluginLoader loader(file);
 
-        if (!loader.load()) {
+        if (!loader.load())
+        {
             PLOG_WARNING << "Error: " << loader.fileName() << " Error: " << loader.errorString();
             continue;
-        } else {
+        }
+        else
+        {
             Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
-            if (plugin) {
+            if (plugin)
+            {
                 // std::cout << std::left << std::setfill('.') << std::setw(20) << "Plugin Name:" << plugin->getNameShort().toStdString() << std::endl;
                 PLOG_INFO << "Plugin short Name: " << plugin->getPluginNameShort().toStdString();
                 // std::cout << std::left << std::setfill('.') << std::setw(20) << "Version:" << plugin->getVersion().toStdString() << std::endl;
                 PLOG_INFO << "Plugin Version ?: " << plugin->getPluginVersion().toStdString();
                 PLOG_INFO << "Plugin Description: " << plugin->getPluginDescription().toStdString();
                 loader.unload();
-            } else {
+            }
+            else
+            {
                 PLOG_WARNING << "Could not cast: " << loader.fileName();
             }
         }
@@ -68,11 +79,13 @@ std::tuple<bool, std::string> Output::testPlugins(QMap<QString, QString> &plugin
 {
     countedPlugins = int(plugins.length());
 
-    foreach (QString file, plugins) {
+    foreach (QString file, plugins)
+    {
         qDebug() << "Loading..." << file;
 
         QPluginLoader loader(file);
-        if (!loader.load()) {
+        if (!loader.load())
+        {
             qDebug() << "Error: " << loader.fileName() << " Error: " << loader.errorString();
             --countedPlugins;
             continue;
@@ -82,7 +95,8 @@ std::tuple<bool, std::string> Output::testPlugins(QMap<QString, QString> &plugin
 
         Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
         const auto width = 20;
-        if (plugin) {
+        if (plugin)
+        {
             pluginMap[plugin->getPluginNameShort()] = loader.fileName();
             std::cout << std::left << std::setfill('.') << std::setw(width)
                       << "Plugin short Name:" << plugin->getPluginNameShort().toStdString()
@@ -97,14 +111,17 @@ std::tuple<bool, std::string> Output::testPlugins(QMap<QString, QString> &plugin
 
             loader.unload();
             pluginMap[plugin->getPluginNameShort()] = loader.fileName();
-        } else {
+        }
+        else
+        {
             qDebug() << "Could not cast: " << loader.fileName();
             --countedPlugins;
         }
     }
 
     // no valid plugins
-    if (countedPlugins <= 0) {
+    if (countedPlugins <= 0)
+    {
         return std::make_tuple(false, "no valid plugins");
     }
     // at least 1 valid plugin
@@ -116,13 +133,15 @@ QList<QString> Output::reducePlugins(QMap<QString, QString> &pluginMap,
 {
     QList<QString> rmItem, orderedPluginsToUse;
 
-    for (auto i = pluginsToUse.cbegin(), end = pluginsToUse.cend(); i != end; ++i) {
-        if (pluginMap.contains(*i)) {
+    for (auto i = pluginsToUse.cbegin(), end = pluginsToUse.cend(); i != end; ++i)
+    {
+        if (pluginMap.contains(*i))
+        {
             orderedPluginsToUse.append(*i);
         }
     }
 
-    countedPlugins = (int) orderedPluginsToUse.size();
+    countedPlugins = (int)orderedPluginsToUse.size();
     return orderedPluginsToUse;
 }
 
@@ -140,7 +159,8 @@ void Output::runPlugins(const QMap<QString, QString> &pluginMap,
     QThread::currentThread()->setObjectName("runPlugins");
     QThreadPool pool;
 
-    for (const auto &plugin : std::as_const(pluginMap)) {
+    for (const auto &plugin : std::as_const(pluginMap))
+    {
         DoThread *doThread = new DoThread();
         doThread->setPluginFile(plugin);
         doThread->setInFile(inFile);

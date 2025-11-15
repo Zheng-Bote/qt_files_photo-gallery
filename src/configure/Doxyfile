@@ -1,0 +1,29 @@
+# Configuration for Doxygen for use with CMake
+# Only options that deviate from the default are included
+# To create a new Doxyfile containing all available options, call `doxygen -g`
+
+#---------------------------------------------------------------------------
+# Project related configuration options
+#---------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------
+# Build related configuration options
+#---------------------------------------------------------------------------
+EXTRACT_ALL             = YES
+RECURSIVE               = YES
+GENERATE_HTML           = YES
+GENERATE_LATEX          = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the input files
+#---------------------------------------------------------------------------
+#INPUT                  =    /home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.c \
+                         *.cc \
+                         *.cpp \
+                         *.h \
+                         *.hpp \
+                         *.md \
+                         *.txt
