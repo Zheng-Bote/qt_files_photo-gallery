@@ -57,6 +57,7 @@ else()
 endif()
 
 set(SRC_LIST   main.cpp
+    includes/rz_config.h
     includes/rz_photo-gallery_plugins.hpp
     includes/rz_webserver.hpp
     includes/rz_snippets.hpp

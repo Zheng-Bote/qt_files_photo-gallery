@@ -157,6 +157,7 @@ int main(int argc, char *argv[])
         loader.unload();
     }
 
+    // read image metadata
     loader.setFileName("/home/zb_bamboo/DEV/__NEW__/CPP/qt_files_photo-gallery/src/build/"
                        "Desktop_Qt_6_7_3-Debug/plugins/librz_read_metadata");
     if (!loader.load()) {
@@ -166,18 +167,28 @@ int main(int argc, char *argv[])
     qDebug() << "Loaded read meta: " << loader.fileName();
 
     QMap<QString, QString> eMT;
+    QHash<QString, QString> exifData, iptcData, xmpData;
     QString pathToImgImg = "/home/zb_bamboo/DEV/images/2003-05-24_164033.jpg";
     plugin = qobject_cast<Plugin *>(loader.instance());
     if (plugin) {
         qDebug() << "Plugin found";
         sptr_snippets->checkFunctionReturn(plugin->parseFile(eMT, pathToImgImg),
                                            Snippets::Status::FATAL);
-        plugin->setHashMap(exifDefaultMetaTags, "EXIF");
-        QHash<QString, QString> exifData = plugin->getHashMap("EXIF");
 
+        plugin->setHashMap(exifDefaultMetaTags, "EXIF");
+        exifData = plugin->getHashMap("EXIF");
+
+        plugin->setHashMap(iptcDefaultMetaTags, "IPTC");
+        iptcData = plugin->getHashMap("IPTC");
+
+        plugin->setHashMap(xmpDefaultMetaTags, "XMP");
+        xmpData = plugin->getHashMap("XMP");
+
+        /*
         for (auto i = exifData.begin(); i != exifData.end(); ++i) {
             qDebug() << i.key() << ": " << i.value();
         }
+        */
     }
 
     // convert image
@@ -209,9 +220,9 @@ int main(int argc, char *argv[])
         sptr_snippets->checkFunctionReturn(plugin->parseFile(eMT, pathToImgImg),
                                            Snippets::Status::FATAL);
 
-        plugin->setHashMap(exifDefaultMetaTags, "EXIF");
-        plugin->setHashMap(exifDefaultMetaTags, "IPTC");
-        plugin->setHashMap(exifDefaultMetaTags, "XMP");
+        plugin->setHashMap(exifData, "EXIF");
+        plugin->setHashMap(iptcData, "IPTC");
+        plugin->setHashMap(xmpData, "XMP");
 
         sptr_snippets->checkFunctionReturn(plugin->writeFile(eMT, eMT, "./SQL-files"),
                                            Snippets::Status::FATAL);

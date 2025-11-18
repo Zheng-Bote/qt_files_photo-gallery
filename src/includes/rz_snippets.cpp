@@ -27,7 +27,7 @@ bool Snippets::checkFunctionReturn(const std::tuple<bool, std::string> &ret,
     std::tie(oknok, msg) = ret;
 
     if (oknok) {
-        PLOG_DEBUG << "checkFunction OK: " << msg;
+        //PLOG_DEBUG << "checkFunction OK: " << msg;
     } else {
         PLOG_DEBUG << "checkFunction NOK: " << msg;
         switch (status) {
